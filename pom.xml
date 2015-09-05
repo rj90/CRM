@@ -9,16 +9,27 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <properties>
+        <javax.ws.rs.version>2.0.1</javax.ws.rs.version>
+        <glassfish.jersey.core.version>2.4.1</glassfish.jersey.core.version>
+        <jackson.version>1.9.13</jackson.version>
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.12</slf4j.version>
         <spring.version>4.2.0.RELEASE</spring.version>
         <spring.data.rest.webmvc.version>2.3.2.RELEASE</spring.data.rest.webmvc.version>
+        <spring.data.jpa.version>1.9.0.RELEASE</spring.data.jpa.version>
+        <spring.security.version>4.0.2.RELEASE</spring.security.version>
         <thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
         <thymeleaf.ext.version>2.1.2.RELEASE</thymeleaf.ext.version>
     </properties>
 
     <repositories>
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+
         <repository>
             <id>com.springsource.repository.bundles.release</id>
             <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
@@ -33,6 +44,28 @@
     </repositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.5.Final</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- TESTY-->
         <dependency>
             <groupId>junit</groupId>
@@ -55,10 +88,6 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-core</artifactId>-->
-        <!--</dependency>-->
 
         <!--SPRING LIBS-->
         <dependency>
@@ -86,6 +115,31 @@
             <artifactId>spring-data-rest-webmvc</artifactId>
             <version>${spring.data.rest.webmvc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.jpa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
         <!--SERVLET-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -107,6 +161,26 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- JSon -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-jaxrs</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${javax.ws.rs.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-common</artifactId>
+            <version>${glassfish.jersey.core.version}</version>
+            <!--<scope>provided</scope>-->
+        </dependency>
+
         <!-- Thymeleaf html template engine -->
 
         <dependency>
@@ -126,6 +200,39 @@
             <version>${thymeleaf.ext.version}</version>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>CODBMS</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>version</name>
+                    <value>1.0.0</value>
+                </property>
+            </activation>
+            <build>
+                <resources>
+                    <resource>
+                        <targetPath>META-INF</targetPath>
+                        <directory>src/main/resources/META-INF/CODBMS</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+
+        <profile>
+            <id>RODBMS</id>
+            <build>
+                <resources>
+                    <resource>
+                        <targetPath>META-INF</targetPath>
+                        <directory>src/main/resources/META-INF/RODBMS</directory>
+                    </resource>
+                </resources>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
         <finalName>${artifactId}</finalName>

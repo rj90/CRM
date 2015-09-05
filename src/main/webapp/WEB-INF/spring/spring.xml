@@ -12,6 +12,13 @@
     <context:annotation-config/>
 
     <context:component-scan base-package="org.pw.rafalj.crm.controller"/>
+    <context:component-scan base-package="org.pw.rafalj.crm.model"/>
+    <context:component-scan base-package="org.pw.rafalj.crm.repository"/>
+    <context:component-scan base-package="org.pw.rafalj.crm.service"/>
 
-    <!--<import resource="spring-mvc.xml"/>-->
+    <import resource="spring-jpa.xml"/>
+
+    <import resource="spring-mvc.xml"/>
+
+    <import resource="spring-security.xml"/>
 </beans>
