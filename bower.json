@@ -1,0 +1,29 @@
+{
+  "name": "crm",
+  "version": "1.0.0",
+  "authors": [
+    "Rafa³ Józwiak <R.Jozwiak1@gmail.com>"
+  ],
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "libs",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-bootstrap": "latest",
+    "angular-cookies": "latest",
+    "angular-mocks": "latest",
+    "angular-resource": "latest",
+    "angular-route": "latest",
+    "bootstrap": "latest",
+    "ng-file-upload": "latest",
+    "ngmap": "latest",
+    "underscore": "latest"
+  },
+  "license": "MIT"
+}

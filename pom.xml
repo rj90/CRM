@@ -13,6 +13,7 @@
         <glassfish.jersey.core.version>2.4.1</glassfish.jersey.core.version>
         <jackson.version>1.9.13</jackson.version>
         <junit.version>4.12</junit.version>
+        <liquibase.version>3.4.1</liquibase.version>
         <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.12</slf4j.version>
         <spring.version>4.2.0.RELEASE</spring.version>
@@ -198,6 +199,13 @@
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity3</artifactId>
             <version>${thymeleaf.ext.version}</version>
+        </dependency>
+
+        <!--Liquibase-->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${liquibase.version}</version>
         </dependency>
     </dependencies>
 

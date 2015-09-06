@@ -38,6 +38,11 @@
         <property name="testOnReturn" value="true"/>
     </bean>
 
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property ref="dataSource" name="dataSource"></property>
+        <property name="changeLog" value="classpath:META-INF/changelog.xml"></property>
+    </bean>
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
 
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
