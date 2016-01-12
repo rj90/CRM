@@ -225,6 +225,14 @@
                         <targetPath>META-INF</targetPath>
                         <directory>src/main/resources/META-INF/CODBMS</directory>
                     </resource>
+                    <resource>
+                        <targetPath>META-INF</targetPath>
+                        <directory>src/main/resources/META-INF/liquibase</directory>
+                        <includes>
+                            <include>**/*.xml</include>
+                            <include>**/*.sql</include>
+                        </includes>
+                    </resource>
                 </resources>
             </build>
         </profile>
@@ -236,6 +244,14 @@
                     <resource>
                         <targetPath>META-INF</targetPath>
                         <directory>src/main/resources/META-INF/RODBMS</directory>
+                    </resource>
+                    <resource>
+                        <targetPath>META-INF</targetPath>
+                        <directory>src/main/resources/META-INF/liquibase</directory>
+                        <includes>
+                            <include>**/*.xml</include>
+                            <include>**/*.sql</include>
+                        </includes>
                     </resource>
                 </resources>
             </build>
