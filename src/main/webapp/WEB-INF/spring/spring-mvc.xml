@@ -9,6 +9,16 @@
 
     <bean class="org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration"/>
 
+    <!-- i18n -->
+    <bean id="messageSource" class="org.pw.rafalj.crm.config.CustomReloadableResourceBundleMessageSource">
+        <property name="basename" value="WEB-INF/i18n/i18n"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.FixedLocaleResolver">
+        <property name="defaultLocale" value="pl"/>
+    </bean>
+
         <!-- Thymeleaf template engine -->
     <bean id="templateResolver"
           class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
