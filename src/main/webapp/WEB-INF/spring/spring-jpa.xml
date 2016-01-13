@@ -17,11 +17,8 @@
 
    <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="databaseProperties"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location">
-            <value>classpath:META-INF/database.properties</value>
-        </property>
+    <bean id="databaseProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:META-INF/database.properties"/>
     </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
