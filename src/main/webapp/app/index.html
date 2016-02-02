@@ -7,17 +7,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script type="text/javascript" th:inline="javascript">
+    <!-- main.css -->
+    <link th:href="@{/app/css/main.css}" rel="stylesheet"/>
+    <!--login css-->
+    <link th:href="@{/app/css/login/style.css}" rel="stylesheet"/>
+    <!-- font awesome -->
+    <link th:href="@{//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet"/>
+    <!-- loading indicator-->
 
+    <script type="text/javascript" th:inline="javascript">
+        var APP_CONTEXT = [[@{/}]];
     </script>
 
 </head>
 <body>
+<menu-dctv></menu-dctv>
 
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-view="true" style="width: inherit; height: inherit;"></div>
 </body>
 
+<script th:src="@{/app/lib/angular/angular.js}" ></script>
+<script th:src="@{/app/lib/angular-resource/angular-resource.js}" ></script>
+<script th:src="@{/app/lib/angular-route/angular-route.js}" ></script>
+<script th:src="@{/app/lib/angular-sanitize/angular-sanitize.js}" ></script>
+<script th:src="@{/app/lib/angular-translate/angular-translate.js}" ></script>
+<script th:src="@{/app/lib/angular-translate-loader-url/angular-translate-loader-url.js}" ></script>
 
-<script>
+<!-- App -->
+<script th:src="@{/app/app.js}"/>
 
-</script>
+<!-- SERVICES -->
+<script th:src="@{/app/services/user/userService.js}"/>
+
+<!--DIRECTIVES-->
+<script th:src="@{/app/directives/directives.js}"></script>
+<script th:src="@{/app/directives/main/menuDctv.js}"></script>
+
+<!--VIEWS-->
+<script th:src="@{/app/views/views.js}"></script>
+<script th:src="@{/app/views/login/login.js}"></script>
+
+
 </html>

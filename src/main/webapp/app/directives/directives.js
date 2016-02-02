@@ -1,1 +1,3 @@
-angular.module('crmApp.directives',[])
+angular.module('crmApp.directives',[
+    'crmApp.menu'
+])

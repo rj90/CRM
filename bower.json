@@ -2,7 +2,7 @@
   "name": "crm",
   "version": "1.0.0",
   "authors": [
-    "Rafa≥ JÛzwiak <R.Jozwiak1@gmail.com>"
+    "Rafa≈Ç J√≥zwiak <R.Jozwiak1@gmail.com>"
   ],
   "main": "index.html",
   "ignore": [
@@ -20,6 +20,9 @@
     "angular-mocks": "latest",
     "angular-resource": "latest",
     "angular-route": "latest",
+    "angular-sanitize": "latest",
+    "angular-translate": "latest",
+    "angular-translate-loader-url": "latest",
     "bootstrap": "latest",
     "ng-file-upload": "latest",
     "ngmap": "latest",

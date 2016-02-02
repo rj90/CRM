@@ -44,12 +44,12 @@
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
-    <!--<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">-->
-        <!--<property name="messageConverters">-->
-            <!--<list>-->
-                <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
-                <!--<bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>-->
-            <!--</list>-->
-        <!--</property>-->
-    <!--</bean>-->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+                <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
 </beans>
