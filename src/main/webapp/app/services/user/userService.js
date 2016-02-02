@@ -12,5 +12,11 @@ userServices.factory('UserService', function($http) {
         });
     };
 
+    service.getUser = function(callback){
+        return $http.get(APP_CONTEXT + "auth/getUser").then(function(response){
+            callback(response);
+        })
+    };
+
     return service;
 });

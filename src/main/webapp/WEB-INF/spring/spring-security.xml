@@ -20,16 +20,15 @@
         <security:custom-filter ref="authenticationTokenProcessingFilter" position="BASIC_AUTH_FILTER" />
         <security:intercept-url pattern="/auth/**" access="permitAll" />
 
-        <!--<security:intercept-url pattern="/rest/**" access="isAuthenticated()"/>-->
-        <!--<security:intercept-url pattern="/protected/**" access="isAuthenticated()"/>-->
-        <!--<security:intercept-url pattern="/" access="permitAll" />-->
-        <!--<security:intercept-url pattern="/protected/**" access="isAuthenticated()"  />-->
-        <!--TODO UWAGA ODKOMENTOWAĆ NA PRODUKCJI-->
-        <!--<security:intercept-url pattern="/rest/**" access="isAuthenticated()"/>-->
+        <security:intercept-url pattern="/rest/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/protected/**" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/" access="permitAll" />
+        <security:intercept-url pattern="/protected/**" access="isAuthenticated()"  />
+        <security:intercept-url pattern="/rest/**" access="isAuthenticated()"/>
 
-        <!--<security:form-login login-page="/login" authentication-failure-url="/login?error=403" default-target-url="/" />-->
+        <security:form-login login-page="/login" authentication-failure-url="/login?error=403" default-target-url="/" />
 
-        <!--<security:logout invalidate-session="false" logout-success-url="/" logout-url="/logout" delete-cookies="true"/>-->
+        <security:logout invalidate-session="false" logout-success-url="/" logout-url="/logout" delete-cookies="true"/>
 
     </security:http>
 

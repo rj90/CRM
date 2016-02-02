@@ -1,4 +1,5 @@
 angular.module('crmApp', [
+    'ngCookies',
     'ngRoute',
     'ngSanitize',
     'pascalprecht.translate',

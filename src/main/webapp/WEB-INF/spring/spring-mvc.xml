@@ -9,6 +9,22 @@
 
     <bean class="org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration"/>
 
+    <!-- Login Interceptor -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/protected/**"/>
+            <bean class="org.pw.rafalj.crm.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+        <!-- workaround to fix IE8 problem -->
+        <bean id="webContentInterceptor"
+              class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+            <property name="cacheSeconds" value="0"/>
+            <property name="useExpiresHeader" value="true"/>
+            <property name="useCacheControlHeader" value="true"/>
+            <property name="useCacheControlNoStore" value="true"/>
+        </bean>
+    </mvc:interceptors>
+
     <!-- i18n -->
     <bean id="messageSource" class="org.pw.rafalj.crm.config.CustomReloadableResourceBundleMessageSource">
         <property name="basename" value="WEB-INF/i18n/i18n"/>

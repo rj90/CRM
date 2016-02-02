@@ -21,4 +21,11 @@ public class ExceptionHandlingController {
     public ResponseVO UNAUTHORIZEDError(HttpServletRequest req, WebApplicationException e) {
         return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public ResponseVO handleError(HttpServletRequest req, Exception e) {
+        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage());
+    }
 }
