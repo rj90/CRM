@@ -25,6 +25,7 @@
         <security:intercept-url pattern="/" access="permitAll" />
         <security:intercept-url pattern="/protected/**" access="isAuthenticated()"  />
         <security:intercept-url pattern="/rest/**" access="isAuthenticated()"/>
+        <!--<security:intercept-url pattern="/rest/getDBQueriesType" access="permitAll"/>-->
 
         <security:form-login login-page="/login" authentication-failure-url="/login?error=403" default-target-url="/" />
 

@@ -4,11 +4,10 @@ angular.module('crmApp', [
     'ngSanitize',
     'pascalprecht.translate',
 
-    'UserServices',
-
     'crmApp.directives',
     'crmApp.views',
-    'crmApp.security'
+    'crmApp.security',
+    'crmApp.services'
 ]).config(['$translateProvider', function($translateProvider){
     $translateProvider.useUrlLoader(APP_CONTEXT + '/i18n/messageBundle');
     $translateProvider.preferredLanguage('pl');

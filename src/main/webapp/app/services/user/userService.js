@@ -14,6 +14,7 @@ userServices.factory('UserService', function($http) {
 
     service.getUser = function(callback){
         return $http.get(APP_CONTEXT + "auth/getUser").then(function(response){
+            console.log('IN');
             callback(response);
         })
     };

@@ -11,9 +11,13 @@ angular.module('crmApp.login', ['ngRoute'])
         });
     })
 
-    .controller('LoginCrtl', function($scope, $rootScope, $cookieStore, UserService){
+    .controller('LoginCrtl', function($scope, $rootScope, $cookieStore, UserService, DBService){
         $scope.rememberMe = false;
         $rootScope.isAutenticated = false;
+
+        DBService.getQueriesType(function(response){
+            $scope.dbConnOptions = response.data;
+        });
 
         $scope.login = function() {
             UserService.authenticate({username: $scope.username, password: $scope.password}, function(authenticationResult) {
@@ -24,15 +28,14 @@ angular.module('crmApp.login', ['ngRoute'])
                 }
 
                 var authToken = authenticationResult.data.token;
-                console.log(authToken);
-
                 $rootScope.authToken = authToken;
                 $cookieStore.put('authToken', authToken);
                 UserService.getUser(function(response) {
+                    console.log(response);
                     $rootScope.user = response.data;
                     $rootScope.isAutenticated = true;
                     $rootScope.appInfo = response.data.appInfo;
-                    //$location.path($rootScope.homePath);
+                    $location.path($rootScope.homePath);
                 });
             });
         };
