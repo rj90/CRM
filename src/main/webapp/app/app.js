@@ -7,7 +7,8 @@ angular.module('crmApp', [
     'UserServices',
 
     'crmApp.directives',
-    'crmApp.views'
+    'crmApp.views',
+    'crmApp.security'
 ]).config(['$translateProvider', function($translateProvider){
     $translateProvider.useUrlLoader(APP_CONTEXT + '/i18n/messageBundle');
     $translateProvider.preferredLanguage('pl');
