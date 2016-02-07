@@ -23,6 +23,7 @@
     "angular-sanitize": "latest",
     "angular-translate": "latest",
     "angular-translate-loader-url": "latest",
+    "angular-ui-router": "latest",
     "bootstrap": "latest",
     "ng-file-upload": "latest",
     "ngmap": "latest",

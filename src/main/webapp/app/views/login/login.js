@@ -11,11 +11,12 @@ angular.module('crmApp.login', ['ngRoute'])
         });
     })
 
-    .controller('LoginCrtl', function($scope, $rootScope, $cookieStore, UserService, DBService){
+    .controller('LoginCrtl', function($scope, $rootScope, $cookieStore, $location, UserService, DBService){
         $scope.rememberMe = false;
         $rootScope.isAutenticated = false;
 
         DBService.getQueriesType(function(response){
+            console.log(response.data)
             $scope.dbConnOptions = response.data;
         });
 
@@ -31,7 +32,6 @@ angular.module('crmApp.login', ['ngRoute'])
                 $rootScope.authToken = authToken;
                 $cookieStore.put('authToken', authToken);
                 UserService.getUser(function(response) {
-                    console.log(response);
                     $rootScope.user = response.data;
                     $rootScope.isAutenticated = true;
                     $rootScope.appInfo = response.data.appInfo;

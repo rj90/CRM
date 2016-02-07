@@ -13,13 +13,13 @@ import java.util.List;
  * Created by Rav on 2016-02-03.
  */
 @RestController
-@RequestMapping(value = "/rest/getDBQueriesType")
-public class DBQueryTypeController {
+@RequestMapping(value = "/DBTypeController")
+public class DBTypeController {
 
     @Autowired
     DBQueryTypeService dbQueryTypeService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/getDBQueriesType", method = RequestMethod.GET)
     public List<DBQueryTypeVO> get(){
         return dbQueryTypeService.getDBQueryType();
     }

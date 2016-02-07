@@ -77,7 +77,7 @@ angular.module('crmApp.security',[])
 
         /* Register error provider that shows message on failed requests or redirects to login page on
          * unauthenticated requests */
-        $httpProvider.interceptors.push([ '$q', '$rootScope', '$location',  '$injector', function ($q, $rootScope, $location,  $injector) {
+        $httpProvider.interceptors.push(function ($q, $rootScope, $location,  $injector) {
                 return {
                     'response' : function(response){
                         UTIL.LoaderQueue.pop();
@@ -124,8 +124,7 @@ angular.module('crmApp.security',[])
                         return $q.reject(rejection);
                     }
                 };
-            }]
-        );
+            });
 
         /* Registers auth token interceptor, auth token is either passed by header or by query parameter
          * as soon as there is an authenticated user */
@@ -198,6 +197,7 @@ angular.module('crmApp.security',[])
     $location.path("/login");
 
     var authToken = $cookieStore.get('authToken');
+        console.log('Token'  + authToken);
 
     if (authToken !== undefined) {
         $rootScope.authToken = authToken;
@@ -223,4 +223,3 @@ angular.module('crmApp.security',[])
 
     $rootScope.initialized = true;
 });
-//
