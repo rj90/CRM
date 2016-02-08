@@ -40,6 +40,6 @@ public class AuthenticationControllerTest {
             UserAuthenticationVO userAuthenticationVO = new UserAuthenticationVO();
             userAuthenticationVO.setUsername("admin");
             userAuthenticationVO.setPassword("21232f297a57a5a743894a0e4a801fc3");
-            TokenTransfer tokenTransfer = authenticationController.authenticate(userAuthenticationVO);
+//            TokenTransfer tokenTransfer = authenticationController.authenticate(userAuthenticationVO);
     }
 }
