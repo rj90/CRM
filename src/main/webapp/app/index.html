@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link th:href="@{/app/lib/bootstrap3/bootstrap-paper.css}" rel="stylesheet"/>
     <!-- main.css -->
     <link th:href="@{/app/css/main.css}" rel="stylesheet"/>
     <!--login css-->
@@ -16,12 +17,12 @@
     <!-- loading indicator-->
 
     <script type="text/javascript" th:inline="javascript">
-        var APP_CONTEXT = [[@{/}]];
+        var APP_CONTEXT = 'http://localhost:8080/';
     </script>
 
 </head>
 <body>
-<menu-dctv></menu-dctv>
+<menu-dctv/>
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -31,6 +32,7 @@
 </body>
 
 <script th:src="@{/app/lib/angular/angular.js}" ></script>
+<script th:src="@{/app/lib/angular-bootstrap/ui-bootstrap-tpls.js}" ></script>
 <script th:src="@{/app/lib/dialogs/index.js}" ></script>
 <script th:src="@{/app/lib/angular-cookies/angular-cookies.js}" ></script>
 <script th:src="@{/app/lib/angular-resource/angular-resource.js}" ></script>
@@ -59,6 +61,7 @@
 <!--VIEWS-->
 <script th:src="@{/app/views/views.js}"></script>
 <script th:src="@{/app/views/login/login.js}"></script>
+<script th:src="@{/app/views/users/userlist.js}"></script>
 <script th:src="@{/app/views/welcome/welcome.js}"></script>
 
 

@@ -14,11 +14,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.WebApplicationException;
 import java.io.IOException;
 import java.util.HashMap;
@@ -55,8 +53,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping( value = "/authenticateUser" , method = RequestMethod.POST)
-    public TokenTransfer authenticate(@RequestBody UserAuthenticationVO userAuthenticationVO){
-
+    public TokenTransfer authenticate(@RequestBody UserAuthenticationVO userAuthenticationVO, HttpServletRequest request){
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(userAuthenticationVO.getUsername(), userAuthenticationVO.getPassword());
         Authentication authentication = this.authenticationManager.authenticate(authenticationToken);

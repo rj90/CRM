@@ -13,14 +13,16 @@ angular.module('crmApp.login', ['ngRoute'])
 
     .controller('LoginCrtl', function($scope, $rootScope, $cookieStore, $location, UserService, DBService){
         $scope.rememberMe = false;
-        $rootScope.isAutenticated = false;
+        $rootScope.isAuthenticated = false;
 
         DBService.getQueriesType(function(response){
             console.log(response.data)
             $scope.dbConnOptions = response.data;
+            $scope.dbConnType = $scope.dbConnOptions[0].id;
         });
 
         $scope.login = function() {
+            $cookieStore.put('dbConnType', $scope.dbConnType);
             UserService.authenticate({username: $scope.username, password: $scope.password}, function(authenticationResult) {
 
                 if(authenticationResult.status == 401){ // Invalid login or password
@@ -33,7 +35,7 @@ angular.module('crmApp.login', ['ngRoute'])
                 $cookieStore.put('authToken', authToken);
                 UserService.getUser(function(response) {
                     $rootScope.user = response.data;
-                    $rootScope.isAutenticated = true;
+                    $rootScope.isAuthenticated = true;
                     $rootScope.appInfo = response.data.appInfo;
                     $location.path($rootScope.homePath);
                 });

@@ -3,6 +3,7 @@ angular.module('crmApp', [
     'ngRoute',
     'ngSanitize',
     'pascalprecht.translate',
+    'ui.bootstrap',
 
     'crmApp.directives',
     'crmApp.views',

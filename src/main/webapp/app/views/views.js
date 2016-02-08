@@ -3,5 +3,6 @@
  */
 angular.module('crmApp.views',[
     'crmApp.login',
+    'crmApp.userlist',
     'crmApp.welcome'
 ])

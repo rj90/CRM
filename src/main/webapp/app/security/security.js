@@ -153,7 +153,7 @@ angular.module('crmApp.security',[])
     .run(function($rootScope, $location, $cookieStore, UserService) {
 
 
-    $rootScope.homePath = 'welcomePage';
+    $rootScope.homePath = '';
     /* Reset error when a new view is loaded */
     $rootScope.$on('$viewContentLoaded', function() {
         delete $rootScope.error;
@@ -185,7 +185,7 @@ angular.module('crmApp.security',[])
         delete $rootScope.user;
         delete $rootScope.authToken;
         $rootScope.loginErr = false;
-        $rootScope.isAutenticated = false;
+        $rootScope.isAuthenticated = false;
         $cookieStore.remove('authToken');
         $location.path("/login");
     };
@@ -205,7 +205,7 @@ angular.module('crmApp.security',[])
             if(response.status == 200){
                 console.log(response.data);
                 $rootScope.user = response.data;
-                $rootScope.isAutenticated = true;
+                $rootScope.isAuthenticated = true;
                 $rootScope.appInfo = response.data.appInfo;
 
 

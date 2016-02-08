@@ -3,7 +3,7 @@
  */
 angular.module('crmApp.welcome', ['ngRoute'])
     .config(function($routeProvider) {
-        $routeProvider.when('/welcomePage', {
+        $routeProvider.when('/', {
             templateUrl: 'app/views/welcome/welcome.html'
         });
     })
