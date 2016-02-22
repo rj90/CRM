@@ -1,6 +1,6 @@
 package org.pw.rafalj.crm.service;
 
-import org.pw.rafalj.crm.model.Users;
+import org.pw.rafalj.crm.model.accounts.Users;
 import org.pw.rafalj.crm.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

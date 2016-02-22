@@ -1,6 +1,6 @@
 package org.pw.rafalj.crm.interceptor;
 
-import org.pw.rafalj.crm.model.Users;
+import org.pw.rafalj.crm.model.accounts.Users;
 import org.pw.rafalj.crm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

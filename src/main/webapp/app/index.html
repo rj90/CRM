@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link th:href="@{/app/lib/bootstrap3/bootstrap-paper.css}" rel="stylesheet"/>
+    <link th:href="@{/app/css/bootstrap-darkly.css}" rel="stylesheet"/>
     <!-- main.css -->
     <link th:href="@{/app/css/main.css}" rel="stylesheet"/>
     <!--login css-->
@@ -30,10 +30,14 @@
 
 <div ng-view="true" style="width: inherit; height: inherit;"></div>
 </body>
+<script th:src="@{/app/lib/jquery/dist/jquery.min.js}" ></script>
+
 
 <script th:src="@{/app/lib/angular/angular.js}" ></script>
 <script th:src="@{/app/lib/angular-bootstrap/ui-bootstrap-tpls.js}" ></script>
-<script th:src="@{/app/lib/dialogs/index.js}" ></script>
+<script th:src="@{/app/lib/bootstrap/dist/js/bootstrap.min.js}" ></script>
+<script th:src="@{/app/lib/dialogs/dist/dialogs.min.js}" ></script>
+<script th:src="@{/app/lib/dialogs/dist/dialogs-default-translations.min.js}" ></script>
 <script th:src="@{/app/lib/angular-cookies/angular-cookies.js}" ></script>
 <script th:src="@{/app/lib/angular-resource/angular-resource.js}" ></script>
 <script th:src="@{/app/lib/angular-route/angular-route.js}" ></script>
@@ -63,6 +67,10 @@
 <script th:src="@{/app/views/login/login.js}"></script>
 <script th:src="@{/app/views/users/userlist.js}"></script>
 <script th:src="@{/app/views/welcome/welcome.js}"></script>
+
+<!--CSS-->
+<link rel="stylesheet" type="text/css" th:src="@{/app/lib/bootstrap/dist/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/app/lib/dialogs/dist/dialogs.css}" />
 
 
 </html>

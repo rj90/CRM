@@ -1,4 +1,4 @@
-package org.pw.rafalj.crm.model;
+package org.pw.rafalj.crm.model.accounts;
 
 import javax.persistence.*;
 
