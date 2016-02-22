@@ -1,7 +1,7 @@
 body {
     font-family: "Open Sans", sans-serif;
     height: 100vh;
-    background: url("/app/css/login/background.png") 50% fixed;
+    background: url("/app/images/background.png") 50% fixed;
     background-size: cover;
 }
 

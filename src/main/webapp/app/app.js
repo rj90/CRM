@@ -17,5 +17,5 @@ angular.module('crmApp', [
     $translateProvider.useUrlLoader(APP_CONTEXT + '/i18n/messageBundle');
     $translateProvider.preferredLanguage('pl');
     $translateProvider.fallbackLanguage('pl');
-    $translateProvider.useSanitizeValueStrategy('sanitize');
+    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 }]);

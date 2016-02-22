@@ -14,9 +14,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.5",
+    "angular": "latest",
     "angular-bootstrap": "latest",
     "angular-cookies": "latest",
+    "angular-i18n": "latest",
     "angular-mocks": "latest",
     "angular-resource": "latest",
     "angular-route": "latest",
@@ -25,6 +26,7 @@
     "angular-translate-loader-url": "latest",
     "angular-ui-router": "latest",
     "bootstrap": "latest",
+    "dialogs": "latest",
     "jquery": "latest",
     "ng-file-upload": "latest",
     "ngmap": "latest",
