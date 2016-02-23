@@ -5,6 +5,13 @@ angular.module('crmApp', [
     'pascalprecht.translate',
     'ui.router',
     'ui.bootstrap',
+    'ui.grid',
+    'ui.grid.edit',
+    'ui.grid.pagination',
+    'ui.grid.selection',
+    'ui.grid.autoResize',
+    'ui.grid.edit',
+    'ui.grid.cellNav',
 
     //'dialogs.main',
     //'dialogs.default-translations',

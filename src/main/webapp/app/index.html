@@ -15,6 +15,11 @@
     <!-- font awesome -->
     <link th:href="@{//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css}" rel="stylesheet"/>
     <!-- loading indicator-->
+    <link th:href="@{/app/lib/nprogress/nprogress.css}" rel="stylesheet"/>
+
+    <!--components-->
+    <link th:href="@{/app/lib/dialogs/dist/dialogs.css}" rel="stylesheet"/>
+    <link th:href="@{/app/lib/angular-ui-grid/ui-grid.min.css}" rel="stylesheet"/>
 
     <script type="text/javascript" th:inline="javascript">
         var APP_CONTEXT = 'http://localhost:8080/';
@@ -45,7 +50,9 @@
 <script th:src="@{/app/lib/angular-sanitize/angular-sanitize.min.js}" ></script>
 <script th:src="@{/app/lib/angular-translate/angular-translate.min.js}" ></script>
 <script th:src="@{/app/lib/angular-translate-loader-url/angular-translate-loader-url.min.js}" ></script>
+<script th:src="@{/app/lib/angular-ui-grid/ui-grid.min.js}" ></script>
 <script th:src="@{/app/lib/angular-ui-router/release/angular-ui-router.min.js}" ></script>
+<script th:src="@{/app/lib/lodash/dist/lodash.min.js}" ></script>
 <script th:src="@{/app/lib/nprogress/nprogress.js}" ></script>
 
 <!-- App -->
@@ -75,10 +82,6 @@
 <script th:src="@{/app/views/login/login.js}"></script>
 <script th:src="@{/app/views/users/userlist.js}"></script>
 <script th:src="@{/app/views/welcome/welcome.js}"></script>
-
-<!--CSS-->
-<link rel="stylesheet" type="text/css" th:src="@{/app/lib/bootstrap/dist/css/bootstrap.min.css}" />
-<link rel="stylesheet" type="text/css" th:href="@{/app/lib/dialogs/dist/dialogs.css}" />
 
 
 </html>
