@@ -102,6 +102,10 @@ public class Contracts implements Serializable{
     public ContractVO getContractVO() {
         ContractVO vo = new ContractVO();
         vo.setId(getId());
+        vo.setIssueDate(getIssueDate());
+        vo.setStartDate(getStartDate());
+        vo.setEndDate(getEndDate());
+        vo.setStatus(getStatus().getStatus());
         return vo;
     }
 }

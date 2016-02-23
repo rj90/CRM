@@ -58,7 +58,27 @@ angular.module('crmApp.contractList', ['ngRoute'])
             {
                 field: 'id',
                 displayName: $translate.instant('contracts.table.id'),
-                width: '100%'
+                width: '5%'
+            },
+            {
+                field: 'issueDate',
+                displayName: $translate.instant('contracts.table.issueDate'),
+                width: '25%'
+            },
+            {
+                field: 'startDate',
+                displayName: $translate.instant('contracts.table.startDate'),
+                width: '25%'
+            },
+            {
+                field: 'endDate',
+                displayName: $translate.instant('contracts.table.endDate'),
+                width: '25%'
+            },
+            {
+                field: 'status',
+                displayName: $translate.instant('contracts.table.status'),
+                width: '20%'
             }
         ],
 
