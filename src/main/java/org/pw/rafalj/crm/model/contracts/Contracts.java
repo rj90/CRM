@@ -4,6 +4,7 @@ import org.pw.rafalj.crm.model.customers.Customers;
 import org.pw.rafalj.crm.vo.contract.ContractVO;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "CONTRACTS")
-public class Contracts {
+public class Contracts implements Serializable{
     @Id
     @GeneratedValue
     @Column(name = "ID")

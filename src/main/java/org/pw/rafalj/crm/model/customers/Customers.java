@@ -3,13 +3,14 @@ package org.pw.rafalj.crm.model.customers;
 import org.pw.rafalj.crm.model.accounts.Users;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Rav on 2016-02-22.
  */
 @Entity
 @Table(name = "CUSTOMERS")
-public class Customers {
+public class Customers implements Serializable{
     @Id
     @GeneratedValue
     @Column(name = "ID")

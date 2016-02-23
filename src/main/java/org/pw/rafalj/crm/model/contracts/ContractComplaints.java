@@ -17,6 +17,34 @@ public class ContractComplaints {
     @JoinColumn(name = "CONTRACT_ID", nullable = false)
     private Contracts contract;
 
-    @Column(name = "DESC")
+    @Column(name = "[DESC]")
     private String desc;
+
+    public ContractComplaints(){
+        super();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Contracts getContract() {
+        return contract;
+    }
+
+    public void setContract(Contracts contract) {
+        this.contract = contract;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 }

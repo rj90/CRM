@@ -4,6 +4,8 @@ import org.pw.rafalj.crm.filter.ContractFilter;
 import org.pw.rafalj.crm.model.contracts.Contracts;
 import org.pw.rafalj.crm.repository.contract.ContractRepository;
 import org.pw.rafalj.crm.vo.contract.ContractVO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -17,16 +19,26 @@ import java.util.List;
  */
 @Service
 public class ContractService {
+    Logger log = LoggerFactory.getLogger(ContractService.class);
+
     @Autowired
     ContractRepository contractRepository;
 
     public Page<ContractVO> getContractVOPage(ContractFilter filter) {
-        List<ContractVO> contractVOList = new ArrayList<>();
+        final Page<Contracts> contractsPage;
+        try {
+            log.info("Getting contracts");
+            Long time = System.currentTimeMillis();
+            final List<ContractVO> contractVOList = new ArrayList<>();
 
-        final Page<Contracts> contractsPage = contractRepository.findByFilter(filter.getPageable());
+            contractsPage = contractRepository.findByFilter(filter.getPageable());
 
-        contractsPage.getContent().stream().forEach(vo -> contractVOList.add(vo.getContractVO()));
-
-        return new PageImpl<>(contractVOList, filter.getPageable(), contractsPage.getTotalElements());
+            contractsPage.getContent().stream().forEach(vo -> contractVOList.add(vo.getContractVO()));
+            log.info("Getting contracts ended in " + (System.currentTimeMillis() - time) + "ms");
+            return new PageImpl<>(contractVOList, filter.getPageable(), contractsPage.getTotalElements());
+        } catch (Exception e) {
+            log.error("Error during getting contracts", e);
+            throw e;
+        }
     }
 }
