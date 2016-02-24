@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link th:href="@{/app/css/bootstrap-darkly.css}" rel="stylesheet"/>
+    <link th:href="@{/app/lib/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet"/>
     <!-- main.css -->
     <link th:href="@{/app/css/main.css}" rel="stylesheet"/>
     <!--login css-->
@@ -33,7 +33,16 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div ng-view="true" style="width: inherit; height: inherit;"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"/>
+        <div class="col-md-10">
+            <div ng-view="true"/>
+        </div>
+        <div class="col-md-1"/>
+    </div>
+</div>
+
 </body>
 <script th:src="@{/app/lib/jquery/dist/jquery.min.js}" ></script>
 
@@ -78,6 +87,7 @@
 <script th:src="@{/app/views/customers/complaints/complaints.js}"></script>
 <script th:src="@{/app/views/customers/contracts/contracts.js}"></script>
 <script th:src="@{/app/views/customers/contracts/list/contractList.js}"></script>
+<script th:src="@{/app/views/customers/contracts/new/contractNew.js}"></script>
 <script th:src="@{/app/views/customers/payments/payments.js}"></script>
 <script th:src="@{/app/views/login/login.js}"></script>
 <script th:src="@{/app/views/users/userlist.js}"></script>

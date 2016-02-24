@@ -63,17 +63,23 @@ angular.module('crmApp.contractList', ['ngRoute'])
             {
                 field: 'issueDate',
                 displayName: $translate.instant('contracts.table.issueDate'),
-                width: '25%'
+                width: '25%',
+                type: 'date',
+                cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
                 field: 'startDate',
                 displayName: $translate.instant('contracts.table.startDate'),
-                width: '25%'
+                width: '25%',
+                type: 'date',
+                cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
                 field: 'endDate',
                 displayName: $translate.instant('contracts.table.endDate'),
-                width: '25%'
+                width: '25%',
+                type: 'date',
+                cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
                 field: 'status',
@@ -92,7 +98,7 @@ angular.module('crmApp.contractList', ['ngRoute'])
             });
 
             gridApi.selection.on.rowSelectionChanged($scope, function (row) {
-
+                $scope.gridApi.selection.selectRow($scope.contractsGrid.data[0]);
             });
 
             gridApi.core.on.sortChanged($scope, function (grid, sortColumns) {
@@ -108,6 +114,7 @@ angular.module('crmApp.contractList', ['ngRoute'])
             });
         }
     };
+
     var pagingOptions = {
         pageNumber: 1,
         pageSize: 50,

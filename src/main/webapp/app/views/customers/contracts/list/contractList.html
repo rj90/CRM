@@ -1,7 +1,83 @@
-<div ng-controller="ContractListCrtl">
+<div>
+    <div class="row">
+        <div class="page-title">{{'menu.clients.contracts.label' | translate}}</div>
+    </div>
+
+    <div style="width:100%; height:25px"></div>
 
     <div class="row">
-        <div class="gridStyle grid" ui-grid="contractsGrid"
+        <!-- context menu -->
+        <div style="display: inline-flex;">
+            <div><a href="#/customers/newContract">{{'menu.clients.contracts.newContract' | translate}}</a></div>
+            <div><a href="#/customers/contractList">{{'menu.clients.contracts.contractList' | translate}}</a></div>
+        </div>
+        <div style="display: inline-flex; float: right;">
+            <button type="button" class="btn tooltip-down" ng-init="isFilterCollapsed = true"
+                    ng-click="isFilterCollapsed = !isFilterCollapsed" tooltip="{{'common.btn.filter' | translate}}">
+                <i class="fa fa-filter"/>
+            </button>
+            <button type="button" class="btn tooltip-down" ng-click="loadContracts()"
+                    ng-click="isFilterCollapsed = !isFilterCollapsed" tooltip="{{'common.btn.refresh' | translate}}">
+                <i class="fa fa-refresh"/>
+            </button>
+        </div>
+    </div>
+    <div style="width:100%; height:5px"></div>
+    <div ng-hide="isFilterCollapsed">
+        <div style="width:100%;height: 15px"></div>
+            <form class="form-horizontal well well-sm" role="form">
+                <div class="row" style="margin: 0">
+                    <div class="form-vertical">
+                        <div class="form-group form-group-sm">
+                            <label>Data od</label>
+                            <input type="text"
+                                   ng-model="tableFilter.data_from"
+                                   class="form-control"
+                                   datepicker-popup="{{format}}"
+                                   is-open="opened_from"
+                                   datepicker-options="dateOptions"
+                                   ng-required="true"
+                                   close-text="Zamknij"
+                                   ng-click="open_from($event)"
+                                   required/>
+                        </div>
+                    </div>
+
+                    <div class="form-vertical">
+                        <div class="form-group form-group-sm">
+                            <label>Data do</label>
+                            <input type="text"
+                                   ng-model="tableFilter.data_to"
+                                   class="form-control"
+                                   datepicker-popup="{{format}}"
+                                   is-open="opened_to"
+                                   datepicker-options="dateOptions"
+                                   ng-required="true"
+                                   close-text="Zamknij"
+                                   ng-click="open_to($event)"
+                                   required/>
+
+                        </div>
+                    </div>
+                    <div class="form-vertical" style="float: left">
+                        <div class="row">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="clearFilter()">
+                                <i class="fa fa-reply"></i>
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button type="button" class="btn btn-default btn-sm" ng-click="searchContracts()">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div style="width:100%; height:25px"></div>
+    <div class="row">
+        <div class="gridStyle grid" ui-grid-selection ui-grid="contractsGrid"
              ui-grid-pagination
              ui-grid-auto-resize
              ui-grid-exporter

@@ -1,0 +1,12 @@
+/**
+ * Created by Rav on 2016-02-25.
+ */
+angular.module('crmApp.contractNew', ['ngRoute'])
+    .config(function($routeProvider) {
+        $routeProvider.when('/customers/newContract', {
+            templateUrl: 'app/views/customers/contracts/new/contractNew.html',
+            controller: 'ContractNewCrtl'
+        });
+    }).controller('ContractNewCrtl', function($scope){
+
+});

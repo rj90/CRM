@@ -1,16 +1,19 @@
-<div class="wrapper">
-    <form class="login">
-        <p class="title">{{ 'login.logIn' | translate}}</p>
-        <input ng-model="username" type="text" placeholder="{{ 'login.login.placeholder' | translate}}" autofocus="autofocus"/>
-        <i class="fa fa-user"></i>
-        <input ng-model="password" type="password" placeholder="{{ 'login.password.placeholder' | translate}}" />
-        <i class="fa fa-key"></i>
-        <select ng-model="dbConnType" ng-options="obj.id as obj.name for obj in dbConnOptions" ng-required="required" style="width: 100%;">
-        </select>
-        <!--<a href="#">{{ 'login.forgottenPassword' | translate}}</a>-->
-        <button ng-click="login()">
-            <i class="spinner"></i>
-            <span class="state">{{ 'login.signIn' | translate}}</span>
-        </button>
-    </form>
+<div class="container-fluid">
+    <div style="margin-top: 100px"/>
+    <div class="wrapper">
+        <form class="login">
+            <p class="title">{{ 'login.logIn' | translate}}</p>
+            <input ng-model="username" type="text" placeholder="{{ 'login.login.placeholder' | translate}}" autofocus="autofocus"/>
+            <i class="fa fa-user"></i>
+            <input ng-model="password" type="password" placeholder="{{ 'login.password.placeholder' | translate}}" />
+            <i class="fa fa-key"></i>
+            <select ng-model="dbConnType" ng-options="obj.id as obj.name for obj in dbConnOptions" ng-required="required" style="width: 100%;">
+            </select>
+            <!--<a href="#">{{ 'login.forgottenPassword' | translate}}</a>-->
+            <button ng-click="login()">
+                <i class="spinner"></i>
+                <span class="state">{{ 'login.signIn' | translate}}</span>
+            </button>
+        </form>
+    </div>
 </div>
