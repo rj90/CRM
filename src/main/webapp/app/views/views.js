@@ -4,6 +4,7 @@
 angular.module('crmApp.views',[
     'crmApp.customers',
     'crmApp.login',
+    'crmApp.servicesAndProducts',
     'crmApp.userlist',
     'crmApp.welcome'
 ])
