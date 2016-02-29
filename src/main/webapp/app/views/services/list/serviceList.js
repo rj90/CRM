@@ -5,8 +5,8 @@ angular.module('crmApp.serviceList', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider.when('/services/serviceList', {
             templateUrl: 'app/views/services/list/serviceList.html',
-            controller: 'ServiceListCrtl'
+            controller: 'ServiceListCtrl'
         });
-    }).controller('ServiceListCrtl', function($scope, $rootScope, $http, $translate, $window, $state, $timeout) {
+    }).controller('ServiceListCtrl', function($scope, $rootScope, $http, $translate, $window, $state, $timeout) {
 
     });

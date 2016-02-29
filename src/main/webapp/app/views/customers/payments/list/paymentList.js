@@ -1,48 +1,15 @@
 /**
- * Created by Rav on 2016-02-22.
+ * Created by Rav on 2016-02-29.
  */
-angular.module('crmApp.contractList', ['ngRoute'])
+angular.module('crmApp.paymentList', ['ngRoute'])
     .config(function($routeProvider) {
-        $routeProvider.when('/customers/contractList', {
-            templateUrl: 'app/views/customers/contracts/list/contractList.html',
-            controller: 'ContractListCtrl'
-        });
-    }).controller('ContractListCtrl', function($scope, $rootScope, $http, $translate, $window, $state, $timeout){
-    $scope.filter = {};
-
-    $scope.$watch(function () {
-        return $window.innerWidth;
-    }, function () {
-        var newHeight = $window.innerHeight - 330;
-        angular.element(document.getElementsByClassName('grid')[0]).css('height', newHeight + 'px');
+    $routeProvider.when('/customers/paymentList', {
+        templateUrl: 'app/views/customers/payments/list/paymentList.html',
+        controller: 'PaymentListCtrl'
     });
-
-    var prepareFilter = function () {
-        $scope.filter.pageNumber = pagingOptions.pageNumber;
-        $scope.filter.pageSize = pagingOptions.pageSize;
-        $scope.filter.sortType = pagingOptions.sort;
-
-        var filter = _.clone($scope.filter)
-
-        _.forOwn($scope.filter, function (value, key) {
-            if (!value) delete filter[key];
-        });
-
-        return filter;
-    };
-
-    $scope.loadContracts = function () {
-        var filter = prepareFilter();
-
-        console.log(filter);
-
-        $http.post('contracts', filter).then(function (response) {
-            $scope.contractsGrid.data = response.data.content;
-            $scope.contractsGrid.totalItems = response.data.totalElements;
-        });
-    };
-
-    $scope.contractsGrid = {
+})
+    .controller('PaymentListCtrl', function($scope, $translate){
+    $scope.paymentsGrid = {
         data: [],
         enableHorizontalScrollbar: 0,
         enableRowSelection: true,
@@ -57,35 +24,40 @@ angular.module('crmApp.contractList', ['ngRoute'])
         columnDefs: [
             {
                 field: 'id',
-                displayName: $translate.instant('contracts.table.id'),
+                displayName: $translate.instant('payments.table.id'),
                 width: '5%',
                 type: 'number'
             },
             {
-                field: 'issueDate',
-                displayName: $translate.instant('contracts.table.issueDate'),
-                width: '25%',
-                type: 'date',
-                cellFilter: 'date:\'yyyy-MM-dd\''
+                field: 'customer',
+                displayName: $translate.instant('payments.table.customer'),
+                width: '25%'
             },
             {
                 field: 'startDate',
-                displayName: $translate.instant('contracts.table.startDate'),
+                displayName: $translate.instant('payments.table.startDate'),
                 width: '25%',
                 type: 'date',
                 cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
                 field: 'endDate',
-                displayName: $translate.instant('contracts.table.endDate'),
+                displayName: $translate.instant('payments.table.endDate'),
                 width: '25%',
                 type: 'date',
                 cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
-                field: 'status',
-                displayName: $translate.instant('contracts.table.status'),
+                field: 'amount',
+                displayName: $translate.instant('payments.table.amount'),
                 width: '20%'
+            },
+            {
+                field: 'paymentDate',
+                displayName: $translate.instant('payments.table.paymentDate'),
+                width: '25%',
+                type: 'date',
+                cellFilter: 'date:\'yyyy-MM-dd\''
             }
         ],
 
@@ -120,12 +92,5 @@ angular.module('crmApp.contractList', ['ngRoute'])
         pageNumber: 1,
         pageSize: 50,
         sort: {name: 'id', dir: 'asc'}
-    };
-
-    var init = function () {
-
-        $scope.loadContracts();
     }
-
-    init();
 });

@@ -7,11 +7,11 @@ angular.module('crmApp.login', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider.when('/login', {
             templateUrl: 'app/views/login/login.html',
-            controller: 'LoginCrtl'
+            controller: 'LoginCtrl'
         });
     })
 
-    .controller('LoginCrtl', function($scope, $rootScope, $cookieStore, $location, UserService, DBService){
+    .controller('LoginCtrl', function($scope, $rootScope, $cookieStore, $location, UserService, DBService){
         $scope.rememberMe = false;
         $rootScope.isAuthenticated = false;
 

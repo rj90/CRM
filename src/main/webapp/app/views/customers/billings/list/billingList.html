@@ -1,0 +1,47 @@
+<div>
+    <div class="row">
+        <div class="page-title">{{'menu.clients.billings.label' | translate}}</div>
+    </div>
+
+    <div style="width:100%; height:25px"></div>
+
+    <div class="row">
+        <!-- context menu -->
+        <div style="display: inline-flex;">
+            <div><a href="#/customers/newBilling">{{'menu.clients.billings.newBilling' | translate}}</a></div>
+            <div><a href="#/customers/billingList">{{'menu.clients.complaints.billingList' | translate}}</a></div>
+        </div>
+        <div style="display: inline-flex; float: right;">
+            <button type="button" class="btn tooltip-down" ng-init="isFilterCollapsed = true"
+                    ng-click="isFilterCollapsed = !isFilterCollapsed" tooltip="{{'common.btn.filter' | translate}}">
+                <i class="fa fa-filter"/>
+            </button>
+            <button type="button" class="btn tooltip-down" ng-click="loadComplaints()"
+                    ng-click="isFilterCollapsed = !isFilterCollapsed" tooltip="{{'common.btn.refresh' | translate}}">
+                <i class="fa fa-refresh"/>
+            </button>
+        </div>
+    </div>
+    <div style="width:100%; height:5px"></div>
+    <div ng-hide="isFilterCollapsed">
+        <div style="width:100%;height: 15px"></div>
+        <form class="form-horizontal well well-sm" role="form">
+            <div class="row" style="margin: 0">
+            </div>
+        </form>
+    </div>
+</div>
+<div style="width:100%; height:25px"></div>
+<div class="row">
+    <div class="gridStyle grid" ui-grid-selection ui-grid="billingsGrid"
+         ui-grid-pagination
+         ui-grid-auto-resize
+         ui-grid-exporter
+         ui-grid-move-columns
+         ui-grid-cellNav
+         ui-grid-pinning
+         ui-grid-selection
+         external-scopes="externalScopesView">
+    </div>
+</div>
+</div>

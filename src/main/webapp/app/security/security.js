@@ -197,13 +197,11 @@ angular.module('crmApp.security',[])
     $location.path("/login");
 
     var authToken = $cookieStore.get('authToken');
-        console.log('Token'  + authToken);
 
     if (authToken !== undefined) {
         $rootScope.authToken = authToken;
         UserService.getUser(function(response) {
             if(response.status == 200){
-                console.log(response.data);
                 $rootScope.user = response.data;
                 $rootScope.isAuthenticated = true;
                 $rootScope.appInfo = response.data.appInfo;

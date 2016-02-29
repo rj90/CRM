@@ -5,8 +5,8 @@ angular.module('crmApp.billingList', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider.when('/customers/billingList', {
             templateUrl: 'app/views/customers/billings/list/billingList.html',
-            controller: 'BillingListCrtl'
+            controller: 'BillingListCtrl'
         });
-    }).controller('BillingListCrtl', function($scope){
+    }).controller('BillingListCtrl', function($scope){
 
     });

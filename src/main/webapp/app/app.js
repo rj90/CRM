@@ -12,6 +12,7 @@ angular.module('crmApp', [
     'ui.grid.autoResize',
     'ui.grid.edit',
     'ui.grid.cellNav',
+    'ui.grid.moveColumns',
 
     //'dialogs.main',
     //'dialogs.default-translations',
@@ -20,9 +21,13 @@ angular.module('crmApp', [
     'crmApp.views',
     'crmApp.security',
     'crmApp.services'
-]).config(['$translateProvider', function($translateProvider){
+]).config(function($translateProvider, $urlRouterProvider){
     $translateProvider.useUrlLoader(APP_CONTEXT + '/i18n/messageBundle');
     $translateProvider.preferredLanguage('pl');
     $translateProvider.fallbackLanguage('pl');
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
-}]);
+    //$urlRouterProvider.otherwise('/');
+}).run(function($rootScope, i18nService){
+    $rootScope.locale = 'pl';
+    i18nService.setCurrentLang($rootScope.locale);
+});

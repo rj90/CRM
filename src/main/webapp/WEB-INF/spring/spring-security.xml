@@ -20,6 +20,7 @@
 
         <security:custom-filter ref="authenticationTokenProcessingFilter" position="BASIC_AUTH_FILTER" />
         <security:intercept-url pattern="/rest/getDBQueriesType**" access="permitAll"/>
+        <security:intercept-url pattern="/rest/getLocale**" access="permitAll"/>
         <security:intercept-url pattern="/auth/**" access="permitAll" />
         <!--<security:intercept-url pattern="/rest/**" access="permitAll" />-->
         <!--<security:intercept-url pattern="/" access="permitAll" />-->

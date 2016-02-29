@@ -5,8 +5,8 @@ angular.module('crmApp.contractNew', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider.when('/customers/newContract', {
             templateUrl: 'app/views/customers/contracts/new/contractNew.html',
-            controller: 'ContractNewCrtl'
+            controller: 'ContractNewCtrl'
         });
-    }).controller('ContractNewCrtl', function($scope){
+    }).controller('ContractNewCtrl', function($scope){
 
 });
