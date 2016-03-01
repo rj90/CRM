@@ -2,6 +2,7 @@ package org.pw.rafalj.crm.interceptor;
 
 import org.pw.rafalj.crm.model.accounts.Users;
 import org.pw.rafalj.crm.service.UserService;
+import org.pw.rafalj.crm.utils.CookieUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,7 +29,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         if(user == null){
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             String login = auth.getName();
-            user = userService.getUserByLogin(login);
+            user = userService.getUserByLogin(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), login);
             session.setAttribute("user", user);
         }
 

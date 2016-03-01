@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.pw.rafalj.crm.repository.UsersRepository;
+import org.pw.rafalj.crm.repository.user.UsersRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**

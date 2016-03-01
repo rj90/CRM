@@ -16,9 +16,13 @@
     <context:component-scan base-package="org.pw.rafalj.crm.repository"/>
     <context:component-scan base-package="org.pw.rafalj.crm.service"/>
 
+    <bean id="contextApplicationContextProvider" class="org.pw.rafalj.crm.context.ApplicationContextProvider" scope="singleton"/>
+
     <import resource="spring-jpa.xml"/>
 
     <import resource="spring-mvc.xml"/>
 
     <import resource="spring-security.xml"/>
+
+    <import resource="spring-repository-config.xml"/>
 </beans>

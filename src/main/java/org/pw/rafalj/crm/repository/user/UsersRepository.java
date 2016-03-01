@@ -1,4 +1,4 @@
-package org.pw.rafalj.crm.repository;
+package org.pw.rafalj.crm.repository.user;
 
 import org.pw.rafalj.crm.model.accounts.Users;
 import org.springframework.data.jpa.repository.Query;
@@ -8,8 +8,7 @@ import org.springframework.data.repository.query.Param;
 /**
  * Created by Rav on 2016-01-12.
  */
-public interface UsersRepository extends PagingAndSortingRepository<Users, Integer> {
+public interface UsersRepository {
 
-    @Query("select u from Users u where u.login = :login")
-    Users getUserByLogin(@Param("login") String login);
+    Users getUserByLogin(String login);
 }

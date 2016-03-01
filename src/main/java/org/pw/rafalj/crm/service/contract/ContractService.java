@@ -1,9 +1,12 @@
 package org.pw.rafalj.crm.service.contract;
 
+import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.ContractFilter;
 import org.pw.rafalj.crm.model.contracts.Contracts;
 import org.pw.rafalj.crm.repository.contract.ContractRepository;
 import org.pw.rafalj.crm.vo.contract.ContractVO;
+import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +22,20 @@ import java.util.List;
  */
 @Service
 public class ContractService {
+    private static final String type = "contract";
     Logger log = LoggerFactory.getLogger(ContractService.class);
 
-    @Autowired
+
     ContractRepository contractRepository;
 
-    public Page<ContractVO> getContractVOPage(ContractFilter filter) {
-        final Page<Contracts> contractsPage;
+    public Page<ContractVO> getContractVOPage(DBQueryTypeEnum dbQueryTypeFromCookies, ContractFilter filter) {
+        try {
+            contractRepository = (ContractRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
+        } catch (Exception e) {
+            log.error("Error during getting repository type", e);
+            throw e;
+        }
+        final PageContainer<Contracts> contractsPage;
         try {
             log.info("Getting contracts");
             Long time = System.currentTimeMillis();

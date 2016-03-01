@@ -53,7 +53,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping( value = "/authenticateUser" , method = RequestMethod.POST)
-    public TokenTransfer authenticate(@RequestBody UserAuthenticationVO userAuthenticationVO, HttpServletRequest request){
+    public TokenTransfer authenticate(@RequestBody UserAuthenticationVO userAuthenticationVO){
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(userAuthenticationVO.getUsername(), userAuthenticationVO.getPassword());
         Authentication authentication = this.authenticationManager.authenticate(authenticationToken);

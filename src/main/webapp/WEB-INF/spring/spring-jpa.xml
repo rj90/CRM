@@ -61,8 +61,19 @@
         </property>
     </bean>
 
-    <!-- Spring Data -->
-    <jpa:repositories base-package="org.pw.rafalj.crm.repository"
-                      entity-manager-factory-ref="entityManagerFactory"
-                      transaction-manager-ref="transactionManager"/>
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="org.pw.rafalj.crm.model" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>
+                <prop key="hibernate.id.new_generator_mappings">true</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>
