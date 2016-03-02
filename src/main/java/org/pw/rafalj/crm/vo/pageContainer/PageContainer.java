@@ -13,6 +13,11 @@ public class PageContainer<T> implements Serializable{
 
     int totalElements;
 
+    public PageContainer(List<T> content, int totalElements) {
+        this.content = content;
+        this.totalElements = totalElements;
+    }
+
     public List<T> getContent() {
         return content;
     }

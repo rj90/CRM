@@ -29,10 +29,6 @@ public class ContractRepositoryHQLImpl implements ContractRepository {
         Query countquery = session.getCurrentSession().createQuery("select count(*) from Contracts c");
         Long count = (Long) countquery.uniqueResult();
 
-        PageContainer<Contracts> page = new PageContainer<>();
-        page.setContent(query.list());
-        page.setTotalElements(count.intValue());
-
-        return page;
+        return new PageContainer<>(query.list(), count.intValue());
     }
 }
