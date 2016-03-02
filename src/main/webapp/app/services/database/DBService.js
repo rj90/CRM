@@ -6,7 +6,7 @@ angular.module('DBServices', ['ngResource'])
         var service = {};
 
         service.getQueriesType = function(callback){
-            return $http.get("http://localhost:8080/" + "/DBTypeController/getDBQueriesType").then(function(response){
+            return $http.get(APP_CONTEXT + "DBTypeController/getDBQueriesType").then(function(response){
                 callback(response);
             })
         };

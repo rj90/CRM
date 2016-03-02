@@ -1,5 +1,7 @@
 package org.pw.rafalj.crm.model.accounts;
 
+import org.pw.rafalj.crm.model.mails.MailSettings;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,6 +15,9 @@ public class Users {
     @GeneratedValue
     @Column(name = "ID")
     private Integer id;
+
+    @OneToOne(mappedBy = "user")
+    MailSettings mailSettings;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ROLE_ID")
@@ -46,6 +51,14 @@ public class Users {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public MailSettings getMailSettings() {
+        return mailSettings;
+    }
+
+    public void setMailSettings(MailSettings mailSettings) {
+        this.mailSettings = mailSettings;
     }
 
     public UserRole getUserRole() {

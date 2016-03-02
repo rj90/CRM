@@ -10,21 +10,33 @@ import java.util.Optional;
  * Created by Rav on 2016-02-08.
  */
 public class CookieUtils {
-    private static final String COOKIE_NAME = "dbConnType";
+    private static final String DB_CONN_COOKIE_NAME = "dbConnType";
+    private static final String TOKEN_COOKIE_NAME = "authToken";
     private static final DBQueryTypeEnum defaultSettings = DBQueryTypeEnum.HQL;
+    public static final String QUOTATION_TAG = "%22";
+    public static final String COLON_TAG = "%3";
 
     public static DBQueryTypeEnum getDBQueryTypeFromCookies(Cookie[] cookies) {
         if (cookies == null)
             return defaultSettings;
-        Optional<Cookie> cookie = Arrays.asList(cookies).stream().filter(c -> COOKIE_NAME.equals(c.getName())).findAny();
+        Optional<Cookie> cookie = Arrays.asList(cookies).stream().filter(c -> DB_CONN_COOKIE_NAME.equals(c.getName())).findAny();
         if (cookie.isPresent())
-            return getValueFromCookieStore(cookie.get());
+            return getDBValueFromCookieStore(cookie.get());
         else
             return defaultSettings;
     }
 
-    private static DBQueryTypeEnum getValueFromCookieStore(Cookie cookie) {
-        Integer id = Integer.parseInt(cookie.getValue().replaceAll("%22", ""));
+    private static DBQueryTypeEnum getDBValueFromCookieStore(Cookie cookie) {
+        Integer id = Integer.parseInt(cookie.getValue().replaceAll(QUOTATION_TAG, ""));
         return DBQueryTypeEnum.getById(id);
+    }
+
+    public static String getTokenFromCookies(Cookie[] cookies) {
+        if(cookies == null)
+            return null;
+        Optional<Cookie> cookie = Arrays.asList(cookies).stream().filter(c -> TOKEN_COOKIE_NAME.equals(c.getName())).findAny();
+        if(cookie.isPresent())
+            return cookie.get().getValue().replaceAll(COLON_TAG, ":").replaceAll(QUOTATION_TAG, "");
+        return null;
     }
 }

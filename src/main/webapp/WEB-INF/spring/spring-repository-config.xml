@@ -5,12 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="contract_sql" class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryHQLImpl"/>
+    <bean id="contract_sql" class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositorySQLImpl"/>
     <bean id="contract_hql" class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryHQLImpl"/>
-    <bean id="contract_criteria_api" class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryHQLImpl"/>
+    <bean id="contract_criteria_api" class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryCriteriaImpl"/>
+
+    <!--MAILS-->
+    <bean id="mails_sql" class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositorySQLImpl"/>
+    <bean id="mails_hql" class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryHQLImpl"/>
+    <bean id="mails_criteria_api" class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryCriteriaImpl"/>
 
     <!--USERS-->
-    <bean id="users_sql" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryHQLImpl"/>
+    <bean id="users_sql" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositorySQLImpl"/>
     <bean id="users_hql" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryHQLImpl"/>
-    <bean id="users_criteria_api" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryHQLImpl"/>
+    <bean id="users_criteria_api" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryCriteriaImpl"/>
 </beans>

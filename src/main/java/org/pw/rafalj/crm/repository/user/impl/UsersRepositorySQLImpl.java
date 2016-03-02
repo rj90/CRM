@@ -1,6 +1,6 @@
 package org.pw.rafalj.crm.repository.user.impl;
 
-import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.pw.rafalj.crm.model.accounts.Users;
 import org.pw.rafalj.crm.repository.user.UsersRepository;
@@ -12,14 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Rav on 2016-03-01.
  */
 @Repository
-public class UsersRepositoryHQLImpl implements UsersRepository {
+public class UsersRepositorySQLImpl implements UsersRepository {
     @Autowired
     SessionFactory session;
     @Override
     @Transactional
     public Users getUserByLogin(String login) {
-        Query query = session.getCurrentSession().createQuery("from Users u where u.login = :login");
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * FROM USERS WHERE LOGIN = :login");
         query.setParameter("login", login);
+        query.addEntity(Users.class);
         return (Users) query.uniqueResult();
     }
 }
