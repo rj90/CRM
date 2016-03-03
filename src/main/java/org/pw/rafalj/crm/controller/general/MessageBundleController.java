@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.controller.general;
 
 import org.pw.rafalj.crm.config.CustomReloadableResourceBundleMessageSource;
+import org.pw.rafalj.crm.utils.LocaleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +22,9 @@ public class MessageBundleController {
     @Autowired
     CustomReloadableResourceBundleMessageSource messageBundle;
 
-    @RequestMapping( value = "/messageBundle", method = RequestMethod.GET)
+    @RequestMapping( value = "/currentLanguage", method = RequestMethod.GET)
     public Properties print(@RequestParam String lang) throws URISyntaxException {
 
-        return messageBundle.getAllProperties(new Locale(lang));
+        return messageBundle.getAllProperties(LocaleUtils.getLocale(lang));
     }
 }

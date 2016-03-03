@@ -1,5 +1,8 @@
 angular.module('crmApp', [
     'ngCookies',
+    'ngMaterial',
+    'ngMessages',
+    'ngMdIcons',
     'ngRoute',
     'ngSanitize',
     'pascalprecht.translate',
@@ -22,7 +25,7 @@ angular.module('crmApp', [
     'crmApp.security',
     'crmApp.services'
 ]).config(function($translateProvider, $urlRouterProvider){
-    $translateProvider.useUrlLoader(APP_CONTEXT + '/i18n/messageBundle');
+    $translateProvider.useUrlLoader(APP_CONTEXT + 'i18n/currentLanguage');
     $translateProvider.preferredLanguage('pl');
     $translateProvider.fallbackLanguage('pl');
     $translateProvider.useSanitizeValueStrategy('sanitizeParameters');

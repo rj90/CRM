@@ -8,17 +8,19 @@
     <div class="row">
         <!-- context menu -->
         <div style="display: inline-flex;">
-            <div><a href="#/customers/newPayment">{{'menu.clients.payments.newPayment' | translate}}</a></div>
-            <div><a href="#/customers/paymentList">{{'menu.clients.payments.paymentList' | translate}}</a></div>
+            <div><md-button class="md-primary" ng-href="#/customers/newPayment">{{'menu.clients.payments.newPayment' | translate}}</md-button></div>
+            <div><md-button class="md-primary" ng-href="#/customers/paymentList">{{'menu.clients.payments.paymentList' | translate}}</md-button></div>
         </div>
         <div style="display: inline-flex; float: right;">
             <button type="button" class="btn tooltip-down" ng-init="isFilterCollapsed = true"
-                    ng-click="isFilterCollapsed = !isFilterCollapsed" tooltip="{{'common.btn.filter' | translate}}">
+                    ng-click="isFilterCollapsed = !isFilterCollapsed">
                 <i class="fa fa-filter"/>
+                <md-tooltip>{{'common.btn.filter' | translate}}</md-tooltip>
             </button>
-            <button type="button" class="btn tooltip-down" ng-click="loadPayments()"
-                    ng-click="isFilterCollapsed = !isFilterCollapsed" tooltip="{{'common.btn.refresh' | translate}}">
+            <button type="button" class="btn tooltip-down" ng-click="loadComplaints()"
+                    ng-click="isFilterCollapsed = !isFilterCollapsed">
                 <i class="fa fa-refresh"/>
+                <md-tooltip>{{'common.btn.refresh' | translate}}</md-tooltip>
             </button>
         </div>
     </div>

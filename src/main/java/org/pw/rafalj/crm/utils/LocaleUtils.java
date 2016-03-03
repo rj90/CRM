@@ -9,4 +9,8 @@ public class LocaleUtils {
     public static String getLocale() {
         return "pl";
     }
+
+    public static Locale getLocale(String lang) {
+        return new Locale(lang);
+    }
 }

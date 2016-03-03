@@ -42,6 +42,37 @@ angular.module('crmApp.contractList', ['ngRoute'])
         });
     };
 
+    $scope.clearFilter = function () {
+        $scope.filter = {};
+
+        $scope.searchContracts();
+    };
+
+    $scope.searchContracts = function () {
+        if (!validateFilter()) {
+            pagingOptions.pageNumber = 1;
+            $scope.contractsGrid.paginationCurrentPage = 1;
+
+            $scope.loadContracts();
+        }
+    };
+
+    $scope.validateNumber = function (input) {
+        var patternNumber = /^\d+$/;
+
+        if (input && !patternNumber.test(input)) return false;
+        else return true;
+    }
+
+    var validateFilter = function () {
+        var errorFlag = false;
+        if (!$scope.validateNumber($scope.filter.id)) errorFlag = true;
+        //if (!$scope.validateNumber($scope.filter.discount)) errorFlag = true;
+        if (!$scope.validateNumber($scope.filter.limit)) errorFlag = true;
+
+        return errorFlag;
+    }
+
     $scope.contractsGrid = {
         data: [],
         enableHorizontalScrollbar: 0,

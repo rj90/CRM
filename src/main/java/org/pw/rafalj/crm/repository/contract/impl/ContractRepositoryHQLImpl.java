@@ -25,6 +25,6 @@ public class ContractRepositoryHQLImpl implements ContractRepository {
         query.setMaxResults(pageable.getPageSize());
         Query countquery = session.getCurrentSession().createQuery("select count(*) from Contracts c");
 
-        return new PageContainer<>(query.list(), (Integer) countquery.uniqueResult());
+        return new PageContainer<>(query.list(), ((Long) countquery.uniqueResult()).intValue());
     }
 }

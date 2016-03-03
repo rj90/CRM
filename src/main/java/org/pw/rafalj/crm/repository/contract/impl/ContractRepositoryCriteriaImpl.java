@@ -28,6 +28,6 @@ public class ContractRepositoryCriteriaImpl implements ContractRepository {
         Criteria countCriteria = session.getCurrentSession().createCriteria(Contracts.class);
         countCriteria.setProjection(Projections.rowCount());
 
-        return new PageContainer<>(criteria.list(), (Integer) countCriteria.uniqueResult());
+        return new PageContainer<>(criteria.list(), ((Long) countCriteria.uniqueResult()).intValue());
     }
 }

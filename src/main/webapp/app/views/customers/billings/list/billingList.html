@@ -8,8 +8,8 @@
     <div class="row">
         <!-- context menu -->
         <div style="display: inline-flex;">
-            <div><a href="#/customers/newBilling">{{'menu.clients.billings.newBilling' | translate}}</a></div>
-            <div><a href="#/customers/billingList">{{'menu.clients.complaints.billingList' | translate}}</a></div>
+            <div><md-button class="md-primary" ng-href="#/customers/newBilling">{{'menu.clients.billings.newBilling' | translate}}</md-button></div>
+            <div><md-button class="md-primary" ng-href="#/customers/billingList">{{'menu.clients.complaints.billingList' | translate}}</md-button></div>
         </div>
         <div style="display: inline-flex; float: right;">
             <button type="button" class="btn tooltip-down" ng-init="isFilterCollapsed = true"
