@@ -72,7 +72,7 @@ var SecurityConfig = {
     useAuthTokenHeader: true
 };
 
-angular.module('crmApp.security',[])
+angular.module('crmApp.security',['ngMaterial'])
     .config(function($httpProvider) {
 
         /* Register error provider that shows message on failed requests or redirects to login page on
@@ -87,31 +87,32 @@ angular.module('crmApp.security',[])
                         UTIL.LoaderQueue.pop();
                         var status = rejection.status;
                         var config = rejection.config;
+                        var $translate = $injector.get('$translate');
                         var method = config.method;
                         var url = config.url;
 
                         if(status == 0){ // NO CONNECTION TO SERWER
-                            var $dialogs = $injector.get('dialogs');
-                            var dlg = $dialogs.error('Błąd', "Brak połączenia z serwerem");
+                            var $mdDialog = $injector.get('$mdDialog');
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.error')).textContent($translate.instant('error.connectionerror')).ok($translate.instant('error.close')));
                         }
                         if(status == 500){ // SERVER INTERNAL ERROR
-                            var $dialogs = $injector.get('dialogs');
-                            var dlg = $dialogs.error('Wewnętrzny błąd serwera', rejection.data.detailMessage);
+                            var $mdDialog = $injector.get('$mdDialog');
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.internalServerError')).textContent(rejection.data.detailMessage).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if(status == 409){ // Data integrity violation
-                            var $dialogs = $injector.get('dialogs');
-                            var dlg = $dialogs.error('Wewnętrzny błąd serwera', rejection.data.detailMessage);
+                            var $mdDialog = $injector.get('$mdDialog');
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.internalServerError')).textContent(rejection.data.detailMessage).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if(status == 403){ // FORBIDDEN
-                            var $dialogs = $injector.get('dialogs');
-                            var dlg = $dialogs.error('Dostęp', rejection.data.detailMessage);
+                            var $mdDialog = $injector.get('$mdDialog');
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.forbidden')).textContent(rejection.data.detailMessage).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if(status == 404){ // NOT FOUND
-                            var $dialogs = $injector.get('dialogs');
-                            var dlg = $dialogs.error('Nie odnaleźiono strony na serwerze', 'Nie dostępny link ' + rejection.config.url);
+                            var $mdDialog = $injector.get('$mdDialog');
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.pagenotfound')).textContent($translate.instant('error.linknotfound') + ' ' + rejection.config.url).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if (status == 401 ) { // PROBLEM WITH AUTHENTICATION
@@ -128,7 +129,7 @@ angular.module('crmApp.security',[])
 
         /* Registers auth token interceptor, auth token is either passed by header or by query parameter
          * as soon as there is an authenticated user */
-        $httpProvider.interceptors.push(function ($q, $rootScope, $location) {
+        $httpProvider.interceptors.push(function ($q, $rootScope) {
                 return {
                     'request': function(config) {
                         UTIL.LoaderQueue.push();

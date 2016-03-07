@@ -32,7 +32,6 @@
     "angular-ui-grid": "latest",
     "angular-ui-router": "latest",
     "bootstrap": "latest",
-    "dialogs": "latest",
     "jquery": "latest",
     "lodash": "latest",
     "ng-file-upload": "latest",
