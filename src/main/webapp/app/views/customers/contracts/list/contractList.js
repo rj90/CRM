@@ -42,6 +42,12 @@ angular.module('crmApp.contractList', ['ngRoute'])
         });
     };
 
+    $scope.loadStatuses = function() {
+        $http.get('contracts/getStatuses').then(function (response) {
+            $scope.statuses = response.data;
+        });
+    };
+
     $scope.clearFilter = function () {
         $scope.filter = {};
 

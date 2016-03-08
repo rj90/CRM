@@ -1,5 +1,7 @@
 package org.pw.rafalj.crm.model.contracts;
 
+import org.pw.rafalj.crm.vo.contract.ContractStatusVO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -46,5 +48,9 @@ public class ContractStatus implements Serializable {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public static ContractStatusVO getVO(ContractStatus contractStatus) {
+        return new ContractStatusVO(contractStatus.getId(), contractStatus.getStatus(), contractStatus.getDesc());
     }
 }

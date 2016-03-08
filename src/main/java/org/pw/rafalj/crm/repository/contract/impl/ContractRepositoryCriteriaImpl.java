@@ -3,13 +3,19 @@ package org.pw.rafalj.crm.repository.contract.impl;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.pw.rafalj.crm.filter.ContractFilter;
+import org.pw.rafalj.crm.model.contracts.ContractStatus;
 import org.pw.rafalj.crm.model.contracts.Contracts;
 import org.pw.rafalj.crm.repository.contract.ContractRepository;
+import org.pw.rafalj.crm.vo.contract.ContractStatusVO;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Rav on 2016-03-02.
@@ -21,13 +27,59 @@ public class ContractRepositoryCriteriaImpl implements ContractRepository {
 
     @Override
     @Transactional
-    public PageContainer findByFilter(Pageable pageable) {
+    public PageContainer findByFilter(ContractFilter filter) {
         Criteria criteria = session.getCurrentSession().createCriteria(Contracts.class);
-        criteria.setFirstResult(pageable.getOffset());
-        criteria.setMaxResults(pageable.getPageSize());
+        criteria.setFirstResult(filter.getPageable().getOffset());
+        criteria.setMaxResults(filter.getPageable().getPageSize());
         Criteria countCriteria = session.getCurrentSession().createCriteria(Contracts.class);
         countCriteria.setProjection(Projections.rowCount());
 
+
+        if(filter.getIssueDateFrom() != null) {
+            criteria.add(Restrictions.ge("issueDate", filter.getIssueDateFrom()));
+            countCriteria.add(Restrictions.ge("issueDate", filter.getIssueDateFrom()));
+        }
+
+        if(filter.getIssueDateTo() != null) {
+            criteria.add(Restrictions.le("issueDate", filter.getIssueDateTo()));
+            countCriteria.add(Restrictions.le("issueDate", filter.getIssueDateTo()));
+        }
+
+        if(filter.getStartDateFrom() != null) {
+            criteria.add(Restrictions.ge("startDate", filter.getStartDateFrom()));
+            countCriteria.add(Restrictions.ge("startDate", filter.getStartDateFrom()));
+        }
+
+        if(filter.getStartDateTo() != null) {
+            criteria.add(Restrictions.le("startDate", filter.getStartDateTo()));
+            countCriteria.add(Restrictions.le("startDate", filter.getStartDateTo()));
+        }
+
+        if(filter.getEndDateFrom() != null) {
+            criteria.add(Restrictions.ge("endDate", filter.getEndDateFrom()));
+            countCriteria.add(Restrictions.ge("endDate", filter.getEndDateFrom()));
+        }
+
+        if(filter.getEndDateTo() != null) {
+            criteria.add(Restrictions.le("endDate", filter.getEndDateTo()));
+            countCriteria.add(Restrictions.le("endDate", filter.getEndDateTo()));
+        }
+
+        if(filter.getStatus() != null){
+            criteria.createAlias("status", "status");
+            criteria.add(Restrictions.eq("status.id", filter.getStatus().getId()));
+            countCriteria.createAlias("status", "status");
+            countCriteria.add(Restrictions.eq("status.id", filter.getStatus().getId()));
+        }
+
         return new PageContainer<>(criteria.list(), ((Long) countCriteria.uniqueResult()).intValue());
+    }
+
+    @Override
+    @Transactional
+    public List<ContractStatusVO> getStatuses() {
+        Criteria criteria = session.getCurrentSession().createCriteria(ContractStatus.class);
+        List<ContractStatusVO> contractStatusVOs = ((List<ContractStatus>)criteria.list()).stream().map(ContractStatus::getVO).collect(Collectors.toList());
+        return contractStatusVOs;
     }
 }

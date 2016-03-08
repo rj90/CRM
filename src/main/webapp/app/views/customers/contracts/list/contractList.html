@@ -31,36 +31,33 @@
             <div class="row">
                 <div class="form-vertical" style="min-width: 200px;">
                     <div class="form-group form-group-sm" style="min-width: 200px;">
-                        <label>Data od</label>
-                        <md-datepicker ng-model="filter.data_from"/>
-                        <!--<input type="text"-->
-                               <!--ng-model="tableFilter.data_from"-->
-                               <!--class="form-control"-->
-                               <!--datepicker-popup="{{format}}"-->
-                               <!--is-open="opened_from"-->
-                               <!--datepicker-options="dateOptions"-->
-                               <!--ng-required="true"-->
-                               <!--close-text="Zamknij"-->
-                               <!--ng-click="open_from($event)"-->
-                               <!--required/>-->
+                        <label>{{'contracts.table.issueDate' | translate}}</label>
+                        <md-datepicker md-placeholder="{{'common.datepicker.from' | translate}}" ng-model="filter.issueDateFrom"/>
+                        <md-datepicker md-placeholder="{{'common.datepicker.to' | translate}}" ng-model="filter.issueDateTo"/>
+                    </div>
+                </div>
+
+                <div class="form-vertical" style="min-width: 200px;">
+                    <div class="form-group form-group-sm" style="min-width: 200px;">
+                        <label>{{'contracts.table.startDate' | translate}}</label>
+                        <md-datepicker md-placeholder="{{'common.datepicker.from' | translate}}" ng-model="filter.startDateFrom"/>
+                        <md-datepicker md-placeholder="{{'common.datepicker.to' | translate}}" ng-model="filter.startDateTo"/>
                     </div>
                 </div>
 
                 <div class="form-vertical" style="min-width: 200px;">
                     <div class="form-group form-group-sm">
-                        <label>Data do</label>
-                        <md-datepicker ng-model="filter.data_to"/>
-                        <!--<input type="text"-->
-                               <!--ng-model="tableFilter.data_to"-->
-                               <!--class="form-control"-->
-                               <!--datepicker-popup="{{format}}"-->
-                               <!--is-open="opened_to"-->
-                               <!--datepicker-options="dateOptions"-->
-                               <!--ng-required="true"-->
-                               <!--close-text="Zamknij"-->
-                               <!--ng-click="open_to($event)"-->
-                               <!--required/>-->
-
+                        <label>{{'contracts.table.endDate' | translate}}</label>
+                        <md-datepicker md-placeholder="{{'common.datepicker.from' | translate}}" ng-model="filter.endDateFrom"/>
+                        <md-datepicker md-placeholder="{{'common.datepicker.to' | translate}}" ng-model="filter.endDateTo"/>
+                    </div>
+                </div>
+                <div class="form-vertical" style="min-width: 120px;">
+                    <div class="form-group form-group-sm">
+                        <label>{{'contracts.table.status' | translate}}</label>
+                        <md-select ng-model="filter.status" md-on-open="loadStatuses()" style="width: 100px; height: 40px; margin: -1px 0px;">
+                            <md-option ng-value="status" ng-repeat="status in statuses">{{status.status}}</md-option>
+                        </md-select>
                     </div>
                 </div>
                 <div class="form-vertical" style="float: left">
