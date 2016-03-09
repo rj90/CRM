@@ -2635,7 +2635,7 @@ input[type="search"] {
     }
 }
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 .radio,
 .checkbox {
@@ -3018,14 +3018,15 @@ select[multiple].input-lg {
     background-image: none;
     border: 1px solid transparent;
     white-space: nowrap;
-    padding: 10px 15px;
-    font-size: 15px;
-    line-height: 1.42857143;
-    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 13px;
+    line-height: 1.846;
+    border-radius: 3px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    margin-top: 2px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -4280,10 +4281,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
     float: left;
-    padding: 19.5px 15px;
-    font-size: 19px;
-    line-height: 21px;
-    height: 60px;
+    padding: 10.5px 15px;
+    font-size: 17px;
+    line-height: 23px;
+    height: 64px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4369,6 +4370,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     .navbar-nav > li > a {
         padding-top: 19.5px;
         padding-bottom: 19.5px;
+    }
+    .navbar-nav.navbar-right:last-child {
+        margin-right: -15px;
+    }
+}
+@media (min-width: 768px) {
+    .navbar-left {
+        float: left !important;
+    }
+    .navbar-right {
+        float: right !important;
     }
 }
 .navbar-form {
@@ -5827,7 +5839,7 @@ button.list-group-item-danger.active:focus {
     min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;
-    background-color: #303030;
+    background-color: #f9f9f9;
     border: 1px solid transparent;
     border-radius: 4px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -6778,9 +6790,6 @@ button.close {
 .navbar-form .form-control:focus {
     border-color: white;
 }
-.btn {
-    border-width: 2px;
-}
 .btn:active {
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -7043,4 +7052,52 @@ a.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
     background-color: #464545;
+}
+
+.form-vertical{
+    width: 100px;
+    float: left;
+}
+.form-vertical .form-control{
+    width: 90px;
+}
+
+tbody .al-right, .gridStyle .al-right{
+    text-align: right;
+}
+tbody .al-center, .gridStyle .al-center {
+    text-align: center;
+}
+tbody .al-left, .gridStyle .al-left {
+    text-align: left;
+}
+
+.form-vertical .ui-select-bootstrap .btn.form-control{
+    width: 200px;
+}
+.form-vertical .ui-select-bootstrap input.form-control{
+    width: 200px;
+}
+
+.ui-grid-cell-btn-contents{
+    border-bottom: 1px solid rgb(215, 215, 215);
+    padding: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 100%;
+}
+
+.ui-grid-cell-btn-contents .btn-sm {
+    padding: 2px 7px;
+    margin: 2px;
+}
+.ui-grid-cell-btn-contents .btn-sm:first-child {
+    padding: 2px 7px;
+    margin: 2px 2px 2px 5px;
 }

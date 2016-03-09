@@ -105,6 +105,11 @@ public class ContractRepositorySQLImpl implements ContractRepository {
             countquery.setParameter("endDateTo", filter.getEndDateTo());
         }
 
+        if(filter.getStatus() != null) {
+            query.setParameter("statusId", filter.getStatus().getId());
+            countquery.setParameter("statusId", filter.getStatus().getId());
+        }
+
         return new PageContainer<>(query.list(), ((Number) countquery.uniqueResult()).intValue());
     }
 
