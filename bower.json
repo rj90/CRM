@@ -37,6 +37,7 @@
     "ng-file-upload": "latest",
     "ngmap": "latest",
     "nprogress": "latest",
+    "simple-hint": "latest",
     "underscore": "latest"
   },
   "license": "MIT"
