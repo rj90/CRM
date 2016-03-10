@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class ContractVO {
     Integer id;
+    private String customer;
     private Date issueDate;
     private Date startDate;
     private Date endDate;
@@ -18,6 +19,14 @@ public class ContractVO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 
     public Date getIssueDate() {

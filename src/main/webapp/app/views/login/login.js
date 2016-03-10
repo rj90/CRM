@@ -11,7 +11,7 @@ angular.module('crmApp.login', ['ngRoute'])
         });
     })
 
-    .controller('LoginCtrl', function($scope, $rootScope, $cookieStore, $location, UserService, DBService){
+    .controller('LoginCtrl', function($scope, $rootScope, $cookieStore, $location, UserService, DBService, usSpinnerService){
         $scope.rememberMe = false;
         $rootScope.isAuthenticated = false;
 
@@ -22,10 +22,12 @@ angular.module('crmApp.login', ['ngRoute'])
         });
 
         $scope.login = function() {
+            usSpinnerService.spin('login-spinner');
             $cookieStore.put('dbConnType', $scope.dbConnType);
             UserService.authenticate({username: $scope.username, password: $scope.password}, function(authenticationResult) {
 
                 if(authenticationResult.status == 401){ // Invalid login or password
+                    usSpinnerService.stop('login-spinner');
                     $rootScope.loginErr = true;
                     return;
                 }
@@ -34,6 +36,7 @@ angular.module('crmApp.login', ['ngRoute'])
                 $rootScope.authToken = authToken;
                 $cookieStore.put('authToken', authToken);
                 UserService.getUser(function(response) {
+                    usSpinnerService.stop('login-spinner');
                     $rootScope.user = response.data;
                     $rootScope.isAuthenticated = true;
                     $rootScope.appInfo = response.data.appInfo;

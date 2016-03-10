@@ -13,7 +13,7 @@ angular.module('crmApp.contractList', ['ngRoute'])
     $scope.$watch(function () {
         return $window.innerWidth;
     }, function () {
-        var newHeight = $window.innerHeight - 330;
+        var newHeight = $window.innerHeight - 284;
         angular.element(document.getElementsByClassName('grid')[0]).css('height', newHeight + 'px');
     });
 
@@ -29,6 +29,18 @@ angular.module('crmApp.contractList', ['ngRoute'])
         });
 
         return filter;
+    };
+
+    $scope.reloadFilterView = function () {
+        $scope.isFilterCollapsed = !$scope.isFilterCollapsed;
+        var newHeight;
+        if($scope.isFilterCollapsed){
+            newHeight = $window.innerHeight - 284;
+        }
+        else{
+            newHeight = $window.innerHeight - 430;
+        }
+        angular.element(document.getElementsByClassName('grid')[0]).css('height', newHeight + 'px');
     };
 
     $scope.loadContracts = function () {
@@ -82,6 +94,7 @@ angular.module('crmApp.contractList', ['ngRoute'])
     $scope.contractsGrid = {
         data: [],
         enableHorizontalScrollbar: 0,
+        enableColumnResizing: true,
         enableRowSelection: true,
         enableRowHeaderSelection: false,
         multiSelect: false,
@@ -90,7 +103,6 @@ angular.module('crmApp.contractList', ['ngRoute'])
         paginationPageSizes: [25, 50, 75],
         paginationPageSize: 25,
         pagingCurrentPage: 1,
-        enableGridMenu: true,
         columnDefs: [
             {
                 field: 'id',
@@ -99,23 +111,28 @@ angular.module('crmApp.contractList', ['ngRoute'])
                 type: 'number'
             },
             {
+                field: 'customer',
+                displayName: $translate.instant('contracts.table.customer'),
+                width: '20%'
+            },
+            {
                 field: 'issueDate',
                 displayName: $translate.instant('contracts.table.issueDate'),
-                width: '25%',
+                width: '20%',
                 type: 'date',
                 cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
                 field: 'startDate',
                 displayName: $translate.instant('contracts.table.startDate'),
-                width: '25%',
+                width: '20%',
                 type: 'date',
                 cellFilter: 'date:\'yyyy-MM-dd\''
             },
             {
                 field: 'endDate',
                 displayName: $translate.instant('contracts.table.endDate'),
-                width: '25%',
+                width: '20%',
                 type: 'date',
                 cellFilter: 'date:\'yyyy-MM-dd\''
             },

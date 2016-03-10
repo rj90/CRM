@@ -27,6 +27,7 @@
     "angular-resource": "latest",
     "angular-route": "latest",
     "angular-sanitize": "latest",
+    "angular-spinner": "latest",
     "angular-translate": "latest",
     "angular-translate-loader-url": "latest",
     "angular-ui-grid": "latest",
@@ -38,6 +39,7 @@
     "ngmap": "latest",
     "nprogress": "latest",
     "simple-hint": "latest",
+    "spin": "latest",
     "underscore": "latest"
   },
   "license": "MIT"

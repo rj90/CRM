@@ -1,4 +1,5 @@
 angular.module('crmApp', [
+    'angularSpinner',
     'ngCookies',
     'ngMaterial',
     'ngMessages',
@@ -13,6 +14,7 @@ angular.module('crmApp', [
     'ui.grid.pagination',
     'ui.grid.selection',
     'ui.grid.autoResize',
+    'ui.grid.resizeColumns',
     'ui.grid.edit',
     'ui.grid.cellNav',
     'ui.grid.moveColumns',

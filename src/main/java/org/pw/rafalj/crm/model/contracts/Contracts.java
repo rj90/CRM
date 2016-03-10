@@ -19,7 +19,7 @@ public class Contracts implements Serializable{
     @Column(name = "ID")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CUSTOMER_ID")
     Customers customer;
 
@@ -102,6 +102,8 @@ public class Contracts implements Serializable{
     public ContractVO getContractVO() {
         ContractVO vo = new ContractVO();
         vo.setId(getId());
+        //FIXME: TO DISPLAY USER NAME OR SOMETHING LIKE THAT
+        vo.setCustomer(getCustomer().getId().toString());
         vo.setIssueDate(getIssueDate());
         vo.setStartDate(getStartDate());
         vo.setEndDate(getEndDate());

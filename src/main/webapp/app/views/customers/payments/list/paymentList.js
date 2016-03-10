@@ -46,6 +46,7 @@ angular.module('crmApp.paymentList', ['ngRoute'])
         $scope.paymentsGrid = {
             data: [],
             enableHorizontalScrollbar: 0,
+            enableColumnResizing: true,
             enableRowSelection: true,
             enableRowHeaderSelection: false,
             multiSelect: false,
@@ -54,7 +55,6 @@ angular.module('crmApp.paymentList', ['ngRoute'])
             paginationPageSizes: [25, 50, 75],
             paginationPageSize: 25,
             pagingCurrentPage: 1,
-            enableGridMenu: true,
             columnDefs: [
                 {
                     field: 'id',
