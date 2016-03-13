@@ -1,5 +1,5 @@
-CRM - Modu³ CRM pracy magisterskiej
-Author: Rafa³ Józwiak
+CRM - ModuÅ‚ CRM pracy magisterskiej
+Author: RafaÅ‚ JÃ³zwiak
 
 
 Uruchomienie Testowe
@@ -8,9 +8,9 @@ Testowe uruchomienie projektu, na wbudowanym kontenerze:
 
     mvn clean install tomcat7:run
 
-Strona jest dostêpna pod adresem http://localhost:8080/{nazwa_paczki}/
+Strona jest dostÄ™pna pod adresem http://localhost:8080/
 
-    np. http://localhost:8080/CRM/
+    np. http://localhost:8080/
 
 Komplacja
 -----------
@@ -23,4 +23,4 @@ b) Baza danych zorientowana wierszowo
 
     mvn clean package -P RODBMS
 
-*.war jest dostêpny w katalogu target/
+*.war jest dostÄ™pny w katalogu target/

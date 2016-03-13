@@ -319,7 +319,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8080</port>
-                    <path>/${project.build.finalName}</path>
+                    <path>/</path>
                 </configuration>
             </plugin>
 
