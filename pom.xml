@@ -215,6 +215,13 @@
             <version>${thymeleaf.ext.version}</version>
         </dependency>
 
+        <!--OJDBC-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>12.1.0.1</version>
+        </dependency>
+
         <!--Liquibase-->
         <dependency>
             <groupId>org.liquibase</groupId>
@@ -313,27 +320,7 @@
                 <configuration>
                     <port>8080</port>
                     <path>/${project.build.finalName}</path>
-                    <systemProperties>
-                        <log4j.configuration>file:./src/main/tomcat/log4j.xml</log4j.configuration>
-                    </systemProperties>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>log4j</groupId>
-                        <artifactId>log4j</artifactId>
-                        <version>${log4j.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                        <version>${slf4j.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                        <version>${slf4j.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
 
             <plugin>
