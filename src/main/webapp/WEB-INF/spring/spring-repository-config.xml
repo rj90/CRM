@@ -24,4 +24,24 @@
     <bean id="payment_hql" class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryHQLImpl"/>
     <bean id="payment_criteria_api" class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryCriteriaImpl"/>
 
+    <!--PRODUCTS-->
+    <bean id="product_sql" class="org.pw.rafalj.crm.repository.product.impl.ProductRepositorySQLImpl"/>
+    <bean id="product_hql" class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryHQLImpl"/>
+    <bean id="product_criteria_api" class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryCriteriaImpl"/>
+
+    <!--SERVICES-->
+    <bean id="service_sql" class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositorySQLImpl"/>
+    <bean id="service_hql" class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryHQLImpl"/>
+    <bean id="service_criteria_api" class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryCriteriaImpl"/>
+
+    <!--COMPLAINTS-->
+    <bean id="complaint_sql" class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositorySQLImpl"/>
+    <bean id="complaint_hql" class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryHQLImpl"/>
+    <bean id="complaint_criteria_api" class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryCriteriaImpl"/>
+
+    <!--BILLINGS-->
+    <bean id="billing_sql" class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositorySQLImpl"/>
+    <bean id="billing_hql" class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryHQLImpl"/>
+    <bean id="billing_criteria_api" class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryCriteriaImpl"/>
+
 </beans>

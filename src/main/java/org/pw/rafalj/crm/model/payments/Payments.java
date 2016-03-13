@@ -1,4 +1,6 @@
-package org.pw.rafalj.crm.model.contracts;
+package org.pw.rafalj.crm.model.payments;
+
+import org.pw.rafalj.crm.vo.payments.PaymentVO;
 
 import javax.persistence.*;
 
@@ -14,4 +16,7 @@ public class Payments {
     private Integer id;
 
 
+    public PaymentVO getPaymentVO() {
+        return null;
+    }
 }

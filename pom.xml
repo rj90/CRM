@@ -267,6 +267,10 @@
                     </resource>
                     <resource>
                         <targetPath>META-INF</targetPath>
+                        <directory>src/main/resources/META-INF/log4j</directory>
+                    </resource>
+                    <resource>
+                        <targetPath>META-INF</targetPath>
                         <directory>src/main/resources/META-INF/liquibase</directory>
                         <includes>
                             <include>**/*.xml</include>
@@ -284,6 +288,10 @@
                     <resource>
                         <targetPath>META-INF</targetPath>
                         <directory>src/main/resources/META-INF/RODBMS</directory>
+                    </resource>
+                    <resource>
+                        <targetPath>META-INF</targetPath>
+                        <directory>src/main/resources/META-INF/log4j</directory>
                     </resource>
                     <resource>
                         <targetPath>META-INF</targetPath>

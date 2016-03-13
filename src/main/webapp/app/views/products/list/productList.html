@@ -1,0 +1,85 @@
+<div>
+    <div class="row">
+        <div class="page-title">{{'menu.clients.contracts.label' | translate}}</div>
+    </div>
+
+    <div style="width:100%; height:25px"></div>
+
+    <div class="row">
+        <!-- context menu -->
+        <div style="display: inline-flex;">
+            <div><md-button class="md-primary" ng-href="#/products/newProduct">{{'menu.services.products.newProduct' | translate}}</md-button></div>
+            <div><md-button class="md-primary" ng-href="#/products/productList">{{'menu.services.products.productList' | translate}}</md-button></div>
+        </div>
+        <div style="display: inline-flex; float: right;">
+            <button type="button" class="btn tooltip-down" ng-init="isFilterCollapsed = true"
+                    ng-click="reloadFilterView()">
+                <i class="fa fa-filter"/>
+                <md-tooltip>{{'common.btn.filter' | translate}}</md-tooltip>
+            </button>
+            <button type="button" class="btn tooltip-down" ng-click="loadProducts()">
+                <i class="fa fa-refresh"/>
+                <md-tooltip>{{'common.btn.refresh' | translate}}</md-tooltip>
+            </button>
+        </div>
+    </div>
+    <div style="width:100%; height:5px"></div>
+    <div ng-hide="isFilterCollapsed">
+        <div style="width:100%;height: 15px"></div>
+        <form class="form-horizontal well well-sm" role="form">
+            <div class="row" style="margin: 0;">
+                <div class="form-vertical" style="min-width: 200px;">
+                    <div class="form-group form-group-sm">
+                        <label>{{'products.table.code' | translate}}</label>
+                        <md-input-container style="margin: -1px 0; padding: 0;">
+                            <input type="text" class="form-control" ng-model="filter.code"/>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="form-vertical" style="min-width: 200px;">
+                    <div class="form-group form-group-sm">
+                        <label>{{'products.table.name' | translate}}</label>
+                        <md-input-container style="margin: -1px 0; padding: 0;">
+                            <input type="text" class="form-control" ng-model="filter.name"/>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="form-vertical" style="min-width: 200px;">
+                    <div class="form-group form-group-sm">
+                        <label>{{'products.table.desc' | translate}}</label>
+                        <md-input-container style="margin: -1px 0; padding: 0;">
+                            <input type="text" class="form-control" ng-model="filter.description"/>
+                        </md-input-container>
+                    </div>
+                </div>
+                <div class="form-vertical" style="float: left">
+                    <div class="row">
+                        <md-button class="md-raised md-mini" ng-click="searchProducts()">
+                            <ng-md-icon icon="search" size="20"></ng-md-icon>
+                            <md-tooltip>{{'common.btn.search' | translate}}</md-tooltip>
+                        </md-button>
+                    </div>
+                    <div class="row">
+                        <md-button class="md-raised md-mini" ng-click="clearFilter()">
+                            <ng-md-icon icon="clear" size="20"></ng-md-icon>
+                            <md-tooltip>{{'common.btn.clear' | translate}}</md-tooltip>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div style="width:100%; height:25px"></div>
+    <div class="row">
+        <div class="gridStyle grid" ui-grid-selection ui-grid="productsGrid"
+             ui-grid-pagination
+             ui-grid-auto-resize
+             ui-grid-exporter
+             ui-grid-move-columns
+             ui-grid-cellNav
+             ui-grid-pinning
+             ui-grid-selection
+             external-scopes="externalScopesView">
+        </div>
+    </div>
+</div>

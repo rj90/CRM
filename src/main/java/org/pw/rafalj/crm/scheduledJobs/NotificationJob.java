@@ -1,7 +1,7 @@
 package org.pw.rafalj.crm.scheduledJobs;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
-import org.pw.rafalj.crm.model.contracts.Payments;
+import org.pw.rafalj.crm.model.payments.Payments;
 import org.pw.rafalj.crm.service.payments.PaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

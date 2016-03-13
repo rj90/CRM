@@ -5,6 +5,7 @@ import org.pw.rafalj.crm.vo.dbquerytype.DBQueryTypeVO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,10 +14,8 @@ import java.util.List;
 @Service
 public class DBQueryTypeService {
     public List<DBQueryTypeVO> getDBQueryType() {
-        List<DBQueryTypeVO> list = new ArrayList<>();
-        list.add(new DBQueryTypeVO(DBQueryTypeEnum.SQL));
-        list.add(new DBQueryTypeVO(DBQueryTypeEnum.HQL));
-        list.add(new DBQueryTypeVO(DBQueryTypeEnum.CRITERIA_API));
-        return list;
+        return Arrays.asList(new DBQueryTypeVO[]{new DBQueryTypeVO(DBQueryTypeEnum.SQL),
+                new DBQueryTypeVO(DBQueryTypeEnum.HQL),
+                new DBQueryTypeVO(DBQueryTypeEnum.CRITERIA_API)});
     }
 }

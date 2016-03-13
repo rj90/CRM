@@ -25,11 +25,11 @@ public class CustomUserDetailsServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    public void getUserByName(){
-        UserDetails userDetails = customUserDetailsService.loadUserByUsername("admin");
-        Assert.assertEquals("admin", userDetails.getUsername());
-        Assert.assertEquals("21232f297a57a5a743894a0e4a801fc3",userDetails.getPassword() );
-    }
+//    @Test
+//    public void getUserByName(){
+//        UserDetails userDetails = customUserDetailsService.loadUserByUsername("admin");
+//        Assert.assertEquals("admin", userDetails.getUsername());
+//        Assert.assertEquals("21232f297a57a5a743894a0e4a801fc3",userDetails.getPassword() );
+//    }
 
 }
