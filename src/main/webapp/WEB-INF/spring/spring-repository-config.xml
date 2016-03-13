@@ -18,4 +18,10 @@
     <bean id="users_sql" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositorySQLImpl"/>
     <bean id="users_hql" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryHQLImpl"/>
     <bean id="users_criteria_api" class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryCriteriaImpl"/>
+
+    <!--PAYMENTS-->
+    <bean id="payment_sql" class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositorySQLImpl"/>
+    <bean id="payment_hql" class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryHQLImpl"/>
+    <bean id="payment_criteria_api" class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryCriteriaImpl"/>
+
 </beans>

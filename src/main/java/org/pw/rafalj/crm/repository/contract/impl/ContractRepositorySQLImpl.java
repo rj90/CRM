@@ -25,7 +25,7 @@ public class ContractRepositorySQLImpl implements ContractRepository {
 
     @Override
     @Transactional
-    public PageContainer findByFilter(ContractFilter filter) {
+    public PageContainer findByFilter(ContractFilter filter, String... columns) {
         String queryText = "SELECT * from CONTRACTS WHERE 1=1";
         String countQueryText = "select count(*) from CONTRACTS WHERE 1=1";
 

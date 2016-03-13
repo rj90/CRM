@@ -24,7 +24,7 @@ public class ContractRepositoryHQLImpl implements ContractRepository {
 
     @Override
     @Transactional
-    public PageContainer findByFilter(ContractFilter filter) {
+    public PageContainer findByFilter(ContractFilter filter, String... columns) {
         String queryText = "from Contracts c WHERE 1=1";
         String countQueryText = "select count(*) from Contracts c WHERE 1=1";
 

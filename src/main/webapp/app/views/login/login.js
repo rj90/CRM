@@ -18,12 +18,13 @@ angular.module('crmApp.login', ['ngRoute'])
         DBService.getQueriesType(function(response){
             console.log(response.data)
             $scope.dbConnOptions = response.data;
-            $scope.dbConnType = $scope.dbConnOptions[0].id;
+            $scope.dbConnType = $scope.dbConnOptions[0];
         });
 
         $scope.login = function() {
             usSpinnerService.spin('login-spinner');
-            $cookieStore.put('dbConnType', $scope.dbConnType);
+            //console.log($scope.username + $scope.password);
+            $cookieStore.put('dbConnType', $scope.dbConnType.id);
             UserService.authenticate({username: $scope.username, password: $scope.password}, function(authenticationResult) {
 
                 if(authenticationResult.status == 401){ // Invalid login or password

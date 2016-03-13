@@ -1,18 +1,20 @@
 <div class="container-fluid">
     <div style="margin-top: 100px"/>
     <div class="wrapper">
-        <form class="login" us-spinner="{radius:3, width:8, length: 16}" spinner-key="login-spinner" style="position: relative">
+        <form class="login">
             <p class="title">{{ 'login.logIn' | translate}}</p>
             <input ng-model="username" type="text" placeholder="{{ 'login.login.placeholder' | translate}}" autofocus="autofocus"/>
             <i class="fa fa-user"></i>
             <input ng-model="password" type="password" placeholder="{{ 'login.password.placeholder' | translate}}" />
             <i class="fa fa-key"></i>
-            <select ng-model="dbConnType" ng-options="obj.id as obj.name for obj in dbConnOptions" ng-required="required" style="width: 100%;">
-            </select>
+            <md-select ng-model="dbConnType" ng-required="required" style="height: 40px; margin: -1px 0px;">
+                <md-option ng-value="dbConnOption" ng-repeat="dbConnOption in dbConnOptions">{{dbConnOption.name}}</md-option>
+            </md-select>
             <!--<a href="#">{{ 'login.forgottenPassword' | translate}}</a>-->
             <button ng-click="login()">
                 <span class="state">{{ 'login.signIn' | translate}}</span>
             </button>
         </form>
+        <form us-spinner="{radius:3, width:8, length: 16}" spinner-key="login-spinner" style="position: relative"/>
     </div>
 </div>

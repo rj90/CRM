@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Rav on 2016-02-23.
  */
 public interface ContractRepository {
-    PageContainer findByFilter(ContractFilter filter);
+    PageContainer findByFilter(ContractFilter filter, String... columns);
 
     List<ContractStatusVO> getStatuses();
 }
