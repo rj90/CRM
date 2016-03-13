@@ -18,17 +18,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- Spring basic configurations -->
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            /WEB-INF/spring/spring.xml
-        </param-value>
-    </context-param>
-
     <!--Log4j-->
     <context-param>
         <param-name>log4jConfigLocation</param-name>
@@ -36,9 +25,7 @@
     </context-param>
 
     <listener>
-        <listener-class>
-            org.springframework.web.util.Log4jConfigListener
-        </listener-class>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
     <!-- REST exporter -->

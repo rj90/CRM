@@ -44,7 +44,7 @@ public class AuthenticationController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         Object principal = authentication.getPrincipal();
-        if (principal instanceof String && ((String) principal).equals("anonymousUser")) {
+        if (principal instanceof String && principal.equals("anonymousUser")) {
             throw new WebApplicationException(401);
         }
         UserDetails userDetails = (UserDetails) principal;
@@ -70,7 +70,7 @@ public class AuthenticationController {
 
     private Map<String, Boolean> createRoleMap(UserDetails userDetails)
     {
-        Map<String, Boolean> roles = new HashMap<String, Boolean>();
+        Map<String, Boolean> roles = new HashMap<>();
         for (GrantedAuthority authority : userDetails.getAuthorities()) {
             roles.put(authority.getAuthority(), Boolean.TRUE);
         }
