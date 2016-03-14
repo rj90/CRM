@@ -14,7 +14,7 @@ import javax.ws.rs.WebApplicationException;
 import java.sql.SQLException;
 
 /**
- * Created by Rav on 2016-01-24.
+ * Created by rjozwiak on 2016-01-24.
  */
 @ControllerAdvice(annotations = {RestController.class, Controller.class})
 public class ExceptionHandlingController {

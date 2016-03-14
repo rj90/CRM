@@ -6,7 +6,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 /**
- * Created by Rav on 2016-03-02.
+ * Created by rjozwiak on 2016-03-02.
  */
 public class EMailFactory {
 

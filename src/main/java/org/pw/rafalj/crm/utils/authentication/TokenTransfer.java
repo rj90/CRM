@@ -1,7 +1,7 @@
 package org.pw.rafalj.crm.utils.authentication;
 
 /**
- * Created by Rav on 2016-01-12.
+ * Created by rjozwiak on 2016-01-12.
  */
 public class TokenTransfer {
     private final String token;

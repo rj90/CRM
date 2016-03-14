@@ -5,7 +5,7 @@ import org.pw.rafalj.crm.vo.payments.PaymentVO;
 import javax.persistence.*;
 
 /**
- * Created by Rav on 2016-02-22.
+ * Created by rjozwiak on 2016-02-22.
  */
 @Entity
 @Table(name = "PAYMENTS")

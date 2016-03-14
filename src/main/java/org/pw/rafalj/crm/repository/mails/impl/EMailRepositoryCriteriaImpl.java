@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by Rav on 2016-03-02.
+ * Created by rjozwiak on 2016-03-02.
  */
 @Repository
 public class EMailRepositoryCriteriaImpl implements EMailRepository {

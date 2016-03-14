@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.filter;
 import java.io.Serializable;
 
 /**
- * Created by Rav on 2016-02-23.
+ * Created by rjozwiak on 2016-02-23.
  */
 public class SortType implements Serializable {
     String name;

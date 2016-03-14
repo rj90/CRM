@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-02-20.
+ * Created by rjozwiak on 2016-02-20.
  */
 public class UserAuthenticationUtils {
     public static String getLogin(Users user) {

@@ -4,7 +4,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 /**
- * Created by Rav on 2016-02-23.
+ * Created by rjozwiak on 2016-02-23.
  */
 public class PagingHelper {
 

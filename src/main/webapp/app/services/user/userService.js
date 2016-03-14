@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-01-23.
+ * Created by rjozwiak on 2016-01-23.
  */
 angular.module('UserServices', ['ngResource'])
     .factory('UserService', function($http) {

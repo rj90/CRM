@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by Rav on 2015-09-05.
+ * Created by rjozwiak on 2015-09-05.
  */
 public class TokenUtils {
 

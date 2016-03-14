@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-02-03.
+ * Created by rjozwiak on 2016-02-03.
  */
 angular.module('DBServices', ['ngResource'])
     .factory('DBService', function($http) {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Rav on 2016-03-02.
+ * Created by rjozwiak on 2016-03-02.
  */
 @RestController
 @RequestMapping("/mails")

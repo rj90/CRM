@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-02-03.
+ * Created by rjozwiak on 2016-02-03.
  */
 @Service
 public class DBQueryTypeService {

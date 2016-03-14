@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-02-03.
+ * Created by rjozwiak on 2016-02-03.
  */
 @RestController
 @RequestMapping(value = "/DBTypeController")

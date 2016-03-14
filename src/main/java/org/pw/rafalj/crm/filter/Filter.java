@@ -4,7 +4,7 @@ import org.pw.rafalj.crm.utils.PagingHelper;
 import org.springframework.data.domain.Pageable;
 
 /**
- * Created by Rav on 2016-02-23.
+ * Created by rjozwiak on 2016-02-23.
  */
 public class Filter {
 

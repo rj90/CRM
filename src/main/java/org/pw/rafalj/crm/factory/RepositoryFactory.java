@@ -4,7 +4,7 @@ import org.pw.rafalj.crm.context.ApplicationContextProvider;
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
 
 /**
- * Created by Rav on 2016-03-01.
+ * Created by rjozwiak on 2016-03-01.
  */
 public class RepositoryFactory {
 

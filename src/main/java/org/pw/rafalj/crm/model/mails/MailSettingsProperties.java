@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by Rav on 2016-03-02.
+ * Created by rjozwiak on 2016-03-02.
  */
 @Entity
 @Table(name = "MAIL_SETTINGS_PROPERTIES")

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Rav on 2016-02-02.
+ * Created by rjozwiak on 2016-02-02.
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 

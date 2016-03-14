@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created by Rav on 2016-03-01.
+ * Created by rjozwiak on 2016-03-01.
  */
 @Repository
 public class ContractRepositoryHQLImpl implements ContractRepository {

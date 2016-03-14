@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-03-02.
+ * Created by rjozwiak on 2016-03-02.
  */
 public class PageContainer<T> implements Serializable{
     List<T> content;

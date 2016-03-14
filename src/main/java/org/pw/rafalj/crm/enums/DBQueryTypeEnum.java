@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * Created by Rav on 2016-02-03.
+ * Created by rjozwiak on 2016-02-03.
  */
 public enum DBQueryTypeEnum {
     SQL(1, "SQL"),

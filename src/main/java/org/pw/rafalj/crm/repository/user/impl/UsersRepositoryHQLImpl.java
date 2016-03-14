@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by Rav on 2016-03-01.
+ * Created by rjozwiak on 2016-03-01.
  */
 @Repository
 public class UsersRepositoryHQLImpl implements UsersRepository {

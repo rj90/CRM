@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.utils;
 import java.util.Date;
 
 /**
- * Created by Rav on 2016-02-22.
+ * Created by rjozwiak on 2016-02-22.
  */
 public class DateUtil {
     public static boolean isDateBetween(Date date, Date startDate, Date endDate) {

@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.vo.response;
 import org.pw.rafalj.crm.enums.ResponseStatusEnum;
 
 /**
- * Created by Rav on 2016-01-24.
+ * Created by rjozwiak on 2016-01-24.
  */
 public class ResponseVO {
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Rav on 2016-03-13.
+ * Created by rjozwiak on 2016-03-13.
  */
 @RestController
 @RequestMapping(value = "/products")

@@ -6,7 +6,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 /**
- * Created by Rav on 2016-01-12.
+ * Created by rjozwiak on 2016-01-12.
  */
 public interface UsersRepository {
 

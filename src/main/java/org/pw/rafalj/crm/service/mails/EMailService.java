@@ -11,7 +11,7 @@ import org.springframework.mail.MailSender;
 import javax.servlet.http.Cookie;
 
 /**
- * Created by Rav on 2016-03-02.
+ * Created by rjozwiak on 2016-03-02.
  */
 @Service
 public class EMailService {

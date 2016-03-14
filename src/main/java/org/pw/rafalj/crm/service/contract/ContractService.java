@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-02-23.
+ * Created by rjozwiak on 2016-02-23.
  */
 @Service
 public class ContractService {

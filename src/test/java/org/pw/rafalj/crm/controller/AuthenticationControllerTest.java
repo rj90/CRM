@@ -14,7 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import java.io.IOException;
 
 /**
- * Created by Rav on 2016-01-24.
+ * Created by rjozwiak on 2016-01-24.
  */
 public class AuthenticationControllerTest {
 

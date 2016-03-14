@@ -1,7 +1,7 @@
 package org.pw.rafalj.crm.service.authentication;
 
 /**
- * Created by Rav on 2015-09-05.
+ * Created by rjozwiak on 2015-09-05.
  */
 
 import org.springframework.security.core.AuthenticationException;

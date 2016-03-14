@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * Created by Rav on 2016-02-08.
+ * Created by rjozwiak on 2016-02-08.
  */
 public class CookieUtils {
     private static final String DB_CONN_COOKIE_NAME = "dbConnType";

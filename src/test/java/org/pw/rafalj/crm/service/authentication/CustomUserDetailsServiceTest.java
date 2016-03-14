@@ -10,7 +10,7 @@ import org.pw.rafalj.crm.repository.user.UsersRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * Created by Rav on 2016-01-24.
+ * Created by rjozwiak on 2016-01-24.
  */
 public class CustomUserDetailsServiceTest {
 

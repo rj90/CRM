@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.model.accounts;
 import javax.persistence.*;
 
 /**
- * Created by Rav on 2016-01-12.
+ * Created by rjozwiak on 2016-01-12.
  */
 @Entity
 @Table(name = "USER_ROLE")

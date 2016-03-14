@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-03-13.
+ * Created by rjozwiak on 2016-03-13.
  */
 @Service
 public class ProductService {

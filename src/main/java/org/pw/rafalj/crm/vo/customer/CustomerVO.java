@@ -1,7 +1,7 @@
 package org.pw.rafalj.crm.vo.customer;
 
 /**
- * Created by Rav on 2016-03-09.
+ * Created by rjozwiak on 2016-03-09.
  */
 public class CustomerVO {
     Integer id;

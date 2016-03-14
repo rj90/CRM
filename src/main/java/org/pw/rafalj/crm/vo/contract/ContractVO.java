@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.vo.contract;
 import java.util.Date;
 
 /**
- * Created by Rav on 2016-02-23.
+ * Created by rjozwiak on 2016-02-23.
  */
 public class ContractVO {
     Integer id;

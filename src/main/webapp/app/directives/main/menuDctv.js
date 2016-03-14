@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-02-02.
+ * Created by rjozwiak on 2016-02-02.
  */
 angular.module('crmApp.menu', [])
     .directive('menuDctv', function ($http){

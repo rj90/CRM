@@ -1,7 +1,7 @@
 package org.pw.rafalj.crm.vo.contract;
 
 /**
- * Created by Rav on 2016-03-08.
+ * Created by rjozwiak on 2016-03-08.
  */
 public class ContractStatusVO {
     private Integer id;

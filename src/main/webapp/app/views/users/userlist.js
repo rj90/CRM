@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-02-08.
+ * Created by rjozwiak on 2016-02-08.
  */
 'use strict';
 angular.module('crmApp.userlist', ['ngRoute'])

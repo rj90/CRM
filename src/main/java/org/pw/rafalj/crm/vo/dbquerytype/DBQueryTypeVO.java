@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.vo.dbquerytype;
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
 
 /**
- * Created by Rav on 2016-02-03.
+ * Created by rjozwiak on 2016-02-03.
  */
 public class DBQueryTypeVO {
     Integer id;
