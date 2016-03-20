@@ -12,4 +12,14 @@
             <div><md-button class="md-primary" ng-href="#/customers/contractList">{{'menu.clients.contracts.contractList' | translate}}</md-button></div>
         </div>
     </div>
+    <div style="width:100%; height:30px"></div>
+    <div class="row">
+        <div class="panel panel-default-page panel-sm col-md-8">
+            <div class="panel-heading">{{'contract.add' | translate}}</div>
+            <div ng-include="'app/views/customers/contracts/forms/contractForm.html'"></div>
+
+
+            <div class="row" style="height: 15px"/>
+        </div>
+    </div>
 </div>

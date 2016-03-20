@@ -100,7 +100,7 @@ angular.module('crmApp.contractList', ['ngRoute'])
         multiSelect: false,
         useExternalPagination: true,
         useExternalSorting: false,
-        paginationPageSizes: [25, 50, 75],
+        paginationPageSizes: [25, 50, 75, 100000],
         paginationPageSize: 25,
         pagingCurrentPage: 1,
         columnDefs: [
