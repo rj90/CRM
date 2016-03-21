@@ -53,4 +53,48 @@ public class ProductService {
             throw e;
         }
     }
+
+    public ProductVO getProductVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Getting product by id");
+            Long time = System.currentTimeMillis();
+
+            ProductVO vo = productRepository.findProductById(id).getProductVO();
+            log.info("Getting products ended in " + (System.currentTimeMillis() - time) + "ms");
+            return vo;
+        }
+        catch(Exception e){
+            log.error("Error during getting product", e);
+            throw e;
+        }
+    }
+
+    public void removeProductVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Removing product by id");
+            Long time = System.currentTimeMillis();
+
+            productRepository.deleteProductById(id);
+            log.info("Removing products ended in " + (System.currentTimeMillis() - time) + "ms");
+        }
+        catch(Exception e){
+            log.error("Error during removing product", e);
+            throw e;
+        }
+    }
+
+    public void save(DBQueryTypeEnum dbQueryTypeFromCookies, ProductVO productVO) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Saving product");
+            productRepository.save(new Products(productVO));
+            log.info("Product saved");
+        }
+        catch(Exception e){
+            log.error("Error during saving product", e);
+            throw e;
+        }
+    }
 }

@@ -35,8 +35,8 @@ public class ServiceRepositorySQLImpl implements ServiceRepository {
         }
 
         if(filter.getDescription() != null){
-            queryText += " AND [DESC] like :description";
-            countQueryText += " AND [DESC] like :description";
+            queryText += " AND \"DESC\" like :description";
+            countQueryText += " AND \"DESC\" like :description";
         }
 
         SQLQuery query = session.getCurrentSession().createSQLQuery(queryText);

@@ -3,6 +3,7 @@ package org.pw.rafalj.crm.repository.product.impl;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.pw.rafalj.crm.filter.product.ProductFilter;
+import org.pw.rafalj.crm.model.products.Products;
 import org.pw.rafalj.crm.repository.product.ProductRepository;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,25 @@ public class ProductRepositoryHQLImpl implements ProductRepository {
         }
 
         return new PageContainer<>(query.list(), ((Long) countquery.uniqueResult()).intValue());
+    }
+
+    @Override
+    @Transactional
+    public Products findProductById(Integer id) {
+        Query query = session.getCurrentSession().createQuery("from Products WHERE id = :ID");
+        query.setParameter("ID", id);
+
+        return (Products) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteProductById(Integer id) {
+        Query query = session.getCurrentSession().createQuery("from Products WHERE id = :ID");
+        query.setParameter("ID", id);
+
+        Products product = (Products) query.uniqueResult();
+
+        session.getCurrentSession().delete(product);
     }
 }

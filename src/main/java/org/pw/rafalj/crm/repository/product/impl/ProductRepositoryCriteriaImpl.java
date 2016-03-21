@@ -47,4 +47,25 @@ public class ProductRepositoryCriteriaImpl implements ProductRepository {
 
         return new PageContainer<>(criteria.list(), ((Long) countCriteria.uniqueResult()).intValue());
     }
+
+
+    @Override
+    @Transactional
+    public Products findProductById(Integer id) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Products.class);
+        criteria.add(Restrictions.eq("id", id));
+
+        return (Products) criteria.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteProductById(Integer id) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Products.class);
+        criteria.add(Restrictions.eq("id", id));
+
+        Products product = (Products) criteria.uniqueResult();
+
+        session.getCurrentSession().delete(product);
+    }
 }

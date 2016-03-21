@@ -7,7 +7,7 @@ angular.module('crmApp.productList', ['ngRoute'])
             templateUrl: 'app/views/products/list/productList.html',
             controller: 'ProductListCtrl'
         });
-    }).controller('ProductListCtrl', function($scope, $rootScope, $http, $translate, $window, $state, $timeout) {
+    }).controller('ProductListCtrl', function($scope, $rootScope, $http, $translate, $window, $location, $mdDialog) {
     $scope.filter = {};
 
     $scope.$watch(function () {
@@ -16,6 +16,13 @@ angular.module('crmApp.productList', ['ngRoute'])
         var newHeight = $window.innerHeight - 284;
         angular.element(document.getElementsByClassName('grid')[0]).css('height', newHeight + 'px');
     });
+
+
+    $scope.closeMessage = function () {
+        if (!_.isUndefined($rootScope.message)) {
+            $rootScope.message.products = '';
+        }
+    }
 
     var prepareFilter = function () {
         $scope.filter.pageNumber = pagingOptions.pageNumber;
@@ -93,7 +100,8 @@ angular.module('crmApp.productList', ['ngRoute'])
 
     $scope.productsGrid = {
         data: [],
-        enableHorizontalScrollbar: 0,
+        enableHorizontalScrollbar: 2,
+        enableVerticalScrollbar: 2,
         enableColumnResizing: true,
         enableRowSelection: true,
         enableRowHeaderSelection: false,
@@ -123,7 +131,20 @@ angular.module('crmApp.productList', ['ngRoute'])
             {
                 field: 'desc',
                 displayName: $translate.instant('products.table.desc'),
-                width: '20%',
+                width: '50%',
+            },
+            {
+                name: "actions",
+                displayName: '',
+                cellTemplate: '<div class="ui-grid-cell-btn-contents">' +
+                '<button type="button" class="btn btn-sm btn-list item-view" ng-click="grid.appScope.editProduct(row.entity)"><i class="fa fa-pencil"></i></button>' +
+                '<button type="button" class="btn btn-sm btn-list item-view" ng-click="grid.appScope.removeProduct(row.entity)"><i class="fa fa-close"></i></button>' +
+                '</div>',
+                width: '4%',
+                enableSorting: false,
+                enableHiding: false,
+                enableColumnMenu: false,
+                enableColumnResizing: false
             }
         ],
 
@@ -154,6 +175,55 @@ angular.module('crmApp.productList', ['ngRoute'])
         }
     };
 
+    $scope.editProduct = function (product) {
+        $scope.closeMessage();
+        $rootScope.filterCache.products.selectedId = product.id;
+        $location.path('products/productEdit').search({productId: product.id});
+    };
+
+    $scope.removeProduct = function (product) {
+        $scope.closeMessage();
+        $mdDialog.show($mdDialog.confirm().title($translate.instant('product.remove.title')).textContent($translate.instant('product.remove.question')).ok($translate.instant('common.dialog.yes'))
+            .cancel($translate.instant('common.dialog.no'))).then(function () {
+            $http.delete('products?id=' + product.id).then(function (response) {
+                $mdDialog.show($mdDialog.alert().title($translate.instant('common.deleted')).textContent($translate.instant('products.deleted') + ' product.code').ok($translate.instant('error.close')));
+            });
+        }, function(){
+
+        });
+        // dialogs.confirm($translate.instant('product.remove.title'), $translate.instant('product.remove.question') + product.code + " ?").result.then(function (btn) { //Yes
+        //     $http.delete("product/remove?productId="+product.id).then(function(response){
+        //         _.remove($scope.productsGrid.data, function (element) {
+        //             return element.id === product.id;
+        //         });
+        //
+        //         if(typeof $rootScope.message === 'undefined'){
+        //             $rootScope.message = {};
+        //         }
+        //
+        //         $rootScope.message.products = $translate.instant('common.table.kntrh') + ' ' + product.name + ' '+$translate.instant('product.remove.confirm');
+        //
+        //     });
+        // }, function (btn) {});  //No
+
+    };
+
+    var getProductsCache = function () {
+        if (_.isUndefined($rootScope.filterCache)) {
+            $rootScope.filterCache = {
+                products: {
+                    filter: $scope.filter
+                }
+            }
+        } else if (_.isUndefined($rootScope.filterCache.products)) {
+            $rootScope.filterCache.products = {
+                filter: $scope.filter
+            };
+        }
+
+        return $rootScope.filterCache.products;
+    };
+
     var pagingOptions = {
         pageNumber: 1,
         pageSize: 50,
@@ -161,6 +231,8 @@ angular.module('crmApp.productList', ['ngRoute'])
     };
 
     var init = function () {
+        var productCache = getProductsCache();
+        $scope.filter = productCache.filter;
 
         $scope.loadProducts();
     }

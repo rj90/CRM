@@ -13,7 +13,7 @@
 
         <property name="triggers">
             <list>
-                <ref bean="NofificationJobTrigger" />
+                <!--<ref bean="NofificationJobTrigger" />-->
             </list>
         </property>
     </bean>

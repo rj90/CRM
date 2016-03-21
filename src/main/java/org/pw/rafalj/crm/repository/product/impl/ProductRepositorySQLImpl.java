@@ -35,8 +35,8 @@ public class ProductRepositorySQLImpl implements ProductRepository {
         }
 
         if(filter.getDescription() != null){
-            queryText += " AND [DESC] like :description";
-            countQueryText += " AND [DESC] like :description";
+            queryText += " AND \"DESC\" like :description";
+            countQueryText += " AND \"DESC\" like :description";
         }
 
         SQLQuery query = session.getCurrentSession().createSQLQuery(queryText);
@@ -60,6 +60,28 @@ public class ProductRepositorySQLImpl implements ProductRepository {
             countquery.setParameter("description", "%" + filter.getDescription() + "%");
         }
 
-        return new PageContainer<>(query.list(), ((Long) countquery.uniqueResult()).intValue());
+        return new PageContainer<>(query.list(), ((Number) countquery.uniqueResult()).intValue());
+    }
+
+    @Override
+    @Transactional
+    public Products findProductById(Integer id) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * from PRODUCTS WHERE ID = :ID");
+        query.setParameter("ID", id);
+        query.addEntity(Products.class);
+
+        return (Products) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteProductById(Integer id) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * from PRODUCTS WHERE ID = :ID");
+        query.setParameter("ID", id);
+        query.addEntity(Products.class);
+
+        Products product = (Products) query.uniqueResult();
+
+        session.getCurrentSession().delete(product);
     }
 }

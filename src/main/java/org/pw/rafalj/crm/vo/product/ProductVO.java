@@ -9,6 +9,16 @@ public class ProductVO {
     String name;
     String desc;
 
+    public ProductVO() {
+    }
+
+    public ProductVO(Integer id, String code, String name, String desc) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.desc = desc;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -41,7 +51,4 @@ public class ProductVO {
         this.desc = desc;
     }
 
-    public ProductVO() {
-
-    }
 }
