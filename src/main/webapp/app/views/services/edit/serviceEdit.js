@@ -8,14 +8,6 @@ angular.module('crmApp.serviceEdit', ['ngRoute'])
             controller: 'ServiceEditCtrl'
         });
     }).controller('ServiceEditCtrl', function($scope, $rootScope, $http, $translate, $window, $location, $timeout) {
-        var init = function(){
-            $http.get('services?id=' + $location.search().serviceId).then(function (response) {
-                $scope.serviceVO = response.data;
-            });
-        }
-
-        init();
-
         $scope.goToPreviousState = function () {
             $location.path('services/serviceList');
         };
@@ -31,4 +23,28 @@ angular.module('crmApp.serviceEdit', ['ngRoute'])
                 $scope.goToPreviousState();
             });
         };
-    })
+
+    $scope.loadStatuses = function () {
+        $http.get('services/types').then(function (response) {
+            $scope.serviceTypes = response.data;
+        });
+    }
+
+    var init = function(){
+        $http.get('services/types').then(function (respData) {
+            $scope.serviceTypes = respData.data;
+            $http.get('services?id=' + $location.search().serviceId).then(function (response) {
+                $scope.serviceVO = response.data;
+                $scope.servicetype = $scope.serviceVO.type;
+                // for(i = 0; i < $scope.serviceTypes.length; i++){
+                //     if($scope.serviceTypes[i].id === $scope.serviceVO.type.id)
+                //         $scope.type = $scope.serviceTypes[i];
+                // }
+                console.log($scope.servicetype)
+                console.log($scope.serviceVO)
+            });
+        });
+    }
+
+    init();
+})

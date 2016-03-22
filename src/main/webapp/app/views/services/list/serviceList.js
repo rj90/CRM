@@ -7,7 +7,7 @@ angular.module('crmApp.serviceList', ['ngRoute'])
             templateUrl: 'app/views/services/list/serviceList.html',
             controller: 'ServiceListCtrl'
         });
-    }).controller('ServiceListCtrl', function($scope, $rootScope, $http, $translate, $window, $state, $timeout) {
+    }).controller('ServiceListCtrl', function($scope, $rootScope, $http, $translate, $window, $location, $mdDialog) {
     $scope.filter = {};
 
     $scope.$watch(function () {
@@ -16,6 +16,13 @@ angular.module('crmApp.serviceList', ['ngRoute'])
         var newHeight = $window.innerHeight - 284;
         angular.element(document.getElementsByClassName('grid')[0]).css('height', newHeight + 'px');
     });
+
+
+    $scope.closeMessage = function () {
+        if (!_.isUndefined($rootScope.message)) {
+            $rootScope.message.services = '';
+        }
+    }
 
     var prepareFilter = function () {
         $scope.filter.pageNumber = pagingOptions.pageNumber;
@@ -54,12 +61,6 @@ angular.module('crmApp.serviceList', ['ngRoute'])
         });
     };
 
-    $scope.loadStatuses = function() {
-        $http.get('services/getStatuses').then(function (response) {
-            $scope.statuses = response.data;
-        });
-    };
-
     $scope.clearFilter = function () {
         $scope.filter = {};
 
@@ -93,7 +94,8 @@ angular.module('crmApp.serviceList', ['ngRoute'])
 
     $scope.servicesGrid = {
         data: [],
-        enableHorizontalScrollbar: 0,
+        enableHorizontalScrollbar: 2,
+        enableVerticalScrollbar: 2,
         enableColumnResizing: true,
         enableRowSelection: true,
         enableRowHeaderSelection: false,
@@ -124,6 +126,19 @@ angular.module('crmApp.serviceList', ['ngRoute'])
                 field: 'desc',
                 displayName: $translate.instant('services.table.desc'),
                 width: '20%',
+            },
+            {
+                name: "actions",
+                displayName: '',
+                cellTemplate: '<div class="ui-grid-cell-btn-contents">' +
+                '<button type="button" class="btn btn-sm btn-list item-view" ng-click="grid.appScope.editService(row.entity)"><i class="fa fa-pencil"></i></button>' +
+                '<button type="button" class="btn btn-sm btn-list item-view" ng-click="grid.appScope.removeService(row.entity)"><i class="fa fa-close"></i></button>' +
+                '</div>',
+                width: '4%',
+                enableSorting: false,
+                enableHiding: false,
+                enableColumnMenu: false,
+                enableColumnResizing: false
             }
         ],
 
@@ -154,6 +169,41 @@ angular.module('crmApp.serviceList', ['ngRoute'])
         }
     };
 
+    $scope.editService = function (service) {
+        $scope.closeMessage();
+        $rootScope.filterCache.services.selectedId = service.id;
+        $location.path('services/serviceEdit').search({serviceId: service.id});
+    };
+
+    $scope.removeService = function (service) {
+        $scope.closeMessage();
+        $mdDialog.show($mdDialog.confirm().title($translate.instant('service.remove.title')).textContent($translate.instant('service.remove.question')).ok($translate.instant('common.dialog.yes'))
+            .cancel($translate.instant('common.dialog.no'))).then(function () {
+            $http.delete('services?id=' + service.id).then(function (response) {
+                $scope.loadServices();
+                $mdDialog.show($mdDialog.alert().title($translate.instant('common.deleted')).textContent($translate.instant('services.deleted') + ' service.code').ok($translate.instant('error.close')));
+            });
+        }, function(){
+
+        });
+    };
+
+    var getServicesCache = function () {
+        if (_.isUndefined($rootScope.filterCache)) {
+            $rootScope.filterCache = {
+                services: {
+                    filter: $scope.filter
+                }
+            }
+        } else if (_.isUndefined($rootScope.filterCache.services)) {
+            $rootScope.filterCache.services = {
+                filter: $scope.filter
+            };
+        }
+
+        return $rootScope.filterCache.services;
+    };
+
     var pagingOptions = {
         pageNumber: 1,
         pageSize: 50,
@@ -161,9 +211,11 @@ angular.module('crmApp.serviceList', ['ngRoute'])
     };
 
     var init = function () {
+        var serviceCache = getServicesCache();
+        $scope.filter = serviceCache.filter;
 
         $scope.loadServices();
     }
 
     init();
-    });
+});

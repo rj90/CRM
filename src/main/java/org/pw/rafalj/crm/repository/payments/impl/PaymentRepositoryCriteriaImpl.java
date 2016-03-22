@@ -36,4 +36,24 @@ public class PaymentRepositoryCriteriaImpl implements PaymentRepository {
     public PageContainer findByFilter(PaymentFilter filter) {
         return null;
     }
+
+    @Override
+    @Transactional
+    public Payments findPaymentById(Integer id) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Payments.class);
+        criteria.add(Restrictions.eq("id", id));
+
+        return (Payments) criteria.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deletePaymentById(Integer id) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Payments.class);
+        criteria.add(Restrictions.eq("id", id));
+
+        Payments payment = (Payments) criteria.uniqueResult();
+
+        session.getCurrentSession().delete(payment);
+    }
 }

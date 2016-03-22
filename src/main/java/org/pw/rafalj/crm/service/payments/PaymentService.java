@@ -70,4 +70,48 @@ public class PaymentService {
             throw e;
         }
     }
+
+    public PaymentVO getPaymentVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Getting payment by id");
+            Long time = System.currentTimeMillis();
+
+            PaymentVO vo = paymentRepository.findPaymentById(id).getPaymentVO();
+            log.info("Getting payments ended in " + (System.currentTimeMillis() - time) + "ms");
+            return vo;
+        }
+        catch(Exception e){
+            log.error("Error during getting payment", e);
+            throw e;
+        }
+    }
+
+    public void removePaymentVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Removing payment by id");
+            Long time = System.currentTimeMillis();
+
+            paymentRepository.deletePaymentById(id);
+            log.info("Removing payments ended in " + (System.currentTimeMillis() - time) + "ms");
+        }
+        catch(Exception e){
+            log.error("Error during removing payment", e);
+            throw e;
+        }
+    }
+
+    public void save(DBQueryTypeEnum dbQueryTypeFromCookies, PaymentVO paymentVO) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Saving payment");
+            paymentRepository.save(new Payments(paymentVO));
+            log.info("Payment saved");
+        }
+        catch(Exception e){
+            log.error("Error during saving payment", e);
+            throw e;
+        }
+    }
 }

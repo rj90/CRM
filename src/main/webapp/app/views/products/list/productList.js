@@ -61,12 +61,6 @@ angular.module('crmApp.productList', ['ngRoute'])
         });
     };
 
-    $scope.loadStatuses = function() {
-        $http.get('products/getStatuses').then(function (response) {
-            $scope.statuses = response.data;
-        });
-    };
-
     $scope.clearFilter = function () {
         $scope.filter = {};
 
@@ -186,26 +180,12 @@ angular.module('crmApp.productList', ['ngRoute'])
         $mdDialog.show($mdDialog.confirm().title($translate.instant('product.remove.title')).textContent($translate.instant('product.remove.question')).ok($translate.instant('common.dialog.yes'))
             .cancel($translate.instant('common.dialog.no'))).then(function () {
             $http.delete('products?id=' + product.id).then(function (response) {
+                $scope.loadProducts();
                 $mdDialog.show($mdDialog.alert().title($translate.instant('common.deleted')).textContent($translate.instant('products.deleted') + ' product.code').ok($translate.instant('error.close')));
             });
         }, function(){
 
         });
-        // dialogs.confirm($translate.instant('product.remove.title'), $translate.instant('product.remove.question') + product.code + " ?").result.then(function (btn) { //Yes
-        //     $http.delete("product/remove?productId="+product.id).then(function(response){
-        //         _.remove($scope.productsGrid.data, function (element) {
-        //             return element.id === product.id;
-        //         });
-        //
-        //         if(typeof $rootScope.message === 'undefined'){
-        //             $rootScope.message = {};
-        //         }
-        //
-        //         $rootScope.message.products = $translate.instant('common.table.kntrh') + ' ' + product.name + ' '+$translate.instant('product.remove.confirm');
-        //
-        //     });
-        // }, function (btn) {});  //No
-
     };
 
     var getProductsCache = function () {

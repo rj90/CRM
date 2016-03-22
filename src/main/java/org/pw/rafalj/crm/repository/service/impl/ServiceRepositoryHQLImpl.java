@@ -4,6 +4,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.pw.rafalj.crm.filter.service.ServiceFilter;
 import org.pw.rafalj.crm.model.service.ServiceTypes;
+import org.pw.rafalj.crm.model.service.Services;
 import org.pw.rafalj.crm.repository.service.ServiceRepository;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +70,25 @@ public class ServiceRepositoryHQLImpl implements ServiceRepository {
     public List<ServiceTypes> getServiceTypes() {
         Query query = session.getCurrentSession().createQuery("FROM ServiceTypes");
         return query.list();
+    }
+
+    @Override
+    @Transactional
+    public Services findServiceById(Integer id) {
+        Query query = session.getCurrentSession().createQuery("from Services WHERE id = :ID");
+        query.setParameter("ID", id);
+
+        return (Services) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteServiceById(Integer id) {
+        Query query = session.getCurrentSession().createQuery("from Services WHERE id = :ID");
+        query.setParameter("ID", id);
+
+        Services service = (Services) query.uniqueResult();
+
+        session.getCurrentSession().delete(service);
     }
 }

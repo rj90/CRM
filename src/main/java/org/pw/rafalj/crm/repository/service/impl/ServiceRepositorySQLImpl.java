@@ -63,7 +63,7 @@ public class ServiceRepositorySQLImpl implements ServiceRepository {
             countquery.setParameter("description", "%" + filter.getDescription() + "%");
         }
 
-        return new PageContainer<>(query.list(), ((Long) countquery.uniqueResult()).intValue());
+        return new PageContainer<>(query.list(), ((Number) countquery.uniqueResult()).intValue());
     }
 
     @Override
@@ -72,5 +72,27 @@ public class ServiceRepositorySQLImpl implements ServiceRepository {
         SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * FROM SERVICE_TYPES");
         query.addEntity(ServiceTypes.class);
         return query.list();
+    }
+
+    @Override
+    @Transactional
+    public Services findServiceById(Integer id) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * from SERVICES WHERE ID = :ID");
+        query.setParameter("ID", id);
+        query.addEntity(Services.class);
+
+        return (Services) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteServiceById(Integer id) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * from SERVICES WHERE ID = :ID");
+        query.setParameter("ID", id);
+        query.addEntity(Services.class);
+
+        Services service = (Services) query.uniqueResult();
+
+        session.getCurrentSession().delete(service);
     }
 }

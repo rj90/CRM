@@ -24,4 +24,19 @@ public class PaymentsController {
     @ResponseBody public Page<PaymentVO> getContracts(@RequestBody PaymentFilter filter, HttpServletRequest request) {
         return paymentService.getPaymentVOPage(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), filter);
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody public PaymentVO getPaymentById(@RequestParam Integer id, HttpServletRequest request){
+        return paymentService.getPaymentVOById(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseBody public void removePaymentById(@RequestParam Integer id, HttpServletRequest request){
+        paymentService.removePaymentVOById(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    @ResponseBody public void updatePayment(@RequestBody PaymentVO paymentVO, HttpServletRequest request){
+        paymentService.save(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), paymentVO);
+    }
 }

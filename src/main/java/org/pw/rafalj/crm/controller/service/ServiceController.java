@@ -30,4 +30,19 @@ public class ServiceController {
     @ResponseBody public List<ServiceTypeVO> getServices(HttpServletRequest request){
         return servicesService.getServiceTypeVOList(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()));
     }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody public ServiceVO getServiceById(@RequestParam Integer id, HttpServletRequest request){
+        return servicesService.getServiceVOById(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), id);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseBody public void removeServiceById(@RequestParam Integer id, HttpServletRequest request){
+        servicesService.removeServiceVOById(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), id);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    @ResponseBody public void updateService(@RequestBody ServiceVO serviceVO, HttpServletRequest request){
+        servicesService.save(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()), serviceVO);
+    }
 }

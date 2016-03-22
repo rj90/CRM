@@ -36,4 +36,26 @@ public class PaymentRepositorySQLImpl implements PaymentRepository {
     public PageContainer findByFilter(PaymentFilter filter) {
         return null;
     }
+
+    @Override
+    @Transactional
+    public Payments findPaymentById(Integer id) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * from PRODUCTS WHERE ID = :ID");
+        query.setParameter("ID", id);
+        query.addEntity(Payments.class);
+
+        return (Payments) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deletePaymentById(Integer id) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("SELECT * from PRODUCTS WHERE ID = :ID");
+        query.setParameter("ID", id);
+        query.addEntity(Payments.class);
+
+        Payments payment = (Payments) query.uniqueResult();
+
+        session.getCurrentSession().delete(payment);
+    }
 }

@@ -57,4 +57,24 @@ public class ServiceRepositoryCriteriaImpl implements ServiceRepository {
         Criteria criteria = session.getCurrentSession().createCriteria(ServiceTypes.class);
         return criteria.list();
     }
+
+    @Override
+    @Transactional
+    public Services findServiceById(Integer id) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Services.class);
+        criteria.add(Restrictions.eq("id", id));
+
+        return (Services) criteria.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deleteServiceById(Integer id) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Services.class);
+        criteria.add(Restrictions.eq("id", id));
+
+        Services service = (Services) criteria.uniqueResult();
+
+        session.getCurrentSession().delete(service);
+    }
 }

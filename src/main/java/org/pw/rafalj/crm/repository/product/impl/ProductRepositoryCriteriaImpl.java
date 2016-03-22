@@ -48,7 +48,6 @@ public class ProductRepositoryCriteriaImpl implements ProductRepository {
         return new PageContainer<>(criteria.list(), ((Long) countCriteria.uniqueResult()).intValue());
     }
 
-
     @Override
     @Transactional
     public Products findProductById(Integer id) {

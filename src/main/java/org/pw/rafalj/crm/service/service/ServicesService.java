@@ -39,7 +39,7 @@ public class ServicesService {
 
             servicePage = serviceRepository.findByFilter(filter);
 
-            servicePage.getContent().stream().forEach(vo -> serviceVOList.add(vo.getServiceVO()));
+            servicePage.getContent().stream().forEach(vo -> serviceVOList.add(Services.getVO(vo)));
             log.info("Getting service ended in " + (System.currentTimeMillis() - time) + "ms");
             return new PageImpl<>(serviceVOList, filter.getPageable(), servicePage.getTotalElements());
         } catch (Exception e) {
@@ -69,6 +69,50 @@ public class ServicesService {
             return serviceTypesVOList;
         } catch (Exception e) {
             log.error("Error during getting service types", e);
+            throw e;
+        }
+    }
+
+    public ServiceVO getServiceVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Getting service by id");
+            Long time = System.currentTimeMillis();
+
+            ServiceVO vo = Services.getVO(serviceRepository.findServiceById(id));
+            log.info("Getting service ended in " + (System.currentTimeMillis() - time) + "ms");
+            return vo;
+        }
+        catch(Exception e){
+            log.error("Error during getting service", e);
+            throw e;
+        }
+    }
+
+    public void removeServiceVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Removing service by id");
+            Long time = System.currentTimeMillis();
+
+            serviceRepository.deleteServiceById(id);
+            log.info("Removing service ended in " + (System.currentTimeMillis() - time) + "ms");
+        }
+        catch(Exception e){
+            log.error("Error during removing service", e);
+            throw e;
+        }
+    }
+
+    public void save(DBQueryTypeEnum dbQueryTypeFromCookies, ServiceVO serviceVO) {
+        prepareRepositoryType(dbQueryTypeFromCookies);
+        try {
+            log.info("Saving service");
+            serviceRepository.save(new Services(serviceVO));
+            log.info("Service saved");
+        }
+        catch(Exception e){
+            log.error("Error during saving service", e);
             throw e;
         }
     }

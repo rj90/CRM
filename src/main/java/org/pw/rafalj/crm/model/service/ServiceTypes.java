@@ -22,6 +22,15 @@ public class ServiceTypes {
     @Column(name = "DESCRIPTION")
     String description;
 
+    public ServiceTypes() {
+    }
+
+    public ServiceTypes(ServiceTypeVO serviceTypeVO) {
+        this.id = serviceTypeVO.getId();
+        this.type = serviceTypeVO.getType();
+        this.description = serviceTypeVO.getDesc();
+    }
+
     public Integer getId() {
         return id;
     }

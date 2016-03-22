@@ -8,6 +8,9 @@ public class ServiceTypeVO {
     String type;
     String desc;
 
+    public ServiceTypeVO() {
+    }
+
     public ServiceTypeVO(Integer id, String type, String description) {
         this.id = id;
         this.type = type;

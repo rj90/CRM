@@ -34,4 +34,24 @@ public class PaymentRepositoryHQLImpl implements PaymentRepository {
     public PageContainer findByFilter(PaymentFilter filter) {
         return null;
     }
+
+    @Override
+    @Transactional
+    public Payments findPaymentById(Integer id) {
+        Query query = session.getCurrentSession().createQuery("from Payments WHERE id = :ID");
+        query.setParameter("ID", id);
+
+        return (Payments) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional
+    public void deletePaymentById(Integer id) {
+        Query query = session.getCurrentSession().createQuery("from Payments WHERE id = :ID");
+        query.setParameter("ID", id);
+
+        Payments payment = (Payments) query.uniqueResult();
+
+        session.getCurrentSession().delete(payment);
+    }
 }
