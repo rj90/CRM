@@ -6,12 +6,15 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.pw.rafalj.crm.filter.service.ServiceFilter;
+import org.pw.rafalj.crm.model.service.ServiceTypes;
 import org.pw.rafalj.crm.model.service.Services;
 import org.pw.rafalj.crm.repository.service.ServiceRepository;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by rjozwiak on 2016-03-13.
@@ -46,5 +49,12 @@ public class ServiceRepositoryCriteriaImpl implements ServiceRepository {
         }
 
         return new PageContainer<>(criteria.list(), ((Long) countCriteria.uniqueResult()).intValue());
+    }
+
+    @Override
+    @Transactional
+    public List<ServiceTypes> getServiceTypes() {
+        Criteria criteria = session.getCurrentSession().createCriteria(ServiceTypes.class);
+        return criteria.list();
     }
 }

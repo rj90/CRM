@@ -3,11 +3,14 @@ package org.pw.rafalj.crm.repository.service.impl;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.pw.rafalj.crm.filter.service.ServiceFilter;
+import org.pw.rafalj.crm.model.service.ServiceTypes;
 import org.pw.rafalj.crm.repository.service.ServiceRepository;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by rjozwiak on 2016-03-13.
@@ -59,5 +62,12 @@ public class ServiceRepositoryHQLImpl implements ServiceRepository {
         }
 
         return new PageContainer<>(query.list(), ((Long) countquery.uniqueResult()).intValue());
+    }
+
+    @Override
+    @Transactional
+    public List<ServiceTypes> getServiceTypes() {
+        Query query = session.getCurrentSession().createQuery("FROM ServiceTypes");
+        return query.list();
     }
 }

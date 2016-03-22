@@ -1,0 +1,28 @@
+<div class="panel-body ">
+    <div class="panel-page-section panel-page-section-bg">{{'common.basic.data' | translate}}</div>
+    <div class="panel-page-section-body">
+        <div class="form-horizontal">
+            <input-dctv label="{{'services.table.code' | translate}}" type="text" model="serviceVO.code"
+                        required="true"
+                        error-msg="errorMsg"></input-dctv>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{'services.table.type' | translate}}</label>
+
+                <div class="col-sm-4">
+                    <md-select ng-model="serviceVO.type" ng-required="required" md-on-open="loadStatuses()" style="height: 40px; margin: -1px 0px;">
+                        <md-option ng-value="type" ng-repeat="type in serviceTypes">{{type.type}}</md-option>
+                    </md-select>
+                </div>
+                <label style="margin-top: 2px; font-size: 12px; font-weight: 400;"
+                       class="col-sm-4 label label-danger">{{errorArray['name']}}</label>
+            </div>
+            <input-dctv label="{{'services.table.name' | translate}}" type="text" model="serviceVO.name"
+                        required="true"
+                        error-msg="errorMsg"></input-dctv>
+            <input-dctv label="{{'services.table.desc' | translate}}" type="text" model="serviceVO.desc"
+                        required="true"
+                        error-msg="errorMsg"></input-dctv>
+
+        </div>
+    </div>
+</div>

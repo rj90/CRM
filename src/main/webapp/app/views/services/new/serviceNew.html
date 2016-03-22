@@ -1,0 +1,38 @@
+<div>
+    <div class="row">
+        <div class="page-title">{{'menu.clients.services.label' | translate}}</div>
+    </div>
+
+    <div style="width:100%; height:25px"></div>
+
+    <div class="row">
+        <!-- context menu -->
+        <div style="display: inline-flex;">
+            <div><md-button class="md-primary" ng-href="#/services/newService">{{'menu.clients.services.newService' | translate}}</md-button></div>
+            <div><md-button class="md-primary" ng-href="#/services/serviceList">{{'menu.clients.services.serviceList' | translate}}</md-button></div>
+        </div>
+    </div>
+    <div style="width:100%; height:30px"></div>
+    <div style="width:100%; height:30px"></div>
+    <div class="row">
+        <div class="panel panel-default-page panel-sm col-md-8">
+            <div class="panel-heading">{{'service.new' | translate}}</div>
+            <div ng-include="'app/views/services/forms/serviceForm.html'"></div>
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 text-right">
+                    <button type="button" class="btn btn-danger cancel-btn" ng-click="goToPreviousState()">
+                        <i class="fa fa-ban"></i> {{'common.btn.cancel' | translate}}
+                    </button>
+                    <button type="button" class="btn btn-success ladda-button submit-btn"
+                            ng-click="save()"><i class="fa fa-check"/> {{'common.btn.save' | translate}}
+                    </button>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+
+            <div class="row" style="height: 15px"/>
+        </div>
+    </div>
+</div>
