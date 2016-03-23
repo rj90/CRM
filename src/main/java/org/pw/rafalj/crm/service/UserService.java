@@ -20,7 +20,7 @@ public class UserService {
         try {
             usersRepository = (UsersRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
         } catch (Exception e) {
-            throw e;
+            throw new RuntimeException(e);
         }
         return usersRepository.getUserByLogin(login);
     }

@@ -25,7 +25,7 @@ public class EMailService {
         try {
             eMailRepository = (EMailRepository) RepositoryFactory.getInstance().getRepository(type, CookieUtils.getDBQueryTypeFromCookies(cookies));
         } catch (Exception e) {
-            throw e;
+            throw new RuntimeException(e);
         }
         mailSender = EMailFactory.createSender(eMailRepository.getMailSettings(TokenUtils.getUserNameFromToken(CookieUtils.getTokenFromCookies(cookies))));
 

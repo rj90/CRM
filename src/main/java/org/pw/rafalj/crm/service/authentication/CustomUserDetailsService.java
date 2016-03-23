@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         try {
             usersRepository = (UsersRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
         } catch (Exception e) {
-            throw e;
+            throw new RuntimeException(e);
         }
         Users user = usersRepository.getUserByLogin(s);
         if(user == null) throw new UsernameNotFoundException("User not found");

@@ -67,7 +67,7 @@ public class ContractService {
             contractRepository = (ContractRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
         } catch (Exception e) {
             log.error("Error during getting repository type", e);
-            throw e;
+            throw new RuntimeException(e);
         }
     }
 }
