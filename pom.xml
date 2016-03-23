@@ -25,6 +25,7 @@
         <mockito.version>1.10.19</mockito.version>
         <javax.mail.version>1.4.7</javax.mail.version>
         <quartz.scheduler.version>2.2.1</quartz.scheduler.version>
+        <jxl.version>2.6.12</jxl.version>
     </properties>
 
     <repositories>
@@ -246,6 +247,12 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>${quartz.scheduler.version}</version>
+        </dependency>
+        <!--Excel-->
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>${jxl.version}</version>
         </dependency>
     </dependencies>
 
