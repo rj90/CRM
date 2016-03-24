@@ -16,6 +16,8 @@
 						   http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
 						   http://www.springframework.org/schema/context http://www.springframework.org/schema/task/spring-context-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
     <bean id="databaseProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:META-INF/database.properties"/>
     </bean>
@@ -34,12 +36,14 @@
         <property name="testOnReturn" value="true"/>
     </bean>
 
-    <!--<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">-->
-        <!--<property ref="dataSource" name="dataSource"></property>-->
-        <!--<property name="changeLog" value="classpath:META-INF/changelog.xml"></property>-->
-    <!--</bean>-->
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property ref="dataSource" name="dataSource"></property>
+        <property name="changeLog" value="classpath:META-INF/changelog.xml"></property>
+    </bean>
 
-    <!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>-->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+          p:sessionFactory-ref="sessionFactory">
+    </bean>
 
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
@@ -74,10 +78,4 @@
             </props>
         </property>
     </bean>
-
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"
-          p:sessionFactory-ref="sessionFactory">
-    </bean>
-
 </beans>

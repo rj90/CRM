@@ -1,17 +1,34 @@
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-
+    <preConditions>
+        <dbms type="oracle"/>
+        <runningAs username="RAFALJ"/>
+    </preConditions>
     <changeSet id="1" author="rafalj">
-        <comment>init script</comment>
+        <preConditions onFail="WARN"/>
+        <comment>Create database structure</comment>
         <sqlFile encoding="utf8"
-                 path="init.sql"
+                 path="scripts/create_structure.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
-                 stripComments="true"/>
+                 stripComments="true"
+                endDelimiter="/"/>
     </changeSet>
 
-    <include file="META-INF/mod.sql"/>
+    <!--<changeSet id="2" author="rafalj">-->
+        <!--<preConditions onFail="WARN"/>-->
+        <!--<comment>Create database structure</comment>-->
+        <!--<sqlFile encoding="utf8"-->
+                 <!--path="scripts/insert_basic_data.sql"-->
+                 <!--relativeToChangelogFile="true"-->
+                 <!--splitStatements="true"-->
+                 <!--stripComments="true"-->
+                <!--endDelimiter="/"/>-->
+    <!--</changeSet>-->
 
 </databaseChangeLog>
