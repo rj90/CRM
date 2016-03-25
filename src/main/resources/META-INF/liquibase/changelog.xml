@@ -20,15 +20,26 @@
                 endDelimiter="/"/>
     </changeSet>
 
-    <!--<changeSet id="2" author="rafalj">-->
-        <!--<preConditions onFail="WARN"/>-->
-        <!--<comment>Create database structure</comment>-->
-        <!--<sqlFile encoding="utf8"-->
-                 <!--path="scripts/insert_basic_data.sql"-->
-                 <!--relativeToChangelogFile="true"-->
-                 <!--splitStatements="true"-->
-                 <!--stripComments="true"-->
-                <!--endDelimiter="/"/>-->
-    <!--</changeSet>-->
+    <changeSet id="2" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create employees</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/insert_basic_data.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
+
+    <changeSet id="3" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create customers</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/clients.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
 
 </databaseChangeLog>
