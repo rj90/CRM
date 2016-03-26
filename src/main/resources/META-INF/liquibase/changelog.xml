@@ -33,31 +33,53 @@
 
     <changeSet id="3" author="rafalj">
         <preConditions onFail="WARN"/>
-        <comment>Create customers</comment>
+        <comment>Create customer persons</comment>
         <sqlFile encoding="utf8"
-                 path="scripts/03_clients.sql"
+                 path="scripts/03_client_persons.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
                 endDelimiter="/"/>
     </changeSet>
 
-    <!--<changeSet id="4" author="rafalj">-->
+    <changeSet id="4" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create customers</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/04_customers.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
+
+    <changeSet id="5" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Register persons</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/05_client_registration.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
+
+    <!--<changeSet id="6" author="rafalj">-->
         <!--<preConditions onFail="WARN"/>-->
         <!--<comment>Create contract statuses</comment>-->
         <!--<sqlFile encoding="utf8"-->
-                 <!--path="scripts/04_contract_statuses.sql"-->
+                 <!--path="scripts/06_contract_statuses.sql"-->
                  <!--relativeToChangelogFile="true"-->
                  <!--splitStatements="true"-->
                  <!--stripComments="true"-->
                 <!--endDelimiter="/"/>-->
     <!--</changeSet>-->
 
-    <!--<changeSet id="4" author="rafalj">-->
+    <!--<changeSet id="7" author="rafalj">-->
         <!--<preConditions onFail="WARN"/>-->
         <!--<comment>Create contracts</comment>-->
         <!--<sqlFile encoding="utf8"-->
-                 <!--path="scripts/05_contracts.sql"-->
+                 <!--path="scripts/07_contracts.sql"-->
                  <!--relativeToChangelogFile="true"-->
                  <!--splitStatements="true"-->
                  <!--stripComments="true"-->
