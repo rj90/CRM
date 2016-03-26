@@ -64,16 +64,16 @@
                 endDelimiter="/"/>
     </changeSet>
 
-    <!--<changeSet id="6" author="rafalj">-->
-        <!--<preConditions onFail="WARN"/>-->
-        <!--<comment>Create contract statuses</comment>-->
-        <!--<sqlFile encoding="utf8"-->
-                 <!--path="scripts/06_contract_statuses.sql"-->
-                 <!--relativeToChangelogFile="true"-->
-                 <!--splitStatements="true"-->
-                 <!--stripComments="true"-->
-                <!--endDelimiter="/"/>-->
-    <!--</changeSet>-->
+    <changeSet id="6" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create contract statuses</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/06_contract_statuses.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
 
     <!--<changeSet id="7" author="rafalj">-->
         <!--<preConditions onFail="WARN"/>-->
