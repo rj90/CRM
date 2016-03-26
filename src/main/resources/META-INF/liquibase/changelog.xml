@@ -13,7 +13,7 @@
         <preConditions onFail="WARN"/>
         <comment>Create database structure</comment>
         <sqlFile encoding="utf8"
-                 path="scripts/create_structure.sql"
+                 path="scripts/01_create_structure.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
@@ -24,7 +24,7 @@
         <preConditions onFail="WARN"/>
         <comment>Create employees</comment>
         <sqlFile encoding="utf8"
-                 path="scripts/insert_basic_data.sql"
+                 path="scripts/02_insert_basic_data.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
@@ -35,11 +35,33 @@
         <preConditions onFail="WARN"/>
         <comment>Create customers</comment>
         <sqlFile encoding="utf8"
-                 path="scripts/clients.sql"
+                 path="scripts/03_clients.sql"
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
                 endDelimiter="/"/>
     </changeSet>
+
+    <!--<changeSet id="4" author="rafalj">-->
+        <!--<preConditions onFail="WARN"/>-->
+        <!--<comment>Create contract statuses</comment>-->
+        <!--<sqlFile encoding="utf8"-->
+                 <!--path="scripts/04_contract_statuses.sql"-->
+                 <!--relativeToChangelogFile="true"-->
+                 <!--splitStatements="true"-->
+                 <!--stripComments="true"-->
+                <!--endDelimiter="/"/>-->
+    <!--</changeSet>-->
+
+    <!--<changeSet id="4" author="rafalj">-->
+        <!--<preConditions onFail="WARN"/>-->
+        <!--<comment>Create contracts</comment>-->
+        <!--<sqlFile encoding="utf8"-->
+                 <!--path="scripts/05_contracts.sql"-->
+                 <!--relativeToChangelogFile="true"-->
+                 <!--splitStatements="true"-->
+                 <!--stripComments="true"-->
+                <!--endDelimiter="/"/>-->
+    <!--</changeSet>-->
 
 </databaseChangeLog>
