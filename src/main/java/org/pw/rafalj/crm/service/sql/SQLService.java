@@ -23,9 +23,9 @@ import java.util.List;
 @Service
 public class SQLService {
     private static final String type = "sql";
-    Logger log = LoggerFactory.getLogger(SQLService.class);
+    private Logger log = LoggerFactory.getLogger(SQLService.class);
 
-    SQLRepository sqlRepository;
+    private SQLRepository sqlRepository;
 
     public List<DBQueryTypeVO> getDBQueryType() {
         return Arrays.asList(new DBQueryTypeVO[]{new DBQueryTypeVO(DBQueryTypeEnum.SQL),
@@ -36,7 +36,6 @@ public class SQLService {
     public void updateDatabase() {
         try{
             SpringLiquibase springLiquibase = (SpringLiquibase) ApplicationContextProvider.getContext().getBean("liquibase");
-            DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(springLiquibase.getDataSource().getConnection()));
             //FIXME: Resource Accessor
             Liquibase liquibase = new Liquibase(springLiquibase.getChangeLog(), new FileSystemResourceAccessor(),
                     DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(springLiquibase.getDataSource().getConnection())));
