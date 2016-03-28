@@ -120,6 +120,20 @@
                         </entry>
                     </map>
                 </entry>
+                <!--DATABASE MANAGER-->
+                <entry key="sql">
+                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                        <entry key="SQL">
+                            <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLSQLImpl"/>
+                        </entry>
+                        <entry key="HQL">
+                            <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLHQLImpl"/>
+                        </entry>
+                        <entry key="CRITERIA_API">
+                            <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLCriteriaImpl"/>
+                        </entry>
+                    </map>
+                </entry>
             </map>
         </property>
     </bean>

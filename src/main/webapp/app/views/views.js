@@ -3,6 +3,7 @@
  */
 angular.module('crmApp.views',[
     'crmApp.customers',
+    'crmApp.databaseManager',
     'crmApp.login',
     'crmApp.products',
     'crmApp.servicesAndProducts',
