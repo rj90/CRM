@@ -7,19 +7,26 @@ import org.pw.rafalj.crm.enums.ResponseStatusEnum;
  */
 public class ResponseVO {
 
+    String status;
     String message;
-    String detailMessage;
-    Integer status;
+    StackTraceElement[] details;
 
-    public ResponseVO(ResponseStatusEnum enums, String detailMessage) {
-        this.status = enums.getStatus();
-        this.message = enums.getMessage();
-        this.detailMessage = detailMessage;
+    public ResponseVO(ResponseStatusEnum enums, String message, StackTraceElement[] details) {
+        this.status = enums.getMessage();
+        this.message = message;
+        this.details = details;
     }
 
     public ResponseVO(ResponseStatusEnum enums) {
-        this.status = enums.getStatus();
-        this.message = enums.getMessage();
+        this.status = enums.getMessage();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getMessage() {
@@ -30,19 +37,11 @@ public class ResponseVO {
         this.message = message;
     }
 
-    public Integer getStatus() {
-        return status;
+    public StackTraceElement[] getDetails() {
+        return details;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public String getDetailMessage() {
-        return detailMessage;
-    }
-
-    public void setDetailMessage(String detailMessage) {
-        this.detailMessage = detailMessage;
+    public void setDetails(StackTraceElement[] details) {
+        this.details = details;
     }
 }

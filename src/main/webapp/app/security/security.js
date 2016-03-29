@@ -97,17 +97,17 @@ angular.module('crmApp.security',['ngMaterial'])
                         }
                         if(status == 500){ // SERVER INTERNAL ERROR
                             var $mdDialog = $injector.get('$mdDialog');
-                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.internalServerError')).textContent(rejection.data.detailMessage).ok($translate.instant('error.close')));
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.internalServerError')).textContent(rejection.data.message).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if(status == 409){ // Data integrity violation
                             var $mdDialog = $injector.get('$mdDialog');
-                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.internalServerError')).textContent(rejection.data.detailMessage).ok($translate.instant('error.close')));
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.internalServerError')).textContent(rejection.data.message).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if(status == 403){ // FORBIDDEN
                             var $mdDialog = $injector.get('$mdDialog');
-                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.forbidden')).textContent(rejection.data.detailMessage).ok($translate.instant('error.close')));
+                            $mdDialog.show($mdDialog.alert().title($translate.instant('error.forbidden')).textContent(rejection.data.message).ok($translate.instant('error.close')));
                             return rejection;
                         }
                         if(status == 404){ // NOT FOUND

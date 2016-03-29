@@ -26,7 +26,7 @@ public class ExceptionHandlingController {
     @ResponseBody
     public ResponseVO databaseError(HttpServletRequest req, Exception e) {
         log.info(" e = {}", e);
-        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage());
+        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage(), e.getStackTrace());
     }
 
     @ExceptionHandler(WebApplicationException.class)
@@ -34,7 +34,7 @@ public class ExceptionHandlingController {
     @ResponseBody
     public ResponseVO UNAUTHORIZEDError(HttpServletRequest req, WebApplicationException e) {
         log.info(" e Exception = {}", e);
-        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage());
+        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage(), e.getStackTrace());
     }
 
     @ExceptionHandler(Exception.class)
@@ -42,6 +42,6 @@ public class ExceptionHandlingController {
     @ResponseBody
     public ResponseVO handleError(HttpServletRequest req, Exception e) {
         log.info(" e Exception = {}", e);
-        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage());
+        return new ResponseVO(ResponseStatusEnum.ERROR, e.getMessage(), e.getStackTrace());
     }
 }

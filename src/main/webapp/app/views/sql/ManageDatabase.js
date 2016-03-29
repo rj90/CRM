@@ -9,20 +9,61 @@ angular.module('crmApp.databaseManager', ['ngRoute'])
             controller: 'DatabaseManager'
         });
     })
-    .controller('DatabaseManager', function($scope, DBService){
-        $scope.update = function(){
+    .controller('DatabaseManager', function($scope, $translate, DBService){
+        $scope.dbActions = [
+            {id: 1, name: $translate.instant('database.removeAllChangeLogs')},
+            {id: 2, name: $translate.instant('database.generate')},
+            {id: 3, name: $translate.instant('database.update')}
+        ];
+        $scope.dbAction = $scope.dbActions[0];
+
+        $scope.logsVisible = true;
+        $scope.logs = '';
+
+        var update = function(callback){
             DBService.update(function(response){
+                    callback(response);
                 }
             )
         };
-        $scope.generateSQL = function(){
+        var generateSQL = function(callback){
             DBService.generateSQL(function(response){
+                    callback(response);
                 }
             )
         };
-        $scope.removeAllChangeLogs = function(){
+        var removeAllChangeLogs = function(callback){
             DBService.removeAllChangeLogs(function(response){
+                    callback(response);
                 }
             )
+        };
+
+        var manageResponse = function(response){
+            if(response.data !== undefined || response.data != null){
+                $scope.logs += '<div class="row">' +
+                    '<div class="col-md-1">'
+                    + response.data.date +
+                    '</div>' +
+                    '<div class="col-md-10">' + response.data.log + '</div>' +
+                    '</div>\n';
+            }
+            console.log(response);
+        };
+
+        $scope.doAction = function(){
+            if($scope.dbAction.id === 1){
+                removeAllChangeLogs(manageResponse);
+            }
+            if($scope.dbAction.id === 2){
+                generateSQL(manageResponse);
+            }
+            if($scope.dbAction.id === 3){
+                update(manageResponse);
+            }
+        }
+
+        $scope.clearLog = function(){
+            $scope.logs = '';
         };
     });

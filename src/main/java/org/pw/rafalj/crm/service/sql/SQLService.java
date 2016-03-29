@@ -55,7 +55,7 @@ public class SQLService {
         try {
             log.info("Deleting all Changelogs");
             sqlRepository.deleteAll();
-            log.info("Service saved");
+            log.info("Changelogs deleted");
         }
         catch(Exception e){
             log.error("Error during deleting Changelogs", e);
