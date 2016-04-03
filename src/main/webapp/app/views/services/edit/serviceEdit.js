@@ -40,8 +40,6 @@ angular.module('crmApp.serviceEdit', ['ngRoute'])
                 //     if($scope.serviceTypes[i].id === $scope.serviceVO.type.id)
                 //         $scope.type = $scope.serviceTypes[i];
                 // }
-                console.log($scope.servicetype)
-                console.log($scope.serviceVO)
             });
         });
     }

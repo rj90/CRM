@@ -75,15 +75,15 @@
                 endDelimiter="/"/>
     </changeSet>
 
-    <!--<changeSet id="7" author="rafalj">-->
-        <!--<preConditions onFail="WARN"/>-->
-        <!--<comment>Create contracts</comment>-->
-        <!--<sqlFile encoding="utf8"-->
-                 <!--path="scripts/07_contracts.sql"-->
-                 <!--relativeToChangelogFile="true"-->
-                 <!--splitStatements="true"-->
-                 <!--stripComments="true"-->
-                <!--endDelimiter="/"/>-->
-    <!--</changeSet>-->
+    <changeSet id="7" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create contracts</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/07_contracts.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
 
 </databaseChangeLog>

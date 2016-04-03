@@ -16,14 +16,12 @@ angular.module('crmApp.login', ['ngRoute'])
         $rootScope.isAuthenticated = false;
 
         DBService.getQueriesType(function(response){
-            console.log(response.data)
             $scope.dbConnOptions = response.data;
             $scope.dbConnType = $scope.dbConnOptions[0];
         });
 
         $scope.login = function() {
             usSpinnerService.spin('login-spinner');
-            //console.log($scope.username + $scope.password);
             $cookieStore.put('dbConnType', $scope.dbConnType.id);
             UserService.authenticate({username: $scope.username, password: $scope.password}, function(authenticationResult) {
 

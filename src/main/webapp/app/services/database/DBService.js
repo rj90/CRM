@@ -48,7 +48,6 @@ angular.module('DBServices', ['ngResource'])
         };
 
         service.testSelect = function(options, callback){
-            console.log(options);
             return $http.post(APP_CONTEXT + "testDatabase/select", options).then(function(response){
                 callback(response);
             })

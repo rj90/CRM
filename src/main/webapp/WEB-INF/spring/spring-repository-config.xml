@@ -134,6 +134,20 @@
                         </entry>
                     </map>
                 </entry>
+                <!--DATABASE MANAGER-->
+                <entry key="DASHBOARD">
+                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                        <entry key="SQL">
+                            <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositorySQLImpl"/>
+                        </entry>
+                        <entry key="HQL">
+                            <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryHQLImpl"/>
+                        </entry>
+                        <entry key="CRITERIA_API">
+                            <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryCriteriaImpl"/>
+                        </entry>
+                    </map>
+                </entry>
             </map>
         </property>
     </bean>

@@ -53,8 +53,6 @@ angular.module('crmApp.productList', ['ngRoute'])
     $scope.loadProducts = function () {
         var filter = prepareFilter();
 
-        console.log(filter);
-
         $http.post('products', filter).then(function (response) {
             $scope.productsGrid.data = response.data.content;
             $scope.productsGrid.totalItems = response.data.totalElements;

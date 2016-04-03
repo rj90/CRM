@@ -35,8 +35,6 @@ angular.module('crmApp.paymentList', ['ngRoute'])
         $scope.loadPayments = function () {
             var filter = prepareFilter();
 
-            console.log(filter);
-
             $http.post('payments', filter).then(function (response) {
                 $scope.paymentsGrid.data = response.data.content;
                 $scope.paymentsGrid.totalItems = response.data.totalElements;

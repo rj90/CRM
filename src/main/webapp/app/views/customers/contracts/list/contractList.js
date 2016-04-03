@@ -46,8 +46,6 @@ angular.module('crmApp.contractList', ['ngRoute'])
     $scope.loadContracts = function () {
         var filter = prepareFilter();
 
-        console.log(filter);
-
         $http.post('contracts', filter).then(function (response) {
             $scope.contractsGrid.data = response.data.content;
             $scope.contractsGrid.totalItems = response.data.totalElements;

@@ -19,7 +19,8 @@ public enum ServiceType {
     SERVICE(6, "SERVICE"),
     COMPLAINT(7, "COMPLAINT"),
     BILLING(8, "BILLING"),
-    SQL(9, "SQL");
+    SQL(9, "SQL"),
+    DASHBOARD(10, "DASHBOARD");
 
 
     private int id;

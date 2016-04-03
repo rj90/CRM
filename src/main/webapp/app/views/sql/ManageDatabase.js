@@ -48,7 +48,6 @@ angular.module('crmApp.databaseManager', ['ngRoute'])
                     '<label class="col-md-10">' + response.data.log + '</label>' +
                     '</div>\n';
             }
-            console.log(response);
         };
 
         $scope.doAction = function(){
