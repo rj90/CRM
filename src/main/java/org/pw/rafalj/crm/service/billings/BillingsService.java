@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service.billings;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.billings.BillingFilter;
 import org.pw.rafalj.crm.model.billings.Billings;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @Service
 public class BillingsService {
-    private static final String type = "billing";
+    private static final ServiceType type = ServiceType.BILLING;
     Logger log = LoggerFactory.getLogger(BillingsService.class);
 
     BillingRepository billingRepository;

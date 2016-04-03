@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service.contract;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.ContractFilter;
 import org.pw.rafalj.crm.model.contracts.Contracts;
@@ -10,12 +11,10 @@ import org.pw.rafalj.crm.vo.contract.ContractVO;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.Cookie;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +23,7 @@ import java.util.List;
  */
 @Service
 public class ContractService {
-    private static final String type = "contract";
+    private static final ServiceType type = ServiceType.CONTRACT;
     Logger log = LoggerFactory.getLogger(ContractService.class);
 
 

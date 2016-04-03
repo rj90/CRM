@@ -1,5 +1,6 @@
 angular.module('crmApp', [
     'angularSpinner',
+    'chart.js',
     'ngCookies',
     'ngMaterial',
     'ngMessages',

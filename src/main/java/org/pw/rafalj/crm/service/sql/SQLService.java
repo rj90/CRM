@@ -7,6 +7,8 @@ import liquibase.integration.spring.SpringLiquibase;
 import liquibase.resource.FileSystemResourceAccessor;
 import org.pw.rafalj.crm.context.ApplicationContextProvider;
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.QueryType;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.repository.liquibase.SQLRepository;
 import org.pw.rafalj.crm.vo.dbquerytype.DBQueryTypeVO;
@@ -14,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +25,7 @@ import java.util.List;
  */
 @Service
 public class SQLService {
-    private static final String type = "sql";
+    private static final ServiceType type = ServiceType.SQL;
     private Logger log = LoggerFactory.getLogger(SQLService.class);
 
     private SQLRepository sqlRepository;
@@ -70,5 +73,29 @@ public class SQLService {
             log.error("Error during getting repository type", e);
             throw new RuntimeException(e);
         }
+    }
+
+    public List<DBQueryTypeVO> getDBQueryTypeForTests() {
+        List<DBQueryTypeVO> types = new ArrayList<>(getDBQueryType());
+        types.add(new DBQueryTypeVO(DBQueryTypeEnum.PURE_SQL));
+        return types;
+    }
+
+    public List<QueryType> loadQueries() {
+        return Arrays.asList(new QueryType[]{QueryType.SELECT,
+                QueryType.INSERT,
+                QueryType.UPDATE,
+                QueryType.DELETE});
+    }
+
+    public List<ServiceType> loadTables() {
+        return Arrays.asList(new ServiceType[]{ServiceType.PRODUCT,
+                ServiceType.SERVICE,
+//                ServiceType.BILLING,
+//                ServiceType.COMPLAINT,
+//                ServiceType.PAYMENT,
+                ServiceType.CONTRACT,
+//                ServiceType.MAIL,
+                /*ServiceType.USER*/});
     }
 }

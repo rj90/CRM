@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service.service;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.service.ServiceFilter;
 import org.pw.rafalj.crm.model.service.ServiceTypes;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ServicesService {
-    private static final String type = "service";
+    private static final ServiceType type = ServiceType.SERVICE;
     Logger log = LoggerFactory.getLogger(ServicesService.class);
 
     ServiceRepository serviceRepository;

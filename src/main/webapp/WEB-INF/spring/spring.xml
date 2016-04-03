@@ -26,5 +26,7 @@
 
     <import resource="spring-repository-config.xml"/>
 
+    <import resource="spring-repository-test-config.xml"/>
+
     <import resource="spring-scheduler.xml"/>
 </beans>

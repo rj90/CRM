@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service.product;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.product.ProductFilter;
 import org.pw.rafalj.crm.model.products.Products;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @Service
 public class ProductService {
-    private static final String type = "product";
+    private static final ServiceType type = ServiceType.PRODUCT;
     Logger log = LoggerFactory.getLogger(ProductService.class);
 
     ProductRepository productRepository;

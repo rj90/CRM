@@ -7,9 +7,9 @@
 
     <bean id="repository_config" class="org.pw.rafalj.crm.config.RepositoryConfigBean">
         <property name="repositories">
-            <map>
+            <map key-type="org.pw.rafalj.crm.enums.ServiceType">
                 <!--CONTRACTS-->
-                <entry key="contract">
+                <entry key="CONTRACT">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositorySQLImpl"/>
@@ -23,7 +23,7 @@
                     </map>
                 </entry>
                 <!--MAILS-->
-                <entry key="mails">
+                <entry key="MAIL">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositorySQLImpl"/>
@@ -37,7 +37,7 @@
                     </map>
                 </entry>
                 <!--USERS-->
-                <entry key="users">
+                <entry key="USER">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositorySQLImpl"/>
@@ -51,7 +51,7 @@
                     </map>
                 </entry>
                 <!--PAYMENTS-->
-                <entry key="payment">
+                <entry key="PAYMENT">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositorySQLImpl"/>
@@ -65,7 +65,7 @@
                     </map>
                 </entry>
                 <!--PRODUCTS-->
-                <entry key="product">
+                <entry key="PRODUCT">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositorySQLImpl"/>
@@ -79,7 +79,7 @@
                     </map>
                 </entry>
                 <!--SERVICES-->
-                <entry key="service">
+                <entry key="SERVICE">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositorySQLImpl"/>
@@ -93,7 +93,7 @@
                     </map>
                 </entry>
                 <!--COMPLAINTS-->
-                <entry key="complaint">
+                <entry key="COMPLAINT">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositorySQLImpl"/>
@@ -107,7 +107,7 @@
                     </map>
                 </entry>
                 <!--BILLINGS-->
-                <entry key="billing">
+                <entry key="BILLING">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositorySQLImpl"/>
@@ -121,7 +121,7 @@
                     </map>
                 </entry>
                 <!--DATABASE MANAGER-->
-                <entry key="sql">
+                <entry key="SQL">
                     <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                         <entry key="SQL">
                             <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLSQLImpl"/>

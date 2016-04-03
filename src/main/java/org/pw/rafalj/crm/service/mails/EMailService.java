@@ -1,5 +1,6 @@
 package org.pw.rafalj.crm.service.mails;
 
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.factory.mails.EMailFactory;
 import org.pw.rafalj.crm.repository.mails.EMailRepository;
@@ -15,7 +16,7 @@ import javax.servlet.http.Cookie;
  */
 @Service
 public class EMailService {
-    private static final String type = "mails";
+    private static final ServiceType type = ServiceType.MAIL;
 
     MailSender mailSender;
 

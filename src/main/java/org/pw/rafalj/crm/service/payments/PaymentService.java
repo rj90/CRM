@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service.payments;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.payments.PaymentFilter;
 import org.pw.rafalj.crm.model.payments.Payments;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 @Service
 public class PaymentService {
-    private static final String type = "payment";
+    private static final ServiceType type = ServiceType.PAYMENT;
     Logger log = LoggerFactory.getLogger(PaymentService.class);
 
     PaymentRepository paymentRepository;

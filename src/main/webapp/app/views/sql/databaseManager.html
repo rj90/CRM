@@ -4,43 +4,88 @@
     </div>
 
     <div style="width:100%; height:25px"></div>
-    <div class="row">
-        <div class="panel panel-default-page panel-sm col-md-8">
-            <div class="panel-page-section panel-page-section-bg">{{'database.label.actions' | translate}}</div>
-            <div class="panel-page-section-body">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">{{'database.label.actions' | translate}}</label>
+    <tabset>
+        <tab heading="xyz">
+            <div class="row">
+                <div class="panel panel-default-page panel-sm col-md-8">
+                    <div class="panel-page-section panel-page-section-bg">{{'database.label.actions' | translate}}</div>
+                    <div class="panel-page-section-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{'database.label.actions' | translate}}</label>
 
-                        <div class="col-sm-4">
-                            <md-select ng-model="dbAction" ng-required="required" style="height: 40px; margin: -1px 0px;">
-                                <md-option ng-value="dbAction" ng-repeat="dbAction in dbActions">{{dbAction.name}}</md-option>
-                            </md-select>
+                                <div class="col-sm-4">
+                                    <md-select ng-model="dbAction" ng-required="required" style="height: 40px; margin: -1px 0px;">
+                                        <md-option ng-value="dbAction" ng-repeat="dbAction in dbActions">{{dbAction.name}}</md-option>
+                                    </md-select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10 text-right">
+                                    <md-button type="button" class="md-raised md-primary" ng-click="clearLog()">
+                                        <i class="fa fa-trash-o"></i> {{'database.btn.clear' | translate}}
+                                    </md-button>
+                                    <md-button type="button" class="md-raised md-primary"
+                                               ng-click="doAction()"><i class="fa fa-check"/> {{'database.btn.run' | translate}}
+                                    </md-button>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-10 text-right">
-                            <md-button type="button" class="md-raised md-primary" ng-click="clearLog()">
-                                <i class="fa fa-trash-o"></i> {{'database.btn.clear' | translate}}
-                            </md-button>
-                            <md-button type="button" class="md-raised md-primary"
-                                       ng-click="doAction()"><i class="fa fa-check"/> {{'database.btn.run' | translate}}
-                            </md-button>
-                        </div>
-                        <div class="col-md-1"></div>
-                    </div>
-
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div style="width:100%; height:25px"></div>
-    <div class="row" ng-if="logsVisible===true">
-        <div class="panel panel-default-page panel-sm col-md-8">
-            <div class="panel-page-section panel-page-section-bg">{{'database.label.logs' | translate}}</div>
-            <div class="form-horizontal" ng-bind-html="logs" contenteditable="true" ng-model="logs" cols="50" rows="10"/>
-        </div>
-    </div>
+            <div style="width:100%; height:25px"></div>
+            <div class="row" ng-if="logsVisible===true">
+                <div class="panel panel-default-page panel-sm col-md-8">
+                    <div class="panel-page-section panel-page-section-bg">{{'database.label.logs' | translate}}</div>
+                    <div class="form-horizontal" ng-bind-html="logs" ng-model="logs" cols="50" rows="10"/>
+                </div>
+            </div>
+        </tab>
+        <tab heading="xyz2">
+            <div class="row">
+                <div class="panel panel-default-page panel-sm col-md-8">
+                    <div class="panel-page-section panel-page-section-bg">{{'database.label.actions' | translate}}</div>
+                    <div class="panel-page-section-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">{{'database.label.actions' | translate}}</label>
+
+                                <div class="col-sm-4">
+                                    <md-select ng-model="dbAction" ng-required="required" style="height: 40px; margin: -1px 0px;">
+                                        <md-option ng-value="dbAction" ng-repeat="dbAction in dbActions">{{dbAction.name}}</md-option>
+                                    </md-select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10 text-right">
+                                    <md-button type="button" class="md-raised md-primary" ng-click="clearLog()">
+                                        <i class="fa fa-trash-o"></i> {{'database.btn.clear' | translate}}
+                                    </md-button>
+                                    <md-button type="button" class="md-raised md-primary"
+                                               ng-click="doAction()"><i class="fa fa-check"/> {{'database.btn.run' | translate}}
+                                    </md-button>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width:100%; height:25px"></div>
+            <div class="row" ng-if="logsVisible===true">
+                <div class="panel panel-default-page panel-sm col-md-8">
+                    <div class="panel-page-section panel-page-section-bg">{{'database.label.logs' | translate}}</div>
+                    <div class="form-horizontal" ng-bind-html="logs" ng-model="logs" cols="50" rows="10"/>
+                </div>
+            </div>
+        </tab>
+    </tabset>
 </div>

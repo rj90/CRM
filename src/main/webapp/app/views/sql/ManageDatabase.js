@@ -9,7 +9,7 @@ angular.module('crmApp.databaseManager', ['ngRoute'])
             controller: 'DatabaseManager'
         });
     })
-    .controller('DatabaseManager', function($scope, $translate, DBService){
+    .controller('DatabaseManager', function($scope, $translate, $filter, DBService){
         $scope.dbActions = [
             {id: 1, name: $translate.instant('database.removeAllChangeLogs')},
             {id: 2, name: $translate.instant('database.generate')},
@@ -42,10 +42,10 @@ angular.module('crmApp.databaseManager', ['ngRoute'])
         var manageResponse = function(response){
             if(response.data !== undefined || response.data != null){
                 $scope.logs += '<div class="row">' +
-                    '<div class="col-md-1">'
-                    + response.data.date +
-                    '</div>' +
-                    '<div class="col-md-10">' + response.data.log + '</div>' +
+                    '<label class="col-md-2">'
+                    + $filter('date')(response.data.date,'yyyy-MM-dd HH:mm:ss') +
+                    '</label>' +
+                    '<label class="col-md-10">' + response.data.log + '</label>' +
                     '</div>\n';
             }
             console.log(response);

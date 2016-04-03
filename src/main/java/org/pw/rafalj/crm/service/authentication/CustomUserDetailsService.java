@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service.authentication;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.model.accounts.Users;
 import org.pw.rafalj.crm.repository.contract.ContractRepository;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailsService implements UserDetailsService {
 
     UsersRepository usersRepository;
-    private static final String type = "users";
+    private static final ServiceType type = ServiceType.USER;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {

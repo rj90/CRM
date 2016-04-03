@@ -29,5 +29,48 @@ angular.module('DBServices', ['ngResource'])
             })
         };
 
+        service.loadQueries = function(callback){
+            return $http.get(APP_CONTEXT + "sql/loadQueries").then(function(response){
+                callback(response);
+            })
+        };
+
+        service.getQueriesTypeForTest = function(callback){
+            return $http.get(APP_CONTEXT + "sql/getTypesForTests").then(function(response){
+                callback(response);
+            })
+        };
+
+        service.loadTables = function(callback){
+            return $http.get(APP_CONTEXT + "sql/loadTables").then(function(response){
+                callback(response);
+            })
+        };
+
+        service.testSelect = function(options, callback){
+            console.log(options);
+            return $http.post(APP_CONTEXT + "testDatabase/select", options).then(function(response){
+                callback(response);
+            })
+        };
+
+        service.testInsert = function(options, callback){
+            return $http.post(APP_CONTEXT + "testDatabase/insert", options).then(function(response){
+                callback(response);
+            })
+        };
+
+        service.testUpdate = function(options, callback){
+            return $http.put(APP_CONTEXT + "testDatabase/update", options).then(function(response){
+                callback(response);
+            })
+        };
+
+        service.testDelete = function(options, callback){
+            return $http.put(APP_CONTEXT + "testDatabase/delete", options).then(function(response){
+                callback(response);
+            })
+        };
+
         return service;
     });

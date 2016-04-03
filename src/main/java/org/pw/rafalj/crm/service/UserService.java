@@ -1,6 +1,7 @@
 package org.pw.rafalj.crm.service;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
+import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.model.accounts.Users;
 import org.pw.rafalj.crm.repository.user.UsersRepository;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private UsersRepository usersRepository;
-    private static final String type = "users";
+    private static final ServiceType type = ServiceType.USER;
 
     public Users getUserByLogin(DBQueryTypeEnum dbQueryTypeFromCookies, String login) {
         try {
