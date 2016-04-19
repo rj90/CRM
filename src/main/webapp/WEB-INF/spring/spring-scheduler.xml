@@ -13,7 +13,7 @@
 
         <property name="triggers">
             <list>
-                <!--<ref bean="NofificationJobTrigger" />-->
+                <ref bean="NofificationJobTrigger" />
             </list>
         </property>
     </bean>
@@ -26,7 +26,7 @@
 
     <bean id="NofificationJobTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="NofificationJobDetail" />
-        <property name="cronExpression" value="	0 0/1 * * * ?" />
+        <property name="cronExpression" value="0 0 8 ? * MON-FRI *" />
     </bean>
 
     <bean id="org.pw.rafalj.crm.scheduledJobs.NotificationJob" class="org.pw.rafalj.crm.scheduledJobs.NotificationJob" lazy-init="true" scope="singleton"/>
