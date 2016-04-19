@@ -23,28 +23,9 @@ public class TestService {
 
     TestRepository testRepository;
 
-    public List<TestResultVO> getData(TestOptions testOptions) {
-        List<TestResultVO> testResultVOs = Arrays.asList(testOptions.getOptions()).stream().map(option -> prepareTest(testOptions.getNumberOfQueries(),
-                testOptions.getStep(), testOptions.getServiceType(), QueryType.SELECT, option)).collect(Collectors.toList());
-        return testResultVOs;
-    }
-
-    public List<TestResultVO> insertData(TestOptions testOptions) {
-        List<TestResultVO> testResultVOs = Arrays.asList(testOptions.getOptions()).stream().map(option -> prepareTest(testOptions.getNumberOfQueries(),
-                testOptions.getStep(), testOptions.getServiceType(), QueryType.INSERT, option)).collect(Collectors.toList());
-        return testResultVOs;
-    }
-
-    public List<TestResultVO> updateData(TestOptions testOptions) {
-        List<TestResultVO> testResultVOs = Arrays.asList(testOptions.getOptions()).stream().map(option -> prepareTest(testOptions.getNumberOfQueries(),
-                testOptions.getStep(), testOptions.getServiceType(), QueryType.UPDATE, option)).collect(Collectors.toList());
-        return testResultVOs;
-    }
-
-    public List<TestResultVO> deleteData(TestOptions testOptions) {
-        List<TestResultVO> testResultVOs = Arrays.asList(testOptions.getOptions()).stream().map(option -> prepareTest(testOptions.getNumberOfQueries(),
-                testOptions.getStep(), testOptions.getServiceType(), QueryType.DELETE, option)).collect(Collectors.toList());
-        return testResultVOs;
+    public List<TestResultVO> executeQuery(TestOptions testOptions, QueryType queryType) {
+        return Arrays.asList(testOptions.getOptions()).stream().map(option -> prepareTest(testOptions.getNumberOfQueries(),
+                testOptions.getStep(), testOptions.getServiceType(), queryType, option)).collect(Collectors.toList());
     }
 
     private TestResultVO prepareTest(Integer numberOfQueries, Integer step, ServiceType serviceType, QueryType queryType, DBQueryTypeEnum option) {

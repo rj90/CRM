@@ -2,153 +2,151 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-    <bean id="repository_config" class="org.pw.rafalj.crm.config.RepositoryConfigBean">
-        <property name="repositories">
-            <map key-type="org.pw.rafalj.crm.enums.ServiceType">
-                <!--CONTRACTS-->
-                <entry key="CONTRACT">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--MAILS-->
-                <entry key="MAIL">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--USERS-->
-                <entry key="USER">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--PAYMENTS-->
-                <entry key="PAYMENT">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--PRODUCTS-->
-                <entry key="PRODUCT">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--SERVICES-->
-                <entry key="SERVICE">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--COMPLAINTS-->
-                <entry key="COMPLAINT">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--BILLINGS-->
-                <entry key="BILLING">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
-                </entry>
-                <!--DATABASE MANAGER-->
+    <util:map id="repository_config" key-type="org.pw.rafalj.crm.enums.ServiceType">
+        <!--CONTRACTS-->
+        <entry key="CONTRACT">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLSQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLCriteriaImpl"/>
-                        </entry>
-                    </map>
+                    <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositorySQLImpl"/>
                 </entry>
-                <!--DATABASE MANAGER-->
-                <entry key="DASHBOARD">
-                    <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
-                        <entry key="SQL">
-                            <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositorySQLImpl"/>
-                        </entry>
-                        <entry key="HQL">
-                            <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryHQLImpl"/>
-                        </entry>
-                        <entry key="CRITERIA_API">
-                            <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryCriteriaImpl"/>
-                        </entry>
-                    </map>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryCriteriaImpl"/>
                 </entry>
             </map>
-        </property>
-    </bean>
+        </entry>
+        <!--MAILS-->
+        <entry key="MAIL">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--USERS-->
+        <entry key="USER">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--PAYMENTS-->
+        <entry key="PAYMENT">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--PRODUCTS-->
+        <entry key="PRODUCT">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--SERVICES-->
+        <entry key="SERVICE">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--COMPLAINTS-->
+        <entry key="COMPLAINT">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--BILLINGS-->
+        <entry key="BILLING">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--DATABASE MANAGER-->
+        <entry key="SQL">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLSQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+        <!--DATABASE MANAGER-->
+        <entry key="DASHBOARD">
+            <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
+                <entry key="SQL">
+                    <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositorySQLImpl"/>
+                </entry>
+                <entry key="HQL">
+                    <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryHQLImpl"/>
+                </entry>
+                <entry key="CRITERIA_API">
+                    <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryCriteriaImpl"/>
+                </entry>
+            </map>
+        </entry>
+    </util:map>
 </beans>
