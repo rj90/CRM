@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-04-19.
+ * Created by rjozwiak on 2016-04-19.
  */
 @RestController
 @RequestMapping(value = "/scheduler")

@@ -5,7 +5,7 @@ import org.pw.rafalj.crm.vo.service.ServiceTypeVO;
 import javax.persistence.*;
 
 /**
- * Created by Rav on 2016-03-22.
+ * Created by rjozwiak on 2016-03-22.
  */
 @Entity
 @Table(name = "SERVICE_TYPES")

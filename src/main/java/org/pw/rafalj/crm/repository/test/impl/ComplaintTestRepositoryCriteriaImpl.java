@@ -3,7 +3,7 @@ package org.pw.rafalj.crm.repository.test.impl;
 import org.pw.rafalj.crm.repository.test.TestRepository;
 
 /**
- * Created by Rav on 2016-04-03.
+ * Created by rjozwiak on 2016-04-03.
  */
 public class ComplaintTestRepositoryCriteriaImpl implements TestRepository {
     @Override

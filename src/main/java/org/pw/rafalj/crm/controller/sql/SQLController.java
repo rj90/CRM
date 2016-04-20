@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-03-28.
+ * Created by rjozwiak on 2016-03-28.
  */
 @RestController
 @RequestMapping(value = "/sql")

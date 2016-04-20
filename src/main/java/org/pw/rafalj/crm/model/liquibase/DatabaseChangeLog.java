@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * Created by Rav on 2016-03-29.
+ * Created by rjozwiak on 2016-03-29.
  */
 @Entity
 @Table(name = "DATABASECHANGELOG")

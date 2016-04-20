@@ -7,13 +7,12 @@ import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Created by Rav on 2016-04-20.
+ * Created by rjozwiak on 2016-04-20.
  */
 @Service
 public class SchedulerService {
@@ -28,14 +27,19 @@ public class SchedulerService {
         }
     }
 
-    public void runJob(String jobName){
+    public void runJob(String... jobNames){
+        runJob(Arrays.asList(jobNames));
+    }
+
+    public void runJob(List<String> jobNames){
         SchedulerFactoryBean schedulerFactoryBean = ApplicationContextProvider.getContext().getBean(SchedulerFactoryBean.class);
         try {
-            Optional<JobKey> job = schedulerFactoryBean.getScheduler()
+            List<JobKey> jobKeys = schedulerFactoryBean.getScheduler()
                     .getJobKeys(GroupMatcher.anyGroup()).stream()
-                    .filter(jobEntry -> Objects.equals(jobName, jobEntry.getName())).findAny();
-            if (job.isPresent()) {
-                schedulerFactoryBean.getScheduler().triggerJob(job.get());
+                    .filter(jobEntry -> jobNames.contains(jobEntry.getName()))
+                    .collect(Collectors.toList());
+            for (JobKey jobKey : jobKeys) {
+                schedulerFactoryBean.getScheduler().triggerJob(jobKey);
             }
         } catch (SchedulerException e) {
             throw new RuntimeException(e);

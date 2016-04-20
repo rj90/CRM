@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-03-20.
+ * Created by rjozwiak on 2016-03-20.
  */
 angular.module('crmApp.input', [])
     .directive('inputDctv', function() {

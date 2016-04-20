@@ -11,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
- * Created by Rav on 2016-04-03.
+ * Created by rjozwiak on 2016-04-03.
  */
 @Repository
 public class ContractTestRepositoryPureSQLImpl implements TestRepository {

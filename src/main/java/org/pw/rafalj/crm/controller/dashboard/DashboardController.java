@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Rav on 2016-04-03.
+ * Created by rjozwiak on 2016-04-03.
  */
 @RestController
 @RequestMapping(value = "/dashboard")

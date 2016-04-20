@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-04-03.
+ * Created by rjozwiak on 2016-04-03.
  */
 angular.module('DashboardServices', ['ngResource'])
     .factory('DashboardSrv', function($http) {

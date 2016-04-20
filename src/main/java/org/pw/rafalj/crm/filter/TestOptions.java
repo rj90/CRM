@@ -6,7 +6,7 @@ import org.pw.rafalj.crm.enums.ServiceType;
 import java.util.List;
 
 /**
- * Created by Rav on 2016-04-02.
+ * Created by rjozwiak on 2016-04-02.
  */
 public class TestOptions {
 

@@ -1,0 +1,34 @@
+<div>
+    <div class="row">
+        <div class="page-title">{{'menu.databaseSettings.scheduler.label' | translate}}</div>
+    </div>
+    <div style="width:100%; height:25px"></div>
+
+    <div class="row">
+        <div class="panel panel-default-page panel-sm col-md-5">
+            <div class="panel-page-section panel-page-section-bg">{{'database.label.scheduler' | translate}}</div>
+            <div class="panel-page-section-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">{{'database.label.tasks' | translate}}</label>
+
+                        <div class="col-sm-8">
+                            <md-select ng-model="task" ng-required="required" style="height: 40px; margin: -1px 0px;">
+                                <md-option ng-repeat="t in tasks">{{t}}</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"/>
+                        <div class="col-md-10 text-right">
+                            <md-button type="button" class="md-raised md-primary"
+                                       ng-click="runTask()"><i class="fa fa-check"/> {{'database.btn.run' | translate}}
+                            </md-button>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

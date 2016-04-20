@@ -1,7 +1,7 @@
 package org.pw.rafalj.crm.vo.service;
 
 /**
- * Created by Rav on 2016-03-22.
+ * Created by rjozwiak on 2016-03-22.
  */
 public class ServiceTypeVO {
     Integer id;

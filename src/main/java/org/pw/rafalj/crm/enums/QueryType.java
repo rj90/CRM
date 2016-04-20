@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 /**
- * Created by Rav on 2016-04-02.
+ * Created by rjozwiak on 2016-04-02.
  */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum QueryType {

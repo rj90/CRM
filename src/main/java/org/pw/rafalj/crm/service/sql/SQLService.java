@@ -38,7 +38,7 @@ public class SQLService {
 
     public void updateDatabase() {
         try{
-            SpringLiquibase springLiquibase = (SpringLiquibase) ApplicationContextProvider.getContext().getBean("liquibase");
+            SpringLiquibase springLiquibase = ApplicationContextProvider.getContext().getBean(SpringLiquibase.class);
             //FIXME: Resource Accessor
             Liquibase liquibase = new Liquibase(springLiquibase.getChangeLog(), new FileSystemResourceAccessor(),
                     DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(springLiquibase.getDataSource().getConnection())));

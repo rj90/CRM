@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-03-21.
+ * Created by rjozwiak on 2016-03-21.
  */
 angular.module('crmApp.serviceEdit', ['ngRoute'])
     .config(function($routeProvider) {

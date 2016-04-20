@@ -7,25 +7,25 @@
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
             <list>
-                <ref bean="NofificationJobDetail" />
+                <ref bean="NotificationJobDetail" />
             </list>
         </property>
 
         <property name="triggers">
             <list>
-                <ref bean="NofificationJobTrigger" />
+                <ref bean="NotificationJobTrigger" />
             </list>
         </property>
     </bean>
 
     <!--USER NOTIFICATION BEANS-->
-    <bean id="NofificationJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <bean id="NotificationJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <property name="targetObject" ref="org.pw.rafalj.crm.scheduledJobs.NotificationJob" />
         <property name="targetMethod" value="doRun" />
     </bean>
 
-    <bean id="NofificationJobTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-        <property name="jobDetail" ref="NofificationJobDetail" />
+    <bean id="NotificationJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="NotificationJobDetail" />
         <property name="cronExpression" value="0 0 8 ? * MON-FRI *" />
     </bean>
 

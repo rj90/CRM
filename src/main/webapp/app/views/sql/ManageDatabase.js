@@ -1,5 +1,5 @@
 /**
- * Created by Rav on 2016-03-29.
+ * Created by rjozwiak on 2016-03-29.
  */
 'use strict';
 angular.module('crmApp.databaseManager', ['ngRoute'])

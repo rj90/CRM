@@ -8,6 +8,7 @@ angular.module('crmApp.views',[
     'crmApp.databaseTester',
     'crmApp.login',
     'crmApp.products',
+    'crmApp.scheduler',
     'crmApp.servicesAndProducts',
     'crmApp.userlist',
     'crmApp.welcome'

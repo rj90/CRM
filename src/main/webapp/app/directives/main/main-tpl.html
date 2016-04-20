@@ -29,6 +29,7 @@
                         <li ng-if="user.roles.ADMIN===true"><a href="#/userlist">{{'menu.usersettings.userlist.label' | translate}}</a></li>
                         <li ng-if="user.roles.ADMIN===true"><a href="#/manageDatabase">{{'menu.databaseSettings.databaseManager.label' | translate}}</a></li>
                         <li ng-if="user.roles.ADMIN===true"><a href="#/testDatabase">{{'menu.databaseSettings.databaseTester.label' | translate}}</a></li>
+                        <li ng-if="user.roles.ADMIN===true"><a href="#/scheduler">{{'menu.databaseSettings.scheduler.label' | translate}}</a></li>
                         <li>
                             <a href="" ng-click="logout()">
                                 <i class="fa fa-power-off i-fa-p"></i>
