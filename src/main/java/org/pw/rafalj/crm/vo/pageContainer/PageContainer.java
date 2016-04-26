@@ -1,7 +1,5 @@
 package org.pw.rafalj.crm.vo.pageContainer;
 
-import org.springframework.data.domain.Sort;
-
 import java.io.Serializable;
 import java.util.List;
 

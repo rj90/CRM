@@ -113,4 +113,13 @@ public class ContractRepositoryHQLImpl implements ContractRepository {
         List<ContractStatusVO> contractStatusVOs = ((List<ContractStatus>)query.list()).stream().map(ContractStatus::getVO).collect(Collectors.toList());
         return contractStatusVOs;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public void testSelect(int index) {
+        Query query = session.getCurrentSession().createQuery("from Contracts where id = :id");
+        query.setParameter("id", index);
+        query.setCacheable(false);
+        query.list();
+    }
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+    <bean class="org.pw.rafalj.crm.sql.config.ConfigContainer">
+        <property name="directory" value="sql"/>
+        <property name="config" ref="sql-generator-config"/>
+    </bean>
+
+    <util:map id="sql-generator-config" key-type="org.pw.rafalj.crm.sql.enums.Table">
+        <entry key="PRODUCTS">
+            <bean class="org.pw.rafalj.crm.sql.config.GeneratorConfig">
+                <property name="filename" value="products.sql"/>
+                <property name="rowCount" value="100000"/>
+                <property name="offset" value="20000"/>
+                <property name="generator">
+                    <bean class="org.pw.rafalj.crm.sql.generators.ProductGenerator"/>
+                </property>
+            </bean>
+        </entry>
+        <entry key="SERVICES">
+            <bean class="org.pw.rafalj.crm.sql.config.GeneratorConfig">
+                <property name="filename" value="services.sql"/>
+                <property name="rowCount" value="100000"/>
+                <property name="offset" value="20000"/>
+                <property name="generator">
+                    <bean class="org.pw.rafalj.crm.sql.generators.ServiceGenerator"/>
+                </property>
+            </bean>
+        </entry>
+        <entry key="CONTRACTS">
+            <bean class="org.pw.rafalj.crm.sql.config.GeneratorConfig">
+                <property name="filename" value="contracts.sql"/>
+                <property name="rowCount" value="100000"/>
+                <property name="offset" value="20000"/>
+                <property name="generator">
+                    <bean class="org.pw.rafalj.crm.sql.generators.ContractGenerator"/>
+                </property>
+            </bean>
+        </entry>
+        <entry key="PERSON">
+            <bean class="org.pw.rafalj.crm.sql.config.GeneratorConfig">
+                <property name="filename" value="persons.sql"/>
+                <property name="rowCount" value="100000"/>
+                <property name="offset" value="20000"/>
+                <property name="generator">
+                    <bean class="org.pw.rafalj.crm.sql.generators.PersonGenerator"/>
+                </property>
+            </bean>
+        </entry>
+        <entry key="CUSTOMERS">
+            <bean class="org.pw.rafalj.crm.sql.config.GeneratorConfig">
+                <property name="filename" value="customers.sql"/>
+                <property name="rowCount" value="100000"/>
+                <property name="offset" value="20000"/>
+                <property name="generator">
+                    <bean class="org.pw.rafalj.crm.sql.generators.CustomerGenerator"/>
+                </property>
+            </bean>
+        </entry>
+        <entry key="CLIENT_REGISTRATION">
+            <bean class="org.pw.rafalj.crm.sql.config.GeneratorConfig">
+                <property name="filename" value="custreg.sql"/>
+                <property name="rowCount" value="100000"/>
+                <property name="offset" value="20000"/>
+                <property name="generator">
+                    <bean class="org.pw.rafalj.crm.sql.generators.ClientRegistrationGenerator"/>
+                </property>
+            </bean>
+        </entry>
+    </util:map>
+
+    <util:list id="sql-generator-types-list">
+        <value type="org.pw.rafalj.crm.sql.enums.Table">PERSON</value>
+        <value type="org.pw.rafalj.crm.sql.enums.Table">CUSTOMERS</value>
+        <value type="org.pw.rafalj.crm.sql.enums.Table">CLIENT_REGISTRATION</value>
+        <value type="org.pw.rafalj.crm.sql.enums.Table">CONTRACTS</value>
+        <value type="org.pw.rafalj.crm.sql.enums.Table">PRODUCTS</value>
+        <value type="org.pw.rafalj.crm.sql.enums.Table">SERVICES</value>
+    </util:list>
+</beans>

@@ -40,7 +40,7 @@ public enum QueryType {
     }
 
     public static QueryType getById(Integer id) {
-        Optional<QueryType> entry = Arrays.asList(QueryType.values()).stream().filter(e -> e.id == id.intValue()).findAny();
+        Optional<QueryType> entry = Arrays.stream(QueryType.values()).filter(e -> e.id == id.intValue()).findAny();
         if(entry.isPresent())
             return entry.get();
         else

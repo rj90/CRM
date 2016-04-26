@@ -89,4 +89,13 @@ public class ContractRepositoryCriteriaImpl implements ContractRepository {
         List<ContractStatusVO> contractStatusVOs = ((List<ContractStatus>)criteria.list()).stream().map(ContractStatus::getVO).collect(Collectors.toList());
         return contractStatusVOs;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public void testSelect(int index) {
+        Criteria criteria = session.getCurrentSession().createCriteria(Contracts.class);
+        criteria.add(Restrictions.eq("id", new Integer(index)));
+        criteria.setCacheable(false);
+        criteria.list();
+    }
 }

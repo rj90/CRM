@@ -121,4 +121,14 @@ public class ContractRepositorySQLImpl implements ContractRepository {
         List<ContractStatusVO> contractStatusVOs = ((List<ContractStatus>)query.list()).stream().map(ContractStatus::getVO).collect(Collectors.toList());
         return contractStatusVOs;
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public void testSelect(int index) {
+        SQLQuery query = session.getCurrentSession().createSQLQuery("select * from CONTRACTS where ID = :id");
+        query.setParameter("id", index);
+        query.setCacheable(false);
+        query.addEntity(Contracts.class);
+        query.list();
+    }
 }

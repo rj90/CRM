@@ -19,7 +19,7 @@ public class CookieUtils {
     public static DBQueryTypeEnum getDBQueryTypeFromCookies(Cookie[] cookies) {
         if (cookies == null)
             return defaultSettings;
-        Optional<Cookie> cookie = Arrays.asList(cookies).stream().filter(c -> DB_CONN_COOKIE_NAME.equals(c.getName())).findAny();
+        Optional<Cookie> cookie = Arrays.stream(cookies).filter(c -> DB_CONN_COOKIE_NAME.equals(c.getName())).findAny();
         if (cookie.isPresent())
             return getDBValueFromCookieStore(cookie.get());
         else
@@ -34,7 +34,7 @@ public class CookieUtils {
     public static String getTokenFromCookies(Cookie[] cookies) {
         if(cookies == null)
             return null;
-        Optional<Cookie> cookie = Arrays.asList(cookies).stream().filter(c -> TOKEN_COOKIE_NAME.equals(c.getName())).findAny();
+        Optional<Cookie> cookie = Arrays.stream(cookies).filter(c -> TOKEN_COOKIE_NAME.equals(c.getName())).findAny();
         if(cookie.isPresent())
             return cookie.get().getValue().replaceAll(COLON_TAG, ":").replaceAll(QUOTATION_TAG, "");
         return null;

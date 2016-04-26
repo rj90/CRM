@@ -1,11 +1,10 @@
 package org.pw.rafalj.crm.service.payments;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
-import org.pw.rafalj.crm.enums.ServiceType;
-import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.payments.PaymentFilter;
 import org.pw.rafalj.crm.model.payments.Payments;
 import org.pw.rafalj.crm.repository.payments.PaymentRepository;
+import org.pw.rafalj.crm.service.CommonService;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.pw.rafalj.crm.vo.payments.PaymentVO;
 import org.slf4j.Logger;
@@ -22,14 +21,13 @@ import java.util.List;
  * Created by rjozwiak on 2016-03-13.
  */
 @Service
-public class PaymentService {
-    private static final ServiceType type = ServiceType.PAYMENT;
+public class PaymentService extends CommonService {
     Logger log = LoggerFactory.getLogger(PaymentService.class);
 
     PaymentRepository paymentRepository;
 
     public List<Payments> getNotPayedBills(DBQueryTypeEnum dbQueryTypeFromCookies, Date date) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        paymentRepository = prepareRepositoryType(PaymentRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Getting payments");
             Long time = System.currentTimeMillis();
@@ -44,17 +42,8 @@ public class PaymentService {
         }
     }
 
-    private void prepareRepositoryType(DBQueryTypeEnum dbQueryTypeFromCookies) {
-        try {
-            paymentRepository = (PaymentRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
-        } catch (Exception e) {
-            log.error("Error during getting repository type", e);
-            throw new RuntimeException(e);
-        }
-    }
-
     public Page<PaymentVO> getPaymentVOPage(DBQueryTypeEnum dbQueryTypeFromCookies, PaymentFilter filter) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        paymentRepository = prepareRepositoryType(PaymentRepository.class, dbQueryTypeFromCookies, log);
         final PageContainer<Payments> paymentsPage;
         try {
             log.info("Getting payments");
@@ -73,7 +62,7 @@ public class PaymentService {
     }
 
     public PaymentVO getPaymentVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        paymentRepository = prepareRepositoryType(PaymentRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Getting payment by id");
             Long time = System.currentTimeMillis();
@@ -89,7 +78,7 @@ public class PaymentService {
     }
 
     public void removePaymentVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        paymentRepository = prepareRepositoryType(PaymentRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Removing payment by id");
             Long time = System.currentTimeMillis();
@@ -104,7 +93,7 @@ public class PaymentService {
     }
 
     public void save(DBQueryTypeEnum dbQueryTypeFromCookies, PaymentVO paymentVO) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        paymentRepository = prepareRepositoryType(PaymentRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Saving payment");
             paymentRepository.save(new Payments(paymentVO));

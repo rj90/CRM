@@ -4,13 +4,14 @@ import org.hibernate.SessionFactory;
 import org.pw.rafalj.crm.context.ApplicationContextProvider;
 import org.pw.rafalj.crm.filter.product.ProductFilter;
 import org.pw.rafalj.crm.model.products.Products;
+import org.pw.rafalj.crm.repository.TestRepository;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by rjozwiak on 2016-03-13.
  */
-public interface ProductRepository {
+public interface ProductRepository extends TestRepository {
     PageContainer findByFilter(ProductFilter filter);
 
     Products findProductById(Integer id);

@@ -1,11 +1,10 @@
 package org.pw.rafalj.crm.service.product;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
-import org.pw.rafalj.crm.enums.ServiceType;
-import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.product.ProductFilter;
 import org.pw.rafalj.crm.model.products.Products;
 import org.pw.rafalj.crm.repository.product.ProductRepository;
+import org.pw.rafalj.crm.service.CommonService;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.pw.rafalj.crm.vo.product.ProductVO;
 import org.slf4j.Logger;
@@ -21,14 +20,13 @@ import java.util.List;
  * Created by rjozwiak on 2016-03-13.
  */
 @Service
-public class ProductService {
-    private static final ServiceType type = ServiceType.PRODUCT;
+public class ProductService extends CommonService {
     Logger log = LoggerFactory.getLogger(ProductService.class);
 
     ProductRepository productRepository;
 
     public Page<ProductVO> getProductVOPage(DBQueryTypeEnum dbQueryTypeFromCookies, ProductFilter filter) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        productRepository = prepareRepositoryType(ProductRepository.class, dbQueryTypeFromCookies, log);
         final PageContainer<Products> productsPage;
         try {
             log.info("Getting products");
@@ -46,17 +44,8 @@ public class ProductService {
         }
     }
 
-    private void prepareRepositoryType(DBQueryTypeEnum dbQueryTypeFromCookies) {
-        try {
-            productRepository = (ProductRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
-        } catch (Exception e) {
-            log.error("Error during getting repository type", e);
-            throw new RuntimeException(e);
-        }
-    }
-
     public ProductVO getProductVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        productRepository = prepareRepositoryType(ProductRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Getting product by id");
             Long time = System.currentTimeMillis();
@@ -72,7 +61,7 @@ public class ProductService {
     }
 
     public void removeProductVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        productRepository = prepareRepositoryType(ProductRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Removing product by id");
             Long time = System.currentTimeMillis();
@@ -87,7 +76,7 @@ public class ProductService {
     }
 
     public void save(DBQueryTypeEnum dbQueryTypeFromCookies, ProductVO productVO) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        productRepository = prepareRepositoryType(ProductRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Saving product");
             productRepository.save(new Products(productVO));

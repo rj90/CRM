@@ -1,11 +1,10 @@
 package org.pw.rafalj.crm.service.contract;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
-import org.pw.rafalj.crm.enums.ServiceType;
-import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.ContractFilter;
 import org.pw.rafalj.crm.model.contracts.Contracts;
 import org.pw.rafalj.crm.repository.contract.ContractRepository;
+import org.pw.rafalj.crm.service.CommonService;
 import org.pw.rafalj.crm.vo.contract.ContractStatusVO;
 import org.pw.rafalj.crm.vo.contract.ContractVO;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
@@ -22,15 +21,14 @@ import java.util.List;
  * Created by rjozwiak on 2016-02-23.
  */
 @Service
-public class ContractService {
-    private static final ServiceType type = ServiceType.CONTRACT;
+public class ContractService extends CommonService {
     Logger log = LoggerFactory.getLogger(ContractService.class);
 
 
     ContractRepository contractRepository;
 
     public Page<ContractVO> getContractVOPage(DBQueryTypeEnum dbQueryTypeFromCookies, ContractFilter filter) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        contractRepository = prepareRepositoryType(ContractRepository.class, dbQueryTypeFromCookies, log);
         final PageContainer<Contracts> contractsPage;
         try {
             log.info("Getting contracts");
@@ -58,15 +56,6 @@ public class ContractService {
         } catch (Exception e) {
             log.error("Error during getting contracts statuses", e);
             throw e;
-        }
-    }
-
-    private void prepareRepositoryType(DBQueryTypeEnum dbQueryTypeFromCookies) {
-        try {
-            contractRepository = (ContractRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
-        } catch (Exception e) {
-            log.error("Error during getting repository type", e);
-            throw new RuntimeException(e);
         }
     }
 }

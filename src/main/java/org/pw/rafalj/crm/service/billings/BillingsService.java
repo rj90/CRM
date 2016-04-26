@@ -1,11 +1,10 @@
 package org.pw.rafalj.crm.service.billings;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
-import org.pw.rafalj.crm.enums.ServiceType;
-import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.billings.BillingFilter;
 import org.pw.rafalj.crm.model.billings.Billings;
 import org.pw.rafalj.crm.repository.billing.BillingRepository;
+import org.pw.rafalj.crm.service.CommonService;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.pw.rafalj.crm.vo.billings.BillingVO;
 import org.slf4j.Logger;
@@ -21,23 +20,13 @@ import java.util.List;
  * Created by rjozwiak on 2016-03-13.
  */
 @Service
-public class BillingsService {
-    private static final ServiceType type = ServiceType.BILLING;
+public class BillingsService extends CommonService {
     Logger log = LoggerFactory.getLogger(BillingsService.class);
 
     BillingRepository billingRepository;
 
-    private void prepareRepositoryType(DBQueryTypeEnum dbQueryTypeFromCookies) {
-        try {
-            billingRepository = (BillingRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
-        } catch (Exception e) {
-            log.error("Error during getting repository type", e);
-            throw new RuntimeException(e);
-        }
-    }
-
     public Page<BillingVO> getBillingsVOPage(DBQueryTypeEnum dbQueryTypeFromCookies, BillingFilter filter) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        billingRepository = prepareRepositoryType(BillingRepository.class, dbQueryTypeFromCookies, log);
         final PageContainer<Billings> billingsPage;
         try {
             log.info("Getting billings");

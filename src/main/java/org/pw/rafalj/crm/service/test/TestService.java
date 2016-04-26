@@ -3,10 +3,10 @@ package org.pw.rafalj.crm.service.test;
 import javafx.util.Pair;
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
 import org.pw.rafalj.crm.enums.QueryType;
-import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.TestOptions;
-import org.pw.rafalj.crm.repository.test.TestRepository;
+import org.pw.rafalj.crm.repository.TestRepository;
+import org.pw.rafalj.crm.service.CommonService;
 import org.pw.rafalj.crm.vo.test.TestResultVO;
 import org.springframework.stereotype.Service;
 
@@ -19,29 +19,27 @@ import java.util.stream.Collectors;
  * Created by rjozwiak on 2016-04-02.
  */
 @Service
-public class TestService {
-
-    TestRepository testRepository;
-
+public class TestService extends CommonService {
     public List<TestResultVO> executeQuery(TestOptions testOptions, QueryType queryType) {
-        return Arrays.asList(testOptions.getOptions()).stream().map(option -> prepareTest(testOptions.getNumberOfQueries(),
-                testOptions.getStep(), testOptions.getServiceType(), queryType, option)).collect(Collectors.toList());
+        return Arrays.stream(testOptions.getOptions()).map(option -> prepareTest(testOptions.getNumberOfQueries(),
+                testOptions.getStep(), RepositoryFactory.getInstance().prepareType(testOptions.getServiceType()),
+                queryType, option)).collect(Collectors.toList());
     }
 
-    private TestResultVO prepareTest(Integer numberOfQueries, Integer step, ServiceType serviceType, QueryType queryType, DBQueryTypeEnum option) {
-        testRepository = prepareRepositoryType(serviceType, option);
+    private <REPO_TYPE extends TestRepository> TestResultVO prepareTest(Integer numberOfQueries, Integer step, Class<REPO_TYPE> clazz, QueryType queryType, DBQueryTypeEnum option) {
+        REPO_TYPE testRepository = prepareRepositoryType(clazz, option);
         List<Pair<Integer, Long>> time = new ArrayList<>();
         Long startTime = System.currentTimeMillis();
         time.add(new Pair<>(0, 0L));
         for(int i = 1; i <= numberOfQueries ; i++){
-            executeQuery(queryType, i);
+            executeQuery(testRepository, queryType, i);
             if(i % step == 0 || i == numberOfQueries)
                 time.add(new Pair<>(i, System.currentTimeMillis() - startTime));
         }
         return new TestResultVO(option, time);
     }
 
-    private void executeQuery(QueryType queryType, int index) {
+    private <REPO_TYPE extends TestRepository> void executeQuery(REPO_TYPE testRepository, QueryType queryType, int index) {
         switch (queryType){
             case SELECT:
                 testRepository.testSelect(index);
@@ -55,14 +53,6 @@ public class TestService {
             case DELETE:
                 testRepository.testDelete(index);
                 break;
-        }
-    }
-
-    private TestRepository prepareRepositoryType(ServiceType serviceType, DBQueryTypeEnum option) {
-        try {
-            return RepositoryFactory.getInstance().getTestRepository(serviceType, option);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 }

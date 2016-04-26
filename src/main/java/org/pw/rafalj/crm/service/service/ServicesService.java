@@ -1,12 +1,11 @@
 package org.pw.rafalj.crm.service.service;
 
 import org.pw.rafalj.crm.enums.DBQueryTypeEnum;
-import org.pw.rafalj.crm.enums.ServiceType;
-import org.pw.rafalj.crm.factory.RepositoryFactory;
 import org.pw.rafalj.crm.filter.service.ServiceFilter;
 import org.pw.rafalj.crm.model.service.ServiceTypes;
 import org.pw.rafalj.crm.model.service.Services;
 import org.pw.rafalj.crm.repository.service.ServiceRepository;
+import org.pw.rafalj.crm.service.CommonService;
 import org.pw.rafalj.crm.vo.pageContainer.PageContainer;
 import org.pw.rafalj.crm.vo.service.ServiceTypeVO;
 import org.pw.rafalj.crm.vo.service.ServiceVO;
@@ -24,14 +23,13 @@ import java.util.stream.Collectors;
  * Created by rjozwiak on 2016-03-13.
  */
 @Service
-public class ServicesService {
-    private static final ServiceType type = ServiceType.SERVICE;
+public class ServicesService extends CommonService {
     Logger log = LoggerFactory.getLogger(ServicesService.class);
 
     ServiceRepository serviceRepository;
 
     public Page<ServiceVO> getServiceVOPage(DBQueryTypeEnum dbQueryTypeFromCookies, ServiceFilter filter) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        serviceRepository = prepareRepositoryType(ServiceRepository.class, dbQueryTypeFromCookies, log);
         final PageContainer<Services> servicePage;
         try {
             log.info("Getting service");
@@ -49,17 +47,8 @@ public class ServicesService {
         }
     }
 
-    private void prepareRepositoryType(DBQueryTypeEnum dbQueryTypeFromCookies) {
-        try {
-            serviceRepository = (ServiceRepository) RepositoryFactory.getInstance().getRepository(type, dbQueryTypeFromCookies);
-        } catch (Exception e) {
-            log.error("Error during getting repository type", e);
-            throw new RuntimeException(e);
-        }
-    }
-
     public List<ServiceTypeVO> getServiceTypeVOList(DBQueryTypeEnum dbQueryTypeFromCookies) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        serviceRepository = prepareRepositoryType(ServiceRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Getting service types");
             Long time = System.currentTimeMillis();
@@ -75,7 +64,7 @@ public class ServicesService {
     }
 
     public ServiceVO getServiceVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        serviceRepository = prepareRepositoryType(ServiceRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Getting service by id");
             Long time = System.currentTimeMillis();
@@ -91,7 +80,7 @@ public class ServicesService {
     }
 
     public void removeServiceVOById(DBQueryTypeEnum dbQueryTypeFromCookies, Integer id) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        serviceRepository = prepareRepositoryType(ServiceRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Removing service by id");
             Long time = System.currentTimeMillis();
@@ -106,7 +95,7 @@ public class ServicesService {
     }
 
     public void save(DBQueryTypeEnum dbQueryTypeFromCookies, ServiceVO serviceVO) {
-        prepareRepositoryType(dbQueryTypeFromCookies);
+        serviceRepository = prepareRepositoryType(ServiceRepository.class, dbQueryTypeFromCookies, log);
         try {
             log.info("Saving service");
             serviceRepository.save(new Services(serviceVO));

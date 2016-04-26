@@ -49,7 +49,7 @@ public enum ServiceType {
     }
 
     public static ServiceType getById(Integer id) {
-        Optional<ServiceType> entry = Arrays.asList(ServiceType.values()).stream().filter(e -> e.id == id.intValue()).findAny();
+        Optional<ServiceType> entry = Arrays.stream(ServiceType.values()).filter(e -> e.id == id.intValue()).findAny();
         if(entry.isPresent())
             return entry.get();
         else

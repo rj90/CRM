@@ -42,7 +42,7 @@ public enum DBQueryTypeEnum {
     }
 
     public static DBQueryTypeEnum getById(Integer id) {
-        Optional<DBQueryTypeEnum> entry = Arrays.asList(DBQueryTypeEnum.values()).stream().filter(e -> e.id == id.intValue()).findAny();
+        Optional<DBQueryTypeEnum> entry = Arrays.stream(DBQueryTypeEnum.values()).filter(e -> e.id == id.intValue()).findAny();
         if(entry.isPresent())
             return entry.get();
         else

@@ -1,14 +1,12 @@
 package org.pw.rafalj.crm.repository.user;
 
 import org.pw.rafalj.crm.model.accounts.Users;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
+import org.pw.rafalj.crm.repository.TestRepository;
 
 /**
  * Created by rjozwiak on 2016-01-12.
  */
-public interface UsersRepository {
+public interface UsersRepository extends TestRepository {
 
     Users getUserByLogin(String login);
 }

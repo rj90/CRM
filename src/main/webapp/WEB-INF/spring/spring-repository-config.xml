@@ -7,9 +7,9 @@
     http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
     http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
-    <util:map id="repository_config" key-type="org.pw.rafalj.crm.enums.ServiceType">
+    <util:map id="repository_config" key-type="java.lang.Class">
         <!--CONTRACTS-->
-        <entry key="CONTRACT">
+        <entry key="org.pw.rafalj.crm.repository.contract.ContractRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositorySQLImpl"/>
@@ -20,10 +20,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.contract.impl.ContractRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--MAILS-->
-        <entry key="MAIL">
+        <entry key="org.pw.rafalj.crm.repository.mails.EMailRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositorySQLImpl"/>
@@ -34,10 +37,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.mails.impl.EMailRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--USERS-->
-        <entry key="USER">
+        <entry key="org.pw.rafalj.crm.repository.user.UsersRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositorySQLImpl"/>
@@ -48,24 +54,30 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.user.impl.UsersRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--PAYMENTS-->
-        <entry key="PAYMENT">
+        <entry key="org.pw.rafalj.crm.repository.payments.PaymentRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositorySQLImpl"/>
                 </entry>
                 <entry key="HQL">
-                    <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryHQLImpl"/>
+                    <bean class="org.pw.rafalj.crm.repository.payments.impl.TestRepository"/>
                 </entry>
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.payments.impl.PaymentRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--PRODUCTS-->
-        <entry key="PRODUCT">
+        <entry key="org.pw.rafalj.crm.repository.product.ProductRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositorySQLImpl"/>
@@ -76,10 +88,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.product.impl.ProductRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--SERVICES-->
-        <entry key="SERVICE">
+        <entry key="org.pw.rafalj.crm.repository.service.ServiceRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositorySQLImpl"/>
@@ -90,10 +105,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.service.impl.ServiceRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--COMPLAINTS-->
-        <entry key="COMPLAINT">
+        <entry key="org.pw.rafalj.crm.repository.complaint.ComplaintRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositorySQLImpl"/>
@@ -104,10 +122,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.complaint.impl.ComplaintRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--BILLINGS-->
-        <entry key="BILLING">
+        <entry key="org.pw.rafalj.crm.repository.billing.BillingRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositorySQLImpl"/>
@@ -118,10 +139,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.billing.impl.BillingRepositoryPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--DATABASE MANAGER-->
-        <entry key="SQL">
+        <entry key="org.pw.rafalj.crm.repository.liquibase.SQLRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLSQLImpl"/>
@@ -132,10 +156,13 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.liquibase.impl.SQLPureSQLImpl"/>
+                </entry>
             </map>
         </entry>
         <!--DATABASE MANAGER-->
-        <entry key="DASHBOARD">
+        <entry key="org.pw.rafalj.crm.repository.dashboard.DashboardRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
                     <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositorySQLImpl"/>
@@ -146,7 +173,45 @@
                 <entry key="CRITERIA_API">
                     <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryCriteriaImpl"/>
                 </entry>
+                <entry key="PURE_SQL">
+                    <bean class="org.pw.rafalj.crm.repository.dashboard.impl.DashboardRepositoryPureSQLImpl"/>
+                </entry>
             </map>
+        </entry>
+    </util:map>
+
+    <util:map id="repository_typemap_config" key-type="org.pw.rafalj.crm.enums.ServiceType">
+        <!--CONTRACTS-->
+        <entry key="CONTRACT">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.contract.ContractRepository</value>
+        </entry>
+        <!--MAILS-->
+        <entry key="MAIL">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.mails.EMailRepository</value>
+        </entry>
+        <!--USERS-->
+        <entry key="USER">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.user.UsersRepository</value>
+        </entry>
+        <!--PAYMENTS-->
+        <entry key="PAYMENT">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.payments.PaymentRepository</value>
+        </entry>
+        <!--PRODUCTS-->
+        <entry key="PRODUCT">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.product.ProductRepository</value>
+        </entry>
+        <!--SERVICES-->
+        <entry key="SERVICE">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.service.ServiceRepository</value>
+        </entry>
+        <!--COMPLAINTS-->
+        <entry key="COMPLAINT">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.complaint.ComplaintRepository</value>
+        </entry>
+        <!--BILLINGS-->
+        <entry key="BILLING">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.billing.BillingRepository</value>
         </entry>
     </util:map>
 </beans>

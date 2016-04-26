@@ -5,6 +5,7 @@ import org.pw.rafalj.crm.enums.ServiceType;
 import org.pw.rafalj.crm.service.sql.SQLService;
 import org.pw.rafalj.crm.utils.CookieUtils;
 import org.pw.rafalj.crm.vo.dbquerytype.DBQueryTypeVO;
+import org.pw.rafalj.crm.vo.sql.SQLLogVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,17 +44,17 @@ public class SQLController {
     }
 
     @RequestMapping(value = "/updateDatabase", method = RequestMethod.PATCH)
-    public void update() {
-        sqlService.updateDatabase();
+    public SQLLogVO update() {
+        return sqlService.updateDatabase();
     }
 
     @RequestMapping(value = "/generateSQL", method = RequestMethod.PUT)
-    public void generate() {
-        sqlService.generateSQL();
+    public SQLLogVO generate() {
+        return sqlService.generateSQL();
     }
 
     @RequestMapping(value = "/removeAllChangeLogs", method = RequestMethod.DELETE)
-    public void removeAllChangeLogs(HttpServletRequest request) {
-        sqlService.removeAllChangeLogs(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()));
+    public SQLLogVO removeAllChangeLogs(HttpServletRequest request) {
+        return sqlService.removeAllChangeLogs(CookieUtils.getDBQueryTypeFromCookies(request.getCookies()));
     }
 }
