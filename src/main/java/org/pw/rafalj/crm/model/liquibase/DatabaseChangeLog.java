@@ -13,19 +13,19 @@ import java.util.Date;
 @Table(name = "DATABASECHANGELOG")
 public class DatabaseChangeLog {
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
     String id;
-    @Column(name = "AUTHOR")
+    @Column(name = "AUTHOR", nullable = false)
     String author;
-    @Column(name = "FILENAME")
+    @Column(name = "FILENAME", nullable = false)
     String filename;
-    @Column(name = "DATEEXECUTED")
+    @Column(name = "DATEEXECUTED", nullable = false)
     Date dateExecuted;
-    @Column(name = "ORDEREXECUTED")
-    String orderExecuted;
-    @Column(name = "EXECTYPE")
+    @Column(name = "ORDEREXECUTED", nullable = false, length = 10)
+    Integer orderExecuted;
+    @Column(name = "EXECTYPE", nullable = false)
     String execType;
-    @Column(name = "MD5SUM")
+    @Column(name = "MD5SUM", length = 35)
     String md5Sum;
     @Column(name = "DESCRIPTION")
     String description;
@@ -72,11 +72,11 @@ public class DatabaseChangeLog {
         this.dateExecuted = dateExecuted;
     }
 
-    public String getOrderExecuted() {
+    public Integer getOrderExecuted() {
         return orderExecuted;
     }
 
-    public void setOrderExecuted(String orderExecuted) {
+    public void setOrderExecuted(Integer orderExecuted) {
         this.orderExecuted = orderExecuted;
     }
 

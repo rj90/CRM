@@ -86,4 +86,37 @@
                 endDelimiter="/"/>
     </changeSet>
 
+    <changeSet id="8" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create products</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/08_products.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
+
+    <changeSet id="9" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create service types</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/09_service_types.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
+
+    <changeSet id="10" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Create services</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/10_services.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                endDelimiter="/"/>
+    </changeSet>
+
 </databaseChangeLog>

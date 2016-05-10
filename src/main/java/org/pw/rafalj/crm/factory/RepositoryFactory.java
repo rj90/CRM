@@ -27,7 +27,7 @@ public class RepositoryFactory {
         return RepositoryFactoryHolder.instance;
     }
 
-    public Map getRepositoryConfigMap() {
+    private Map getRepositoryConfigMap() {
         synchronized (this) {
             if (repositoryConfigMap == null)
                 repositoryConfigMap = (Map) ApplicationContextProvider.getContext().getBean(CONFIG_BEAN);
@@ -35,7 +35,7 @@ public class RepositoryFactory {
         }
     }
 
-    public Map getRepositoryConfigTypeMap() {
+    private Map getRepositoryConfigTypeMap() {
         synchronized (this) {
             if (repositoryConfigTypeMap == null)
                 repositoryConfigTypeMap = (Map) ApplicationContextProvider.getContext().getBean(CONFIG_TYPEMAP_BEAN);
@@ -48,10 +48,10 @@ public class RepositoryFactory {
         return configTypeBean.get(serviceType);
     }
 
-    public <REPO_TYPE> REPO_TYPE getRepository(Class<REPO_TYPE> clazz, DBQueryTypeEnum queryType) throws Exception {
+    public <T> T getRepository(Class<T> clazz, DBQueryTypeEnum queryType) throws Exception {
         Map configBean = getRepositoryConfigMap();
-        Map<DBQueryTypeEnum, Object> repositories = (Map<DBQueryTypeEnum, Object>) configBean.get(clazz);
+        Map<DBQueryTypeEnum, ?> repositories = (Map<DBQueryTypeEnum, ?>) configBean.get(clazz);
         if (repositories == null) throw new RuntimeException("Repository not found Exception");
-        return (REPO_TYPE) repositories.get(queryType);
+        return (T) repositories.get(queryType);
     }
 }

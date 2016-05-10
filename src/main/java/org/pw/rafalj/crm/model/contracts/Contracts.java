@@ -20,20 +20,23 @@ public class Contracts implements Serializable{
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CUSTOMER_ID")
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     Customers customer;
 
-    @Column(name = "ISSUE_DATE")
+    @Column(name = "ISSUE_DATE", nullable = false)
     private Date issueDate;
 
-    @Column(name = "START_DATE")
+    @Column(name = "START_DATE", nullable = false)
     private Date startDate;
 
-    @Column(name = "END_DATE")
+    @Column(name = "END_DATE", nullable = false)
     private Date endDate;
 
+    @Column(name = "CONTRACT_NUMBER", length = 30)
+    private String contractNumber;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "STATUS_ID")
+    @JoinColumn(name = "STATUS_ID", nullable = false)
     ContractStatus status;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "contract")
@@ -83,6 +86,14 @@ public class Contracts implements Serializable{
         this.endDate = endDate;
     }
 
+    public String getContractNumber() {
+        return contractNumber;
+    }
+
+    public void setContractNumber(String contractNumber) {
+        this.contractNumber = contractNumber;
+    }
+
     public ContractStatus getStatus() {
         return status;
     }
@@ -107,6 +118,7 @@ public class Contracts implements Serializable{
         vo.setIssueDate(getIssueDate());
         vo.setStartDate(getStartDate());
         vo.setEndDate(getEndDate());
+        vo.setContractNumber(getContractNumber());
         vo.setStatus(getStatus().getStatus());
         return vo;
     }

@@ -8,11 +8,11 @@ import org.slf4j.Logger;
  * Created by rjozwiak on 2016-04-26.
  */
 public abstract class CommonService {
-    protected <REPO_TYPE> REPO_TYPE prepareRepositoryType(Class<REPO_TYPE> clazz, DBQueryTypeEnum dbQueryTypeFromCookies) {
+    protected <T> T prepareRepositoryType(Class<T> clazz, DBQueryTypeEnum dbQueryTypeFromCookies) {
         return prepareRepositoryType(clazz, dbQueryTypeFromCookies, null);
     }
 
-    protected <REPO_TYPE> REPO_TYPE prepareRepositoryType(Class<REPO_TYPE> clazz, DBQueryTypeEnum dbQueryTypeFromCookies, Logger log) {
+    protected <T> T prepareRepositoryType(Class<T> clazz, DBQueryTypeEnum dbQueryTypeFromCookies, Logger log) {
         try {
             return RepositoryFactory.getInstance().getRepository(clazz, dbQueryTypeFromCookies);
         } catch (Exception e) {

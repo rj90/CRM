@@ -12,6 +12,7 @@ public class ContractVO {
     private Date startDate;
     private Date endDate;
     private String status;
+    private String contractNumber;
 
     public Integer getId() {
         return id;
@@ -59,5 +60,13 @@ public class ContractVO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getContractNumber() {
+        return contractNumber;
+    }
+
+    public void setContractNumber(String contractNumber) {
+        this.contractNumber = contractNumber;
     }
 }

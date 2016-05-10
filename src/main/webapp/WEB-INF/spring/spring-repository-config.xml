@@ -161,7 +161,7 @@
                 </entry>
             </map>
         </entry>
-        <!--DATABASE MANAGER-->
+        <!--DASHBOARD-->
         <entry key="org.pw.rafalj.crm.repository.dashboard.DashboardRepository">
             <map key-type="org.pw.rafalj.crm.enums.DBQueryTypeEnum">
                 <entry key="SQL">
@@ -212,6 +212,14 @@
         <!--BILLINGS-->
         <entry key="BILLING">
             <value type="java.lang.Class">org.pw.rafalj.crm.repository.billing.BillingRepository</value>
+        </entry>
+        <!--DATABASE MANAGER-->
+        <entry key="SQL">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.liquibase.SQLRepository</value>
+        </entry>
+        <!--DASHBOARD-->
+        <entry key="DASHBOARD">
+            <value type="java.lang.Class">org.pw.rafalj.crm.repository.dashboard.DashboardRepository</value>
         </entry>
     </util:map>
 </beans>

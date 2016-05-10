@@ -20,26 +20,29 @@ import java.util.stream.Collectors;
  */
 @Service
 public class TestService extends CommonService {
+    TestRepository testRepository;
+
     public List<TestResultVO> executeQuery(TestOptions testOptions, QueryType queryType) {
         return Arrays.stream(testOptions.getOptions()).map(option -> prepareTest(testOptions.getNumberOfQueries(),
                 testOptions.getStep(), RepositoryFactory.getInstance().prepareType(testOptions.getServiceType()),
                 queryType, option)).collect(Collectors.toList());
     }
 
-    private <REPO_TYPE extends TestRepository> TestResultVO prepareTest(Integer numberOfQueries, Integer step, Class<REPO_TYPE> clazz, QueryType queryType, DBQueryTypeEnum option) {
-        REPO_TYPE testRepository = prepareRepositoryType(clazz, option);
+    private <T extends TestRepository> TestResultVO prepareTest(Integer numberOfQueries, Integer step, Class<T> clazz,
+                                                                QueryType queryType, DBQueryTypeEnum option) {
+        testRepository = prepareRepositoryType(clazz, option);
         List<Pair<Integer, Long>> time = new ArrayList<>();
         Long startTime = System.currentTimeMillis();
         time.add(new Pair<>(0, 0L));
         for(int i = 1; i <= numberOfQueries ; i++){
-            executeQuery(testRepository, queryType, i);
+            executeQuery(queryType, i);
             if(i % step == 0 || i == numberOfQueries)
                 time.add(new Pair<>(i, System.currentTimeMillis() - startTime));
         }
         return new TestResultVO(option, time);
     }
 
-    private <REPO_TYPE extends TestRepository> void executeQuery(REPO_TYPE testRepository, QueryType queryType, int index) {
+    private void executeQuery(QueryType queryType, int index) {
         switch (queryType){
             case SELECT:
                 testRepository.testSelect(index);
