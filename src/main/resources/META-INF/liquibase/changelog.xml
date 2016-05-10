@@ -9,6 +9,17 @@
         <dbms type="oracle"/>
         <runningAs username="RAFALJ"/>
     </preConditions>
+    <changeSet id="0" author="rafalj">
+        <preConditions onFail="WARN"/>
+        <comment>Delete previous Structure</comment>
+        <sqlFile encoding="utf8"
+                 path="scripts/00_drop_all_structure.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"
+                 endDelimiter="/"/>
+    </changeSet>
+
     <changeSet id="1" author="rafalj">
         <preConditions onFail="WARN"/>
         <comment>Create database structure</comment>
@@ -17,7 +28,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="2" author="rafalj">
@@ -28,7 +39,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="3" author="rafalj">
@@ -39,7 +50,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="4" author="rafalj">
@@ -50,7 +61,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="5" author="rafalj">
@@ -61,7 +72,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="6" author="rafalj">
@@ -72,7 +83,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="7" author="rafalj">
@@ -83,7 +94,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="8" author="rafalj">
@@ -94,7 +105,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="9" author="rafalj">
@@ -105,7 +116,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
     <changeSet id="10" author="rafalj">
@@ -116,7 +127,7 @@
                  relativeToChangelogFile="true"
                  splitStatements="true"
                  stripComments="true"
-                endDelimiter="/"/>
+                 endDelimiter="/"/>
     </changeSet>
 
 </databaseChangeLog>
